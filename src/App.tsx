@@ -1,32 +1,11 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-} from 'react-native';
-import { useTranslation } from 'react-i18next';
 import './utils/i18n/index';
+import { NavigationContainer } from '@react-navigation/native';
+import Tabs from './components/Tabs';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingTop: 20,
-  },
-  text: {
-    color: '#808080',
-  },
-});
-
-const App: React.FunctionComponent = () => {
-  const { t } = useTranslation();
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
-        {t('title')}
-      </Text>
-    </View>
-  );
-};
+const App: React.FunctionComponent = () => (
+  <NavigationContainer>
+    <Tabs />
+  </NavigationContainer>
+);
 export default App;
