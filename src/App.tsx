@@ -22,11 +22,11 @@ const styles = StyleSheet.create({
 const App: React.FunctionComponent = () => {
   const { t } = useTranslation();
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
-        {t('title')}
-      </Text>
-    </View>
+    // <View style={styles.container}>
+    //   <Text style={styles.text}>
+    //     {t('title')}
+    //   </Text>
+    // </View>
   );
 };
 export default App;
