@@ -5,8 +5,6 @@ import Home from '../../screens/Home';
 import TopMovies from '../../screens/TopMovies';
 import Favorites from '../../screens/Favorites';
 
-import './utils/i18n/index';
-
 const Tab = createMaterialBottomTabNavigator();
 
 const whiteColor = '#fff';
