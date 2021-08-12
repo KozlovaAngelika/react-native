@@ -3,6 +3,12 @@ import {
   View,
 } from 'react-native';
 
-const App: React.FC = () => <View />;
+import SearchBar from './ src/components/SearchBar';
+
+const App: React.FC = () => (
+  <View>
+    <SearchBar value="123" onChangeValue={() => {}} />
+  </View>
+);
 
 export default App;
