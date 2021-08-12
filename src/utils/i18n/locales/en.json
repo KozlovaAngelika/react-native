@@ -1,4 +1,5 @@
 {
-    "title": "testtitle",
-    "test": "asdas"
+    "home": "Home",
+    "top250": "Top 250",
+    "favorites": "Favorites"
 }
