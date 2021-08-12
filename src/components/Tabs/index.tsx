@@ -5,14 +5,18 @@ import Home from '../../screens/Home';
 import TopMovies from '../../screens/TopMovies';
 import Favorites from '../../screens/Favorites';
 
+import './utils/i18n/index';
+
 const Tab = createMaterialBottomTabNavigator();
+
+const whiteColor = '#fff';
+const greyColor = '#d3d3d3';
 
 const Tabs: React.FunctionComponent = () => (
   <Tab.Navigator
     initialRouteName="Home"
-    // eslint-disable-next-line react-native/no-inline-styles
     barStyle={{
-      backgroundColor: '#d3d3d3',
+      backgroundColor: `${greyColor}`,
     }}
   >
     <Tab.Screen
@@ -21,7 +25,7 @@ const Tabs: React.FunctionComponent = () => (
       options={{
         tabBarLabel: 'Home',
         tabBarIcon: () => (
-          <MaterialCommunityIcons name="home" size={26} color="#fff" />
+          <MaterialCommunityIcons name="home" size={26} color={whiteColor} />
         ),
       }}
     />
@@ -31,7 +35,7 @@ const Tabs: React.FunctionComponent = () => (
       options={{
         tabBarLabel: 'Top 250',
         tabBarIcon: () => (
-          <MaterialCommunityIcons name="thumb-up" size={26} color="#fff" />
+          <MaterialCommunityIcons name="thumb-up" size={26} color={whiteColor} />
         ),
       }}
     />
@@ -41,7 +45,7 @@ const Tabs: React.FunctionComponent = () => (
       options={{
         tabBarLabel: 'Favorites',
         tabBarIcon: () => (
-          <MaterialCommunityIcons name="star" size={26} color="#fff" />
+          <MaterialCommunityIcons name="star" size={26} color={whiteColor} />
         ),
       }}
     />

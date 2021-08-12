@@ -1,10 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 
 const Favorites: React.FunctionComponent = () => (
-  <View>
-    <Text>Test</Text>
-  </View>
+  <View />
 );
 
 export default Favorites;
