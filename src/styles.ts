@@ -15,4 +15,5 @@ const styles = StyleSheet.create({
     color: lightGray,
   },
 });
+
 export default styles;
