@@ -1,6 +1,4 @@
-import {
-  StyleSheet,
-} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const lightGray = '#808080';
 

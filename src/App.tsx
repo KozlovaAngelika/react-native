@@ -17,4 +17,5 @@ const App: React.FunctionComponent = () => {
     </View>
   );
 };
+
 export default App;
