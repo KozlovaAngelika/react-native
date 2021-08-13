@@ -5,8 +5,7 @@ const whiteColor = '#fff';
 
 const styles = StyleSheet.create({
   searchPanel: {
-    position: 'relative',
-    flex: 1,
+    top: 35,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -25,10 +24,10 @@ const styles = StyleSheet.create({
     elevation: 8,
   },
   searchInput: {
-    backgroundColor: whiteColor,
+    flex: 1,
   },
   searchIcon: {
-    position: 'absolute',
+    fontFamily: 'Feather',
   },
 });
 

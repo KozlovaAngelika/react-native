@@ -2,15 +2,19 @@ import React from 'react';
 import {
   TextInput,
   View,
-  Image,
 } from 'react-native';
-import SearchIcon from '@material-ui/icons/Search';
+import IconFeather from 'react-native-vector-icons/Feather';
 import styles from './styles';
 
-const SearchBar: SearchBar = ({ value, onChangeValue }) => (
+interface SearchBarProps {
+  value: string,
+  onChangeValue: (e: React.FormEvent) => void
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ value, onChangeValue }) => (
   <View style={styles.searchPanel}>
-    <TextInput placeholder="Search" value={value} onChangeText={onChangeValue} style={styles.searchInput} />
-    {/* <Image source={SearchIcon} style={styles.searchIcon} /> */}
+    <TextInput placeholder="Search" selectionColor="#808080" value={value} onChange={onChangeValue} style={styles.searchInput} />
+    <IconFeather name="search" size={20} color="#808080" />
   </View>
 );
 
