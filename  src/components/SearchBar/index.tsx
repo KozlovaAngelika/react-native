@@ -3,7 +3,7 @@ import {
   TextInput,
   View,
 } from 'react-native';
-import IconFeather from 'react-native-vector-icons/Feather';
+import { Icon } from 'react-native-elements';
 import styles from './styles';
 
 interface SearchBarProps {
@@ -14,8 +14,9 @@ interface SearchBarProps {
 const SearchBar: React.FC<SearchBarProps> = ({ value, onChangeValue }) => (
   <View style={styles.searchPanel}>
     <TextInput placeholder="Search" selectionColor="#808080" value={value} onChange={onChangeValue} style={styles.searchInput} />
-    <IconFeather name="search" size={20} color="#808080" />
+    <Icon name="search" />
   </View>
 );
 
 export default SearchBar;
+ß
