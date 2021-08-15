@@ -5,7 +5,6 @@ const whiteColor = '#fff';
 
 const styles = StyleSheet.create({
   searchPanel: {
-    top: 35,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
