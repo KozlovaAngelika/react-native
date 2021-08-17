@@ -26,5 +26,6 @@
     "prettier/prettier": "off",
     "react/prop-types": "off",
     "import/extensions": "off",
+    "eol-last": 0,
   }
 }
