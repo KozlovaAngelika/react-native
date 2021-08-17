@@ -1,21 +1,12 @@
 import React from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
-import { useTranslation } from 'react-i18next';
-import './utils/i18n/index';
+import { View } from 'react-native';
+import MovieTile from './components/MovieTile';
 import styles from './styles';
 
-const App: React.FunctionComponent = () => {
-  const { t } = useTranslation();
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
-        {t('title')}
-      </Text>
-    </View>
-  );
-};
+const App: React.FC = () => (
+  <View style={styles.container}>
+    <MovieTile title="Rick and Morty" imgSrc="https://images.ua.prom.st/1650079983_w640_h640_1650079983.jpg" />
+  </View>
+);
 
 export default App;

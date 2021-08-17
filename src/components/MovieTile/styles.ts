@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
-
-const darkGreyColor = '#2c2c2c';
+import { COLORS } from '../../utils/constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -24,7 +23,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 20,
     zIndex: 10,
-    color: darkGreyColor,
+    color: COLORS.DARK_GREY,
     fontSize: 35,
     fontWeight: 'bold',
   },

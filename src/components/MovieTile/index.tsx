@@ -7,8 +7,8 @@ import {
 import styles from './styles';
 
 interface MovieTileProps {
-  title: string,
-  imgSrc: string,
+  title: string;
+  imgSrc: string;
 }
 
 const MovieTile: React.FC <MovieTileProps> = ({ title, imgSrc }) => (
