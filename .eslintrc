@@ -29,13 +29,13 @@
     "eol-last": 0,
     "@typescript-eslint/member-delimiter-style": ["error", {
       "multiline": {
-      "delimiter": "semi",
-      "requireLast": true
+        "delimiter": "semi",
+        "requireLast": true
       },
       "singleline": {
-      "delimiter": "semi",
-      "requireLast": false
+        "delimiter": "semi",
+        "requireLast": false
       }
-      }]
-    }
+    }]
+  }
 }
