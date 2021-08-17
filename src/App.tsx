@@ -1,21 +1,11 @@
 import React from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
-import { useTranslation } from 'react-i18next';
-import './utils/i18n/index';
-import styles from './styles';
+import { View } from 'react-native';
+import SearchBar from './components/SearchBar';
 
-const App: React.FunctionComponent = () => {
-  const { t } = useTranslation();
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>
-        {t('title')}
-      </Text>
-    </View>
-  );
-};
+const App: React.FC = () => (
+  <View>
+    <SearchBar value="" onChangeValue={() => {}} />
+  </View>
+);
 
 export default App;

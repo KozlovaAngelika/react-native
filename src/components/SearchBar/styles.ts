@@ -1,7 +1,5 @@
 import { StyleSheet } from 'react-native';
-
-const blackColor = '#000';
-const whiteColor = '#fff';
+import { COLORS } from '../../utils/constants';
 
 const styles = StyleSheet.create({
   searchPanel: {
@@ -12,8 +10,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     margin: 10,
     borderRadius: 15,
-    backgroundColor: whiteColor,
-    shadowColor: blackColor,
+    backgroundColor: COLORS.WHITE,
+    shadowColor: COLORS.BLACK,
     shadowOffset: {
       width: 0,
       height: 4,
