@@ -6,7 +6,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import './utils/i18n/index';
 import { Provider } from 'react-redux';
-import state from './redux/index';
+import state from './redux';
 import styles from './styles';
 
 const App: React.FunctionComponent = () => {
