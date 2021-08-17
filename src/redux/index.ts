@@ -11,3 +11,5 @@ const reducer = (
 ) : MovieState => state;
 
 const state = createStore(reducer, initialState);
+
+export default state;
