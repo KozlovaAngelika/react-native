@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
-
-const lightGray = '#808080';
+import colors from './utils/constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,7 +9,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   text: {
-    color: lightGray,
+    color: colors.lightGray,
   },
 });
 
