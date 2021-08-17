@@ -5,12 +5,10 @@ import { useTranslation } from 'react-i18next';
 import Home from '../../screens/Home';
 import TopMovies from '../../screens/TopMovies';
 import Favorites from '../../screens/Favorites';
-import '../../utils/i18n/index';
+import '../../utils/i18n';
+import { COLORS } from '../../utils/constants';
 
 const Tab = createMaterialBottomTabNavigator();
-
-const whiteColor = '#fff';
-const greyColor = '#d3d3d3';
 
 const Tabs: React.FunctionComponent = () => {
   const { t } = useTranslation();
@@ -18,7 +16,7 @@ const Tabs: React.FunctionComponent = () => {
     <Tab.Navigator
       initialRouteName="Home"
       barStyle={{
-        backgroundColor: `${greyColor}`,
+        backgroundColor: COLORS.GREY,
       }}
     >
       <Tab.Screen
@@ -27,7 +25,7 @@ const Tabs: React.FunctionComponent = () => {
         options={{
           tabBarLabel: `${t('home')}`,
           tabBarIcon: () => (
-            <MaterialCommunityIcons name="home" size={26} color={whiteColor} />
+            <MaterialCommunityIcons name="home" size={26} color={COLORS.WHITE} />
           ),
         }}
       />
@@ -37,7 +35,7 @@ const Tabs: React.FunctionComponent = () => {
         options={{
           tabBarLabel: `${t('top250')}`,
           tabBarIcon: () => (
-            <MaterialCommunityIcons name="thumb-up" size={26} color={whiteColor} />
+            <MaterialCommunityIcons name="thumb-up" size={26} color={COLORS.WHITE} />
           ),
         }}
       />
@@ -47,7 +45,7 @@ const Tabs: React.FunctionComponent = () => {
         options={{
           tabBarLabel: `${t('favorites')}`,
           tabBarIcon: () => (
-            <MaterialCommunityIcons name="star" size={26} color={whiteColor} />
+            <MaterialCommunityIcons name="star" size={26} color={COLORS.WHITE} />
           ),
         }}
       />
