@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   text: {
-    color: COLORS.lightGray,
+    color: COLORS.LIGHT_GREY,
   },
 });
 

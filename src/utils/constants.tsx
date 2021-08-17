@@ -1,4 +1,4 @@
 const COLORS = {
-  lightGray: '#808080',
+  LIGHT_GREY: '#808080',
 };
 export default COLORS;
