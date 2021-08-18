@@ -25,7 +25,11 @@ const Tabs: React.FunctionComponent = () => {
         options={{
           tabBarLabel: `${t('home')}`,
           tabBarIcon: () => (
-            <MaterialCommunityIcons name="home" size={26} color={COLORS.WHITE} />
+            <MaterialCommunityIcons
+              name="home"
+              size={26}
+              color={COLORS.WHITE}
+            />
           ),
         }}
       />
@@ -35,7 +39,11 @@ const Tabs: React.FunctionComponent = () => {
         options={{
           tabBarLabel: `${t('top250')}`,
           tabBarIcon: () => (
-            <MaterialCommunityIcons name="thumb-up" size={26} color={COLORS.WHITE} />
+            <MaterialCommunityIcons
+              name="thumb-up"
+              size={26}
+              color={COLORS.WHITE}
+            />
           ),
         }}
       />
@@ -45,7 +53,11 @@ const Tabs: React.FunctionComponent = () => {
         options={{
           tabBarLabel: `${t('favorites')}`,
           tabBarIcon: () => (
-            <MaterialCommunityIcons name="star" size={26} color={COLORS.WHITE} />
+            <MaterialCommunityIcons
+              name="star"
+              size={26}
+              color={COLORS.WHITE}
+            />
           ),
         }}
       />
