@@ -9,7 +9,6 @@ interface Props {
 const MovieTile: React.FC<Props> = ({ title, imgSrc }) => (
   <Card>
     <Card.Title>{title}</Card.Title>
-    <Card.Divider />
     <Card.Image
       source={{
         uri: imgSrc,
