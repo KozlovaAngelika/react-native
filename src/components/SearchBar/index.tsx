@@ -6,12 +6,12 @@ import { COLORS } from '../../utils/constants';
 import styles from './styles';
 import '../../utils/i18n';
 
-interface SearchBarProps {
+interface Props {
   value: string;
   onChangeValue: (e: React.FormEvent) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ value, onChangeValue }) => {
+const SearchBar: React.FC<Props> = ({ value, onChangeValue }) => {
   const { t } = useTranslation();
   const placeholder = `${t('search')[0].toUpperCase()}${t('search').slice(1)}`;
   return (
