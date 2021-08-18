@@ -318,15 +318,12 @@ PODS:
     - React-cxxreact (= 0.64.2)
     - React-jsi (= 0.64.2)
     - React-perflogger (= 0.64.2)
-<<<<<<< HEAD
   - RNSVG (12.1.1):
     - React
   - RNVectorIcons (8.1.0):
     - React-Core
-=======
   - RNI18n (2.0.15):
     - React
->>>>>>> develop
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -381,12 +378,9 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
-<<<<<<< HEAD
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
-=======
   - RNI18n (from `../node_modules/react-native-i18n`)
->>>>>>> develop
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
