@@ -1,6 +1,5 @@
 import React from 'react';
-import { Image, View, Text } from 'react-native';
-import styles from './styles';
+import { Card } from 'react-native-elements';
 
 interface MovieTileProps {
   title: string;
@@ -8,15 +7,15 @@ interface MovieTileProps {
 }
 
 const MovieTile: React.FC<MovieTileProps> = ({ title, imgSrc }) => (
-  <View style={styles.container}>
-    <Text style={styles.title}>{title}</Text>
-    <Image
-      style={styles.poster}
+  <Card>
+    <Card.Title>{title}</Card.Title>
+    <Card.Divider />
+    <Card.Image
       source={{
         uri: imgSrc,
       }}
     />
-  </View>
+  </Card>
 );
 
 export default MovieTile;
