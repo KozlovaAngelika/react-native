@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextInput, View } from 'react-native';
 import { Icon } from 'react-native-elements';
+import { COLORS } from '../../utils/constants';
 import styles from './styles';
 
 interface SearchBarProps {
@@ -12,7 +13,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ value, onChangeValue }) => (
   <View style={styles.searchPanel}>
     <TextInput
       placeholder="Search"
-      selectionColor="#808080"
+      selectionColor={COLORS.BLACK}
       value={value}
       onChange={onChangeValue}
       style={styles.searchInput}
