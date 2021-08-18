@@ -11,12 +11,7 @@ const App: React.FunctionComponent = () => {
   return (
     <Provider store={state}>
       <View style={styles.container}>
-        <SearchBar
-          value={searchValue}
-          onChangeValue={(value) => {
-            setSearchValue(value);
-          }}
-        />
+        <SearchBar value={searchValue} onChangeValue={setSearchValue} />
       </View>
     </Provider>
   );
