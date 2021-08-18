@@ -8,7 +8,7 @@ import '../../utils/i18n';
 
 interface Props {
   value: string;
-  onChangeValue: (e: React.FormEvent) => void;
+  onChangeValue: (e: string) => void;
 }
 
 const SearchBar: React.FC<Props> = ({ value, onChangeValue }) => {
@@ -20,7 +20,7 @@ const SearchBar: React.FC<Props> = ({ value, onChangeValue }) => {
         placeholder={placeholder}
         selectionColor={COLORS.BLACK}
         value={value}
-        onChange={onChangeValue}
+        onChangeText={onChangeValue}
         style={styles.searchInput}
       />
       <Icon name="search" />
