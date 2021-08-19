@@ -1,25 +1,19 @@
-import React from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
-import { useTranslation } from 'react-i18next';
-import './utils/i18n/index';
+import React, { useState } from 'react';
+import { View } from 'react-native';
 import { Provider } from 'react-redux';
+import SearchBar from './components/SearchBar';
+import './utils/i18n/index';
 import state from './redux';
 import styles from './styles';
 
 const App: React.FunctionComponent = () => {
-  const { t } = useTranslation();
+  const [searchValue, setSearchValue] = useState('');
   return (
     <Provider store={state}>
       <View style={styles.container}>
-        <Text style={styles.text}>
-          {t('title')}
-        </Text>
+        <SearchBar value={searchValue} onChangeValue={setSearchValue} />
       </View>
     </Provider>
   );
 };
-
 export default App;
