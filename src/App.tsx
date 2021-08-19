@@ -9,6 +9,7 @@ import styles from './styles';
 
 const App: React.FunctionComponent = () => {
   const [searchValue, setSearchValue] = useState('');
+
   return (
     <Provider store={state}>
       <View style={styles.container}>
@@ -21,4 +22,5 @@ const App: React.FunctionComponent = () => {
     </Provider>
   );
 };
+
 export default App;
