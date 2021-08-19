@@ -13,4 +13,5 @@ const App: React.FunctionComponent = () => (
     </NavigationContainer>
   </Provider>
 );
+
 export default App;
