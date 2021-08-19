@@ -6,7 +6,6 @@ import SearchBar from './components/SearchBar';
 import './utils/i18n/index';
 import state from './redux';
 import styles from './styles';
-import './utils/i18n/index';
 
 const App: React.FunctionComponent = () => {
   const [searchValue, setSearchValue] = useState('');
