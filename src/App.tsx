@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import './utils/i18n/index';
 import 'react-native-vector-icons';
-import Tabs from './components/Tabs';
+import Tabs from './routes';
 import state from './redux';
 
 const App: React.FunctionComponent = () => (

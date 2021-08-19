@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
 
-const Top: React.FunctionComponent = () => <View />;
+const TopMovies: React.FunctionComponent = () => <View />;
 
-export default Top;
+export default TopMovies;
