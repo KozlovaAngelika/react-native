@@ -1,5 +1,7 @@
 {
-    "home": "Home",
-    "top250": "Top 250",
-    "favorites": "Favorites"
+  "home": "Home",
+  "top250": "Top 250",
+  "favorites": "Favorites",
+  "title": "title",
+  "search": "Search"
 }
