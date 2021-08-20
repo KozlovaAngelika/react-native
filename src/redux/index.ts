@@ -6,9 +6,7 @@ const initialState: MovieState = {
   favorites: [],
 };
 
-const reducer = (
-  state: MovieState = initialState,
-) : MovieState => state;
+const reducer = (state: MovieState = initialState): MovieState => state;
 
 const state = createStore(reducer, initialState);
 
