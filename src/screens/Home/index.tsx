@@ -5,7 +5,7 @@ import MovieTile from '../../components/MovieTile';
 import SearchBar from '../../components/SearchBar';
 import styles from './styles';
 
-let DATA = [
+const DATA = [
   {
     id: 'tt5491994',
     title: 'Planet Earth II',
@@ -78,7 +78,7 @@ const Home: React.FunctionComponent = () => {
       ),
     );
   }, 300);
-  const onChangeValue = (value: string) => {
+  const onChangeValue = (value: string): void => {
     setSearchValue(value);
     searchMovie(value);
   };
