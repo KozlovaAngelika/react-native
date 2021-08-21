@@ -6,7 +6,7 @@ import Home from '../screens/Home';
 import TopMovies from '../screens/TopMovies';
 import Favorites from '../screens/Favorites';
 import '../utils/i18n';
-import { COLORS, ROUTES } from '../utils/constants';
+import { COLORS } from '../utils/constants';
 import TabIcon from './TabIcon';
 
 const Tab = createBottomTabNavigator();
@@ -22,7 +22,7 @@ const Tabs: React.FunctionComponent = () => {
         })}
       >
         <Tab.Screen
-          name={ROUTES.HOME}
+          name={`${t('home')}`}
           component={Home}
           options={{
             tabBarLabel: `${t('home')}`,
@@ -30,7 +30,7 @@ const Tabs: React.FunctionComponent = () => {
           }}
         />
         <Tab.Screen
-          name={ROUTES.TOP_MOVIES}
+          name={`${t('top250')}`}
           component={TopMovies}
           options={{
             tabBarLabel: `${t('top250')}`,
@@ -38,7 +38,7 @@ const Tabs: React.FunctionComponent = () => {
           }}
         />
         <Tab.Screen
-          name={ROUTES.FAVORITES}
+          name={`${t('favorites')}`}
           component={Favorites}
           options={{
             tabBarLabel: `${t('favorites')}`,
