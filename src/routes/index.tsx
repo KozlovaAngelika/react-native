@@ -22,7 +22,7 @@ const Tabs: React.FunctionComponent = () => {
         })}
       >
         <Tab.Screen
-          name={`${t('home')}`}
+          name={t('home')}
           component={Home}
           options={{
             tabBarLabel: `${t('home')}`,
@@ -30,7 +30,7 @@ const Tabs: React.FunctionComponent = () => {
           }}
         />
         <Tab.Screen
-          name={`${t('top250')}`}
+          name={t('top250')}
           component={TopMovies}
           options={{
             tabBarLabel: `${t('top250')}`,
@@ -38,7 +38,7 @@ const Tabs: React.FunctionComponent = () => {
           }}
         />
         <Tab.Screen
-          name={`${t('favorites')}`}
+          name={t('favorites')}
           component={Favorites}
           options={{
             tabBarLabel: `${t('favorites')}`,
