@@ -6,8 +6,3 @@ export const COLORS = {
   BLACK: '#000',
   WHITE: '#fff',
 };
-export const ROUTES = {
-  HOME: 'Home',
-  TOP_MOVIES: 'Top 250',
-  FAVORITES: 'Favorites',
-};
