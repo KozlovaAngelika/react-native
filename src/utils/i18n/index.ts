@@ -4,7 +4,7 @@ import en from './locales/en.json';
 import ru from './locales/ru.json';
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
 i18next.use(initReactI18next).init({
-  lng: 'ru',
+  lng: 'en',
   debug: true,
   resources: {
     en: {
