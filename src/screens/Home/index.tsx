@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import debounce from 'lodash.debounce';
 import { SafeAreaView, FlatList } from 'react-native';
 import MovieTile from '../../components/MovieTile';
