@@ -5,7 +5,7 @@ import MovieTile from '../../components/MovieTile';
 import SearchBar from '../../components/SearchBar';
 import styles from './styles';
 
-const DATA = [
+const DATA: Movie[] = [
   {
     id: 'tt5491994',
     title: 'Planet Earth II',
@@ -63,13 +63,15 @@ const DATA = [
     imDbRating: '9.2',
   },
 ];
+interface RenderItemProps {
+  item: Movie;
+}
 const Home: React.FunctionComponent = () => {
   const [searchValue, setSearchValue] = useState('');
   const [dataForDisplay, setDataForDisplay] = useState(DATA);
-  const keyExtractor = useCallback((item) => item.id, []);
-  const renderItem = useCallback(
-    ({ item }) => <MovieTile title={item.title} imgSrc={item.image} />,
-    [],
+  const keyExtractor = (item: Movie): string => item.id;
+  const renderItem = ({ item }: RenderItemProps): React.ReactElement => (
+    <MovieTile title={item.title} imgSrc={item.image} />
   );
   const searchMovie = debounce((value: string) => {
     setDataForDisplay(
