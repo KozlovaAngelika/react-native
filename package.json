@@ -14,7 +14,6 @@
   "dependencies": {
     "@material-ui/icons": "4.11.2",
     "@react-navigation/bottom-tabs": "6.0.3",
-    "@react-navigation/material-bottom-tabs": "6.0.4",
     "@react-navigation/native": "6.0.2",
     "@types/history": "4.7.3",
     "i18next": "20.3.5",
