@@ -18,11 +18,11 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   description: {
-    padding: 15,
+    padding: 10,
   },
   ratingContainer: {
     flexDirection: 'row',
-    padding: 15,
+    padding: 10,
   },
   ratingTitle: {
     marginRight: 8,
