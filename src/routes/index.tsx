@@ -26,16 +26,14 @@ const Tabs: React.FunctionComponent = () => {
           component={Home}
           options={{
             title: t('home'),
-            tabBarLabel: t('home'),
             tabBarIcon: () => <TabIcon iconName="home" />,
           }}
         />
         <Tab.Screen
-          name={ROUTES.TOPMOVIES}
+          name={ROUTES.TOP_MOVIES}
           component={TopMovies}
           options={{
             title: t('top250'),
-            tabBarLabel: t('top250'),
             tabBarIcon: () => <TabIcon iconName="thumb-up" />,
           }}
         />
@@ -44,7 +42,6 @@ const Tabs: React.FunctionComponent = () => {
           component={Favorites}
           options={{
             title: t('favorites'),
-            tabBarLabel: t('favorites'),
             tabBarIcon: () => <TabIcon iconName="star" />,
           }}
         />
