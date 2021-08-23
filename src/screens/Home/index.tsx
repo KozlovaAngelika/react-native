@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import debounce from 'lodash.debounce';
-import { SafeAreaView, FlatList } from 'react-native';
+import { SafeAreaView, FlatList, ListRenderItem } from 'react-native';
 import MovieTile from '../../components/MovieTile';
 import SearchBar from '../../components/SearchBar';
 import styles from './styles';
@@ -63,22 +63,19 @@ const DATA: Movie[] = [
     imDbRating: '9.2',
   },
 ];
-interface RenderItemProps {
-  item: Movie;
-}
+
 const Home: React.FunctionComponent = () => {
   const [searchValue, setSearchValue] = useState('');
   const [dataForDisplay, setDataForDisplay] = useState(DATA);
   const keyExtractor = (item: Movie): string => item.id;
-  const renderItem = ({ item }: RenderItemProps): React.ReactElement => (
+  const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
     <MovieTile title={item.title} imgSrc={item.image} />
   );
   const searchMovie = debounce((value: string) => {
-    setDataForDisplay(
-      DATA.filter((item: { title: string }) =>
-        item.title.toLowerCase().includes(value.toLowerCase()),
-      ),
+    const data = DATA.filter((item: { title: string }) =>
+      item.title.toLowerCase().includes(value.toLowerCase()),
     );
+    setDataForDisplay(data);
   }, 300);
   const onChangeValue = (value: string): void => {
     setSearchValue(value);
