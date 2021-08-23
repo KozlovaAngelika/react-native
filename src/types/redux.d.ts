@@ -1,7 +1,8 @@
 interface Movie {
-  id: number;
+  id: string;
   title: string;
-  poster: string;
+  image: string;
+  imDbRating: string;
 }
 
 interface MovieState {
