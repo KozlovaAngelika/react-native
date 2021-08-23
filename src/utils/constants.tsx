@@ -7,6 +7,6 @@ export const COLORS = {
 };
 export const ROUTES = {
   HOME: 'Home',
-  TOPMOVIES: 'Top 250',
+  TOP_MOVIES: 'TopMovies',
   FAVORITES: 'Favorites',
 };
