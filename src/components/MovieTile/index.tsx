@@ -3,11 +3,10 @@ import { Card } from 'react-native-elements';
 import MovieInfo from './MovieInfo';
 
 interface Props {
-  title: string;
-  imgSrc: string;
+  data: Movie;
 }
 
-const MovieTile: React.FC<Props> = ({ title, imgSrc }) => {
+const MovieTile: React.FC<Props> = ({ data }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const closeModal = (): void => {
     setIsModalVisible(false);
@@ -17,14 +16,18 @@ const MovieTile: React.FC<Props> = ({ title, imgSrc }) => {
   };
   return (
     <Card>
-      <Card.Title onPress={showModal}>{title}</Card.Title>
+      <Card.Title onPress={showModal}>{data.title}</Card.Title>
       <Card.Image
         source={{
-          uri: imgSrc,
+          uri: data.image,
         }}
         resizeMode="contain"
       />
-      <MovieInfo isModalVisible={isModalVisible} closeModal={closeModal} />
+      <MovieInfo
+        isModalVisible={isModalVisible}
+        closeModal={closeModal}
+        data={data}
+      />
     </Card>
   );
 };
