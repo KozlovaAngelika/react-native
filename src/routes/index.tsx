@@ -22,7 +22,7 @@ const Tabs: React.FunctionComponent = () => {
         }}
       >
         <Tab.Screen
-          name={t('home')}
+          name={ROUTES.HOME}
           component={Home}
           options={{
             title: t('home'),
@@ -30,7 +30,7 @@ const Tabs: React.FunctionComponent = () => {
           }}
         />
         <Tab.Screen
-          name={t('top250')}
+          name={ROUTES.TOP_MOVIES}
           component={TopMovies}
           options={{
             title: t('top250'),
@@ -38,7 +38,7 @@ const Tabs: React.FunctionComponent = () => {
           }}
         />
         <Tab.Screen
-          name={t('favorites')}
+          name={ROUTES.FAVORITES}
           component={Favorites}
           options={{
             title: t('favorites'),
