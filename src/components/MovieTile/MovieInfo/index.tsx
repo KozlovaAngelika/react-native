@@ -9,7 +9,7 @@ import '../../../utils/i18n';
 interface Props {
   isModalVisible: boolean;
   closeModal: () => void;
-  //   data: Movie[];
+  // data: Movie[];
 }
 
 const MovieInfo: React.FC<Props> = ({ isModalVisible, closeModal }) => {

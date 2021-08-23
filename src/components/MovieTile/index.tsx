@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Card } from 'react-native-elements';
 import MovieInfo from './MovieInfo';
-import styles from './MovieInfo/styles';
 
 interface Props {
   title: string;
@@ -9,7 +8,7 @@ interface Props {
 }
 
 const MovieTile: React.FC<Props> = ({ title, imgSrc }) => {
-  const [isModalVisible, setIsModalVisible] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const closeModal = (): void => {
     setIsModalVisible(false);
   };
