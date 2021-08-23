@@ -17,23 +17,25 @@ const Tabs: React.FunctionComponent = () => {
     <NavigationContainer>
       <Tab.Navigator
         initialRouteName="Home"
-        screenOptions={() => ({
+        screenOptions={{
           tabBarActiveTintColor: `${COLORS.BLACK}`,
-        })}
+        }}
       >
         <Tab.Screen
           name={ROUTES.HOME}
           component={Home}
           options={{
-            tabBarLabel: `${t('home')}`,
+            title: t('home'),
+            tabBarLabel: t('home'),
             tabBarIcon: () => <TabIcon iconName="home" />,
           }}
         />
         <Tab.Screen
-          name={ROUTES.TOP_MOVIES}
+          name={ROUTES.TOPMOVIES}
           component={TopMovies}
           options={{
-            tabBarLabel: `${t('top250')}`,
+            title: t('top250'),
+            tabBarLabel: t('top250'),
             tabBarIcon: () => <TabIcon iconName="thumb-up" />,
           }}
         />
@@ -41,7 +43,8 @@ const Tabs: React.FunctionComponent = () => {
           name={ROUTES.FAVORITES}
           component={Favorites}
           options={{
-            tabBarLabel: `${t('favorites')}`,
+            title: t('favorites'),
+            tabBarLabel: t('favorites'),
             tabBarIcon: () => <TabIcon iconName="star" />,
           }}
         />
