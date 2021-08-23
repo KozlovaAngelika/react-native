@@ -1,4 +1,6 @@
 {
-  "title": "title",
+  "home": "Home",
+  "top250": "Top 250",
+  "favorites": "Favorites",
   "search": "Search"
 }
