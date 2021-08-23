@@ -7,7 +7,7 @@ import TopMovies from '../screens/TopMovies';
 import Favorites from '../screens/Favorites';
 import '../utils/i18n';
 import { COLORS, ROUTES } from '../utils/constants';
-import TabIcon from './TabIcon';
+import TabIcon from '../components/TabIcon';
 
 const Tab = createBottomTabNavigator();
 
