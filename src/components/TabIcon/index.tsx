@@ -10,4 +10,4 @@ const TabIcon: React.FC<Props> = ({ iconName }) => (
   <MaterialCommunityIcons name={iconName} size={26} color={COLORS.DARK_GREY} />
 );
 
-export default TabIcon;
+export default React.memo(TabIcon);

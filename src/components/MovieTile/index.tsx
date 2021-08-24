@@ -17,4 +17,4 @@ const MovieTile: React.FC<Props> = ({ title, imgSrc }) => (
   </Card>
 );
 
-export default MovieTile;
+export default React.memo(MovieTile);
