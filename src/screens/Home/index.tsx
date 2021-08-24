@@ -7,18 +7,18 @@ import SearchBar from '../../components/SearchBar';
 import styles from './styles';
 
 const Home: React.FunctionComponent = () => {
-  const DATA: Movie[] = useSelector((state: MovieState) => state.movies);
+  const data: Movie[] = useSelector((state: MovieState) => state.movies);
   const [searchValue, setSearchValue] = useState('');
-  const [dataForDisplay, setDataForDisplay] = useState(DATA);
+  const [dataForDisplay, setDataForDisplay] = useState(data);
   const keyExtractor = (item: Movie): string => item.id;
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
     <MovieTile title={item.title} imgSrc={item.image} />
   );
   const searchMovie = debounce((value: string) => {
-    const data = DATA.filter((item: { title: string }) =>
+    const displayedData = data.filter((item: { title: string }) =>
       item.title.toLowerCase().includes(value.toLowerCase()),
     );
-    setDataForDisplay(data);
+    setDataForDisplay(displayedData);
   }, 300);
   const onChangeValue = (value: string): void => {
     setSearchValue(value);
