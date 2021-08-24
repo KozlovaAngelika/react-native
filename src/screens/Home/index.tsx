@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import debounce from 'lodash.debounce';
-import { SafeAreaView, FlatList } from 'react-native';
+import { SafeAreaView, FlatList, ListRenderItem } from 'react-native';
 import MovieTile from '../../components/MovieTile';
 import SearchBar from '../../components/SearchBar';
 import styles from './styles';
