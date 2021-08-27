@@ -15,7 +15,7 @@ export interface SearchMoviesSuccess {
 
 export interface SearchMoviesFail {
   type: typeof SEARCH_MOVIES_FAIL;
-  payload?: Error | null;
+  payload: Error | null;
 }
 
 export type SearchMoviesActions =
