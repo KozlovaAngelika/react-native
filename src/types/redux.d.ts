@@ -1,11 +1,6 @@
-interface Movie {
-  id: number;
-  title: string;
-  poster: string;
-}
+type MoviesState = AsyncState;
+type TopMovieState = AsyncState;
 
-interface MovieState {
-  movies: Movie[];
-  top250: Movie[];
-  favorites: Movie[];
+interface FavoritesState {
+  data: Movie[];
 }

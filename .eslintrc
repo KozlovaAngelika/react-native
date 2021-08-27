@@ -5,28 +5,23 @@
     "standard-with-typescript",
     "eslint-config-prettier",
     "airbnb-typescript",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint",
-    "react",
-    "react-native"
-  ],
+  "plugins": ["@typescript-eslint", "react", "react-native"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "project": [
-      "./tsconfig.json"
-    ],
+    "project": ["./tsconfig.json"],
     "sourceType": "module"
   },
   "env": {
     "react-native/react-native": true
   },
   "rules": {
-    "prettier/prettier": "off",
     "react/prop-types": "off",
     "import/extensions": "off",
     "eol-last": 0,

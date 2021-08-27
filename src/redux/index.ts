@@ -1,15 +1,30 @@
-import { createStore } from 'redux';
+import axios, { AxiosInstance } from 'axios';
+import { API_URL } from 'react-native-dotenv';
+import { createStore, applyMiddleware, combineReducers, Action } from 'redux';
+import thunk, { ThunkAction } from 'redux-thunk';
+import { moviesReducer } from './movies/reducers';
 
-const initialState: MovieState = {
-  movies: [],
-  top250: [],
-  favorites: [],
-};
+const reducer = combineReducers({
+  movies: moviesReducer,
+});
 
-const reducer = (
-  state: MovieState = initialState,
-) : MovieState => state;
+const api = axios.create({
+  headers: {
+    contentType: 'application/json',
+  },
+  baseURL: `${API_URL}`,
+});
 
-const state = createStore(reducer, initialState);
+export type State = typeof rootState;
 
-export default state;
+export const rootState = createStore(
+  reducer,
+  applyMiddleware(thunk.withExtraArgument(api)),
+);
+
+export type RootThunkAction<TAction extends Action> = ThunkAction<
+  void,
+  State,
+  AxiosInstance,
+  TAction
+>;
