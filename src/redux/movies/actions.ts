@@ -27,7 +27,7 @@ export const searchMovies = (
 ): RootThunkAction<SearchMoviesActions> => (dispatch, getState, api) => {
   dispatch(searchMoviesStarted());
   api
-    .get<Movie, AxiosResponse<Movie>>(`/Search/${API_KEY}/${value}`)
+    .get<Movie, AxiosResponse<Movie>>(`Search/${API_KEY}/${value}`)
     .then((res: AxiosResponse) => {
       dispatch(searchMoviesSuccess(res.data));
     })
