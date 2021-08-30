@@ -21,7 +21,7 @@ const MovieTile: React.FC<Props> = ({ title, imgSrc }) => (
       icon={{
         name: 'delete',
         size: 20,
-        color: `${COLORS.LIGHT_GREY}`,
+        color: COLORS.LIGHT_GREY,
       }}
       buttonStyle={styles.removeBtn}
       containerStyle={styles.btnContainer}
