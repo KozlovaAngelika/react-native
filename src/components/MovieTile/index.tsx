@@ -1,5 +1,7 @@
 import React from 'react';
-import { Card } from 'react-native-elements';
+import { Button, Card } from 'react-native-elements';
+import { COLORS } from '../../utils/constants';
+import styles from './styles';
 
 interface Props {
   title: string;
@@ -14,6 +16,16 @@ const MovieTile: React.FC<Props> = ({ title, imgSrc }) => (
         uri: imgSrc,
       }}
       resizeMode="contain"
+    />
+    <Button
+      icon={{
+        name: 'delete',
+        size: 20,
+        color: `${COLORS.LIGHT_GREY}`,
+      }}
+      buttonStyle={styles.removeBtn}
+      containerStyle={styles.btnContainer}
+      onPress={() => {}}
     />
   </Card>
 );
