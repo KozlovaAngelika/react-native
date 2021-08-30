@@ -1,5 +1,5 @@
 interface AsyncState {
   loading: boolean;
   error: Error | null;
-  data: Movie[] | null;
+  data: Movie[];
 }

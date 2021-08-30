@@ -1,4 +1,3 @@
-import { Rotate90DegreesCcw, Store } from '@material-ui/icons';
 import axios, { AxiosInstance } from 'axios';
 import { API_URL } from 'react-native-dotenv';
 import { createStore, applyMiddleware, combineReducers, Action } from 'redux';
@@ -13,7 +12,7 @@ const api = axios.create({
   headers: {
     contentType: 'application/json',
   },
-  baseURL: `${API_URL}`,
+  baseURL: API_URL,
 });
 
 export type State = typeof rootState;

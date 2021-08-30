@@ -20,7 +20,7 @@ export const moviesReducer = (
         ...state,
         loading: true,
         error: null,
-        data: null,
+        data: [],
       };
     case types.SEARCH_MOVIES_SUCCESS:
       return {
@@ -34,7 +34,7 @@ export const moviesReducer = (
         ...state,
         loading: false,
         error: action.payload,
-        data: null,
+        data: [],
       };
     default:
       return state;

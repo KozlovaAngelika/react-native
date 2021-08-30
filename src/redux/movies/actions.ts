@@ -30,7 +30,7 @@ export const searchMovies = (
     .get<SearchMovieResponse>(`SearchAll/${API_KEY}/${value}`)
     .then((res) => {
       const { errorMessage, results } = res.data;
-      if (errorMessage.length > 0) {
+      if (errorMessage.length > 1) {
         const error = new Error(res.data.errorMessage);
         dispatch(searchMoviesFail(error));
       } else {
