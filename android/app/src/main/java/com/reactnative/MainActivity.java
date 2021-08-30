@@ -8,4 +8,9 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
     return "ReactNative";
   }
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(null);
+  }
 }
