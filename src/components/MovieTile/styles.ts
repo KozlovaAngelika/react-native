@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
+import { COLORS } from '../../utils/constants';
 
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 5,
   },
   removeBtn: {
-    backgroundColor: 'white',
+    backgroundColor: COLORS.WHITE,
     padding: 0,
   },
   btnContainer: {
