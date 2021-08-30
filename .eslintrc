@@ -8,18 +8,12 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint",
-    "react",
-    "react-native"
-  ],
+  "plugins": ["@typescript-eslint", "react", "react-native"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
-    "project": [
-      "./tsconfig.json"
-    ],
+    "project": ["./tsconfig.json"],
     "sourceType": "module"
   },
   "env": {
@@ -42,6 +36,10 @@
           "requireLast": false
         }
       }
-    ]
+    ],
+    "max-len": ["error", { "code": 180 }],
+    "brace-style": 0,
+    "function-paren-newline": "off",
+    "implicit-arrow-linebreak": "off"
   }
 }

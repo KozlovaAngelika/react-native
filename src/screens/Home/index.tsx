@@ -1,17 +1,38 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { useSelector } from 'react-redux';
+import debounce from 'lodash.debounce';
+import { View, FlatList, ListRenderItem } from 'react-native';
 import MovieTile from '../../components/MovieTile';
 import SearchBar from '../../components/SearchBar';
 import styles from './styles';
 
 const Home: React.FunctionComponent = () => {
+  const data: Movie[] = useSelector((state: MovieState) => state.movies);
   const [searchValue, setSearchValue] = useState('');
+  const [dataForDisplay, setDataForDisplay] = useState(data);
+  const keyExtractor = (item: Movie): string => item.id;
+  const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
+    <MovieTile title={item.title} imgSrc={item.image} />
+  );
+  const searchMovie = debounce((value: string) => {
+    const displayedData = data.filter((item: { title: string }) =>
+      item.title.toLowerCase().includes(value.toLowerCase()),
+    );
+    setDataForDisplay(displayedData);
+  }, 300);
+  const onChangeValue = (value: string): void => {
+    setSearchValue(value);
+    searchMovie(value);
+  };
+
   return (
     <View style={styles.container}>
-      <SearchBar value={searchValue} onChangeValue={setSearchValue} />
-      <MovieTile
-        title="Rick and Morty"
-        imgSrc="https://images.ua.prom.st/1650079983_w640_h640_1650079983.jpg"
+      <SearchBar value={searchValue} onChangeValue={onChangeValue} />
+      <FlatList
+        data={dataForDisplay}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        style={styles.moviesContainer}
       />
     </View>
   );
