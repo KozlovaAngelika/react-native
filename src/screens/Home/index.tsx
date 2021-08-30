@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import debounce from 'lodash.debounce';
-import { SafeAreaView, FlatList, ListRenderItem } from 'react-native';
+import { View, FlatList, ListRenderItem } from 'react-native';
 import MovieTile from '../../components/MovieTile';
 import SearchBar from '../../components/SearchBar';
 import styles from './styles';
@@ -26,7 +26,7 @@ const Home: React.FunctionComponent = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <SearchBar value={searchValue} onChangeValue={onChangeValue} />
       <FlatList
         data={dataForDisplay}
@@ -34,7 +34,7 @@ const Home: React.FunctionComponent = () => {
         keyExtractor={keyExtractor}
         style={styles.moviesContainer}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 
