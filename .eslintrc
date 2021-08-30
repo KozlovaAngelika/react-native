@@ -37,6 +37,7 @@
           "requireLast": false
         }
       }
-    ]
+    ],
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
