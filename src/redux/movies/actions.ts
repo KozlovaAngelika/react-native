@@ -27,9 +27,15 @@ export const searchMovies = (
 ): RootThunkAction<SearchMoviesActions> => (dispatch, getState, api) => {
   dispatch(searchMoviesStarted());
   api
-    .get<Movie, AxiosResponse<Movie>>(`Search/${API_KEY}/${value}`)
-    .then((res: AxiosResponse) => {
-      dispatch(searchMoviesSuccess(res.data));
+    .get<SearchMovieResponse>(`SearchAll/${API_KEY}/${value}`)
+    .then((res) => {
+      const { errorMessage, results } = res.data;
+      if (errorMessage.length > 0) {
+        const error = new Error(res.data.errorMessage);
+        dispatch(searchMoviesFail(error));
+      } else {
+        dispatch(searchMoviesSuccess(results));
+      }
     })
     .catch((err) => {
       dispatch(searchMoviesFail(err));
