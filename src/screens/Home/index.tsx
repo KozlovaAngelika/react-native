@@ -12,7 +12,7 @@ const Home: React.FunctionComponent = () => {
   const [dataForDisplay, setDataForDisplay] = useState(data);
   const keyExtractor = (item: Movie): string => item.id;
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile title={item.title} imgSrc={item.image} />
+    <MovieTile data={item} />
   );
   const searchMovie = debounce((value: string) => {
     const displayedData = data.filter((item: { title: string }) =>
