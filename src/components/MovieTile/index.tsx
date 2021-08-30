@@ -13,6 +13,7 @@ const MovieTile: React.FC<Props> = ({ title, imgSrc }) => (
       source={{
         uri: imgSrc,
       }}
+      resizeMode="contain"
     />
   </Card>
 );
