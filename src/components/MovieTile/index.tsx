@@ -6,9 +6,10 @@ import styles from './styles';
 interface Props {
   title: string;
   imgSrc: string;
+  isDeleteBtn: boolean;
 }
 
-const MovieTile: React.FC<Props> = ({ title, imgSrc }) => (
+const MovieTile: React.FC<Props> = ({ title, imgSrc, isDeleteBtn }) => (
   <Card>
     <Card.Title>{title}</Card.Title>
     <Card.Image
@@ -17,16 +18,18 @@ const MovieTile: React.FC<Props> = ({ title, imgSrc }) => (
       }}
       resizeMode="contain"
     />
-    <Button
-      icon={{
-        name: 'delete',
-        size: 20,
-        color: COLORS.LIGHT_GREY,
-      }}
-      buttonStyle={styles.removeBtn}
-      containerStyle={styles.btnContainer}
-      onPress={() => {}}
-    />
+    {isDeleteBtn ? (
+      <Button
+        icon={{
+          name: 'delete',
+          size: 20,
+          color: COLORS.LIGHT_GREY,
+        }}
+        buttonStyle={styles.removeBtn}
+        containerStyle={styles.btnContainer}
+        onPress={() => {}}
+      />
+    ) : null}
   </Card>
 );
 
