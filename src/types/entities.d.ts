@@ -1,5 +1,5 @@
 interface Movie {
   id: string;
   title: string;
-  poster: string;
+  image: string;
 }

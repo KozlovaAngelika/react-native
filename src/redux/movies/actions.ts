@@ -31,7 +31,7 @@ export const searchMovies = (
     .then((res) => {
       const { errorMessage, results } = res.data;
       if (errorMessage.length > 1) {
-        const error = new Error(res.data.errorMessage);
+        const error = new Error(errorMessage);
         dispatch(searchMoviesFail(error));
       } else {
         dispatch(searchMoviesSuccess(results));

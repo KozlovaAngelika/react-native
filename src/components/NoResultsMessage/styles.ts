@@ -1,12 +1,13 @@
 import { StyleSheet } from 'react-native';
+import { COLORS } from '../../utils/constants';
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 5,
-    flexGrow: 1,
+    padding: 15,
   },
-  moviesContainer: {
-    paddingHorizontal: 35,
+  text: {
+    color: COLORS.LIGHT_GREY,
+    textAlign: 'center',
   },
 });
 

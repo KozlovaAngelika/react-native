@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import debounce from 'lodash.debounce';
 import { View, FlatList, ListRenderItem } from 'react-native';
@@ -14,6 +14,7 @@ import EmptyRequestNotice from '../../components/EmptyRequestNotice';
 import Loader from '../../components/Loader';
 import ErrorMessage from '../../components/ErrorMessage';
 import { searchMovies } from '../../redux/movies/actions';
+import NoResultsMessage from '../../components/NoResultsMessage/NoResultsMessage';
 
 const Home: React.FunctionComponent = () => {
   const data: Movie[] = useSelector(selectMovies);
@@ -22,12 +23,21 @@ const Home: React.FunctionComponent = () => {
   const [searchValue, setSearchValue] = useState('');
   const keyExtractor = (item: Movie): string => item.id;
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile title={item.title} imgSrc={item.poster} />
+    <MovieTile
+      title={item.title}
+      imgSrc={item.image !== '' ? item.image : 'media/noImg.jpeg'}
+    />
   );
   const dispatch = useDispatch();
-  const searchMovie = debounce((value: string) => {
-    dispatch(searchMovies(value));
-  }, 300);
+  const searchMovie = useCallback(
+    debounce((value: string) => {
+      if (value.length === 0) {
+        return;
+      }
+      dispatch(searchMovies(value));
+    }, 500),
+    [],
+  );
   const onChangeValue = (value: string): void => {
     setSearchValue(value);
     searchMovie(value);
@@ -41,6 +51,9 @@ const Home: React.FunctionComponent = () => {
     }
     if (error !== null) {
       return <ErrorMessage />;
+    }
+    if (data.length === 0) {
+      return <NoResultsMessage />;
     }
     return (
       <FlatList

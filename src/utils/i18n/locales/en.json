@@ -4,5 +4,6 @@
   "favorites": "Favorites",
   "search": "Search",
   "error": "Something went wrong... Please, try again.",
-  "emptyRequestNotice": "To see a list of films, enter your request in the search bar."
+  "emptyRequestNotice": "To see a list of films, enter your request in the search bar.",
+  "noResults": "No results... Please, try again."
 }

@@ -7,5 +7,14 @@ module.exports = {
         moduleName: 'react-native-dotenv',
       },
     ],
+    [
+      'module-resolver',
+      {
+        root: ['./src'],
+        alias: {
+          media: './src/media',
+        },
+      },
+    ],
   ],
 };
