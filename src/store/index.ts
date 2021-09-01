@@ -15,7 +15,7 @@ const api = axios.create({
   baseURL: API_URL,
 });
 
-export type State = typeof rootState;
+export type State = ReturnType<typeof rootState.getState>;
 
 export const rootState = createStore(
   reducer,

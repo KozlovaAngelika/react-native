@@ -9,6 +9,7 @@ import {
   SearchMoviesSuccess,
   SearchMoviesFail,
   SearchMoviesActions,
+  ClearSearchResults,
 } from './types';
 
 export const searchMoviesStarted = (): SearchMovies => ({
@@ -22,12 +23,15 @@ export const searchMoviesFail = (error: Error | null): SearchMoviesFail => ({
   type: types.SEARCH_MOVIES_FAIL,
   payload: error,
 });
+export const clearSearchResults = (): ClearSearchResults => ({
+  type: types.CLEAR_SEARCH_RESULTS,
+});
 export const searchMovies = (
   value: string,
 ): RootThunkAction<SearchMoviesActions> => (dispatch, getState, api) => {
   dispatch(searchMoviesStarted());
   api
-    .get<SearchMovieResponse>(`SearchAll/${API_KEY}/${value}`)
+    .get<SearchMovieResponse>(`SearchMovie/${API_KEY}/${value}`)
     .then((res) => {
       const { errorMessage, results } = res.data;
       if (errorMessage.length > 1) {

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/default-param-last */
 /* eslint-disable import/prefer-default-export */
-// eslint-disable @typescript-eslint/default-param-last
 import { Action } from 'redux';
 import { SearchMoviesActions } from './types';
 import * as types from './actionTypes';
@@ -34,6 +33,13 @@ export const moviesReducer = (
         ...state,
         loading: false,
         error: action.payload,
+        data: [],
+      };
+    case types.CLEAR_SEARCH_RESULTS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
         data: [],
       };
     default:

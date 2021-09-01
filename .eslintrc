@@ -43,5 +43,10 @@
     "brace-style": 0,
     "function-paren-newline": "off",
     "implicit-arrow-linebreak": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
   }
 }

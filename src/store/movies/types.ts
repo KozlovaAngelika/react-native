@@ -2,10 +2,15 @@ import {
   SEARCH_MOVIES_STARTED,
   SEARCH_MOVIES_SUCCESS,
   SEARCH_MOVIES_FAIL,
+  CLEAR_SEARCH_RESULTS,
 } from './actionTypes';
 
 export interface SearchMovies {
   type: typeof SEARCH_MOVIES_STARTED;
+}
+
+export interface ClearSearchResults {
+  type: typeof CLEAR_SEARCH_RESULTS;
 }
 
 export interface SearchMoviesSuccess {
@@ -21,4 +26,5 @@ export interface SearchMoviesFail {
 export type SearchMoviesActions =
   | SearchMovies
   | SearchMoviesSuccess
-  | SearchMoviesFail;
+  | SearchMoviesFail
+  | ClearSearchResults;

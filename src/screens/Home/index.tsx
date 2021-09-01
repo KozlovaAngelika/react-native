@@ -2,19 +2,19 @@ import React, { ReactElement, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import debounce from 'lodash.debounce';
 import { View, FlatList, ListRenderItem } from 'react-native';
-import MovieTile from '../../components/MovieTile';
-import SearchBar from '../../components/SearchBar';
-import styles from './styles';
+import MovieTile from 'components/MovieTile';
+import SearchBar from 'components/SearchBar';
 import {
   selectError,
   selectLoadingStatus,
   selectMovies,
-} from '../../redux/movies/selectors';
-import EmptyRequestNotice from '../../components/EmptyRequestNotice';
-import Loader from '../../components/Loader';
-import ErrorMessage from '../../components/ErrorMessage';
-import { searchMovies } from '../../redux/movies/actions';
-import NoResultsMessage from '../../components/NoResultsMessage/NoResultsMessage';
+} from 'store/movies/selectors';
+import EmptyRequestNotice from 'components/EmptyRequestNotice';
+import Loader from 'components/Loader';
+import ErrorMessage from 'components/ErrorMessage';
+import { clearSearchResults, searchMovies } from 'store/movies/actions';
+import NoResultsMessage from 'components/NoResultsMessage/NoResultsMessage';
+import styles from './styles';
 
 const Home: React.FunctionComponent = () => {
   const data: Movie[] = useSelector(selectMovies);
@@ -23,19 +23,17 @@ const Home: React.FunctionComponent = () => {
   const [searchValue, setSearchValue] = useState('');
   const keyExtractor = (item: Movie): string => item.id;
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile
-      title={item.title}
-      imgSrc={item.image !== '' ? item.image : 'media/noImg.jpeg'}
-    />
+    <MovieTile title={item.title} imgSrc={item.image} />
   );
   const dispatch = useDispatch();
   const searchMovie = useCallback(
     debounce((value: string) => {
-      if (value.length === 0) {
+      if (value === '') {
+        dispatch(clearSearchResults());
         return;
       }
       dispatch(searchMovies(value));
-    }, 500),
+    }, 300),
     [],
   );
   const onChangeValue = (value: string): void => {
@@ -67,7 +65,7 @@ const Home: React.FunctionComponent = () => {
   return (
     <View style={styles.container}>
       <SearchBar value={searchValue} onChangeValue={onChangeValue} />
-      {renderContent()}
+      <View style={styles.container}>{renderContent()}</View>
     </View>
   );
 };

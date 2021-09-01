@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import './utils/i18n/index';
 import 'react-native-vector-icons';
 import Tabs from './routes';
-import { rootState } from './redux';
+import { rootState } from './store';
 
 const App: React.FunctionComponent = () => (
   <Provider store={rootState}>
