@@ -1,7 +1,4 @@
-import { AxiosInstance, AxiosResponse } from 'axios';
 import { API_KEY } from 'react-native-dotenv';
-import { Action } from 'redux';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { RootThunkAction } from '..';
 import * as types from './actionTypes';
 import {
@@ -34,7 +31,7 @@ export const searchMovies = (
     .get<SearchMovieResponse>(`SearchMovie/${API_KEY}/${value}`)
     .then((res) => {
       const { errorMessage, results } = res.data;
-      if (errorMessage.length > 1) {
+      if (errorMessage) {
         const error = new Error(errorMessage);
         dispatch(searchMoviesFail(error));
       } else {

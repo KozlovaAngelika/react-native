@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/default-param-last */
 /* eslint-disable import/prefer-default-export */
-import { Action } from 'redux';
 import { SearchMoviesActions } from './types';
 import * as types from './actionTypes';
 
 const initialState = {
   loading: false,
   error: null,
-  data: [],
+  data: null,
 };
 export const moviesReducer = (
   state: MoviesState = initialState,
@@ -19,7 +18,7 @@ export const moviesReducer = (
         ...state,
         loading: true,
         error: null,
-        data: [],
+        data: null,
       };
     case types.SEARCH_MOVIES_SUCCESS:
       return {
@@ -33,14 +32,14 @@ export const moviesReducer = (
         ...state,
         loading: false,
         error: action.payload,
-        data: [],
+        data: null,
       };
     case types.CLEAR_SEARCH_RESULTS:
       return {
         ...state,
         loading: false,
         error: null,
-        data: [],
+        data: null,
       };
     default:
       return state;

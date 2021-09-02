@@ -42,7 +42,8 @@
     "max-len": ["error", { "code": 180 }],
     "brace-style": 0,
     "function-paren-newline": "off",
-    "implicit-arrow-linebreak": "off"
+    "implicit-arrow-linebreak": "off",
+    "@typescript-eslint/strict-boolean-expressions": 0
   },
   "settings": {
     "import/resolver": {
