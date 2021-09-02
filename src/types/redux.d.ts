@@ -1,12 +1,6 @@
-interface Movie {
-  id: string;
-  title: string;
-  image: string;
-  imDbRating: string;
-}
+type MoviesState = AsyncState;
+type TopMovieState = AsyncState;
 
-interface MovieState {
-  movies: Movie[];
-  top250: Movie[];
-  favorites: Movie[];
+interface FavoritesState {
+  data: Movie[] | null;
 }

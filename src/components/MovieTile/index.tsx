@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Card } from 'react-native-elements';
+import defaultImg from 'media/defaultImg.png';
+import Loader from 'components/Loader';
 import { COLORS } from '../../utils/constants';
 import styles from './styles';
 
