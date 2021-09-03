@@ -11,28 +11,37 @@ interface Props {
   isDeleteBtn: boolean;
 }
 
-const MovieTile: React.FC<Props> = ({ title, imgSrc, isDeleteBtn }) => (
-  <Card>
-    <Card.Title>{title}</Card.Title>
-    <Card.Image
-      source={{
-        uri: imgSrc,
-      }}
-      resizeMode="contain"
-    />
-    {isDeleteBtn ? (
-      <Button
-        icon={{
-          name: 'delete',
-          size: 20,
-          color: COLORS.LIGHT_GREY,
+const MovieTile: React.FC<Props> = ({ title, imgSrc, isDeleteBtn }) => {
+  const [isLoadingImg, setIsLoadingImg] = useState(false);
+  const source = imgSrc ? { uri: imgSrc } : defaultImg;
+  return (
+    <Card>
+      <Card.Title>{title}</Card.Title>
+      <Card.Image
+        source={source}
+        onLoadStart={() => {
+          setIsLoadingImg(true);
         }}
-        buttonStyle={styles.removeBtn}
-        containerStyle={styles.btnContainer}
-        onPress={() => {}}
+        onLoadEnd={() => {
+          setIsLoadingImg(false);
+        }}
+        PlaceholderContent={<Loader />}
+        resizeMode="contain"
       />
-    ) : null}
-  </Card>
-);
+      {isDeleteBtn ? (
+        <Button
+          icon={{
+            name: 'delete',
+            size: 20,
+            color: COLORS.LIGHT_GREY,
+          }}
+          buttonStyle={styles.removeBtn}
+          containerStyle={styles.btnContainer}
+          onPress={() => {}}
+        />
+      ) : null}
+    </Card>
+  );
+};
 
 export default MovieTile;
