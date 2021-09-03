@@ -11,14 +11,13 @@ interface Props {
 
 const MovieTile: React.FC<Props> = ({ data, isDeleteBtn }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const toggleModal = (isVisibleModal: boolean): void => {
-    setIsVisible(!isVisibleModal);
-  };
+  const toggleModal = (): void =>
+    setIsVisible((isVisibleModal: boolean) => !isVisibleModal);
   return (
     <Card>
       <Card.Title
         onPress={() => {
-          toggleModal(isVisible);
+          toggleModal();
         }}
       >
         {data.title}
@@ -32,7 +31,7 @@ const MovieTile: React.FC<Props> = ({ data, isDeleteBtn }) => {
       <MovieInfo
         isVisible={isVisible}
         onClose={() => {
-          toggleModal(isVisible);
+          toggleModal();
         }}
         data={data}
       />
