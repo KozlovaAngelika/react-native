@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { Card } from 'react-native-elements';
+import { Button, Card } from 'react-native-elements';
+import { COLORS } from '../../utils/constants';
 import MovieInfo from './MovieInfo';
+import styles from './styles';
 
 interface Props {
   data: Movie;
+  isDeleteBtn: boolean;
 }
 
-const MovieTile: React.FC<Props> = ({ data }) => {
+const MovieTile: React.FC<Props> = ({ data, isDeleteBtn }) => {
   const [isVisible, setIsVisible] = useState(false);
   const toggleModal = (isVisibleModal: boolean): void => {
     setIsVisible(!isVisibleModal);
@@ -33,6 +36,18 @@ const MovieTile: React.FC<Props> = ({ data }) => {
         }}
         data={data}
       />
+      {isDeleteBtn ? (
+        <Button
+          icon={{
+            name: 'delete',
+            size: 20,
+            color: COLORS.LIGHT_GREY,
+          }}
+          buttonStyle={styles.removeBtn}
+          containerStyle={styles.btnContainer}
+          onPress={() => {}}
+        />
+      ) : null}
     </Card>
   );
 };
