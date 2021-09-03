@@ -19,9 +19,12 @@ const TopMovies: React.FunctionComponent = () => {
   const isLoading: boolean = useSelector(selectLoadingStatus);
   const error: Error | null = useSelector(selectError);
   const errorMessage = t('error');
-  const emptyRequest = t('emptyRequestNotice');
   const noResultsMessage = t('noResults');
   const data: Movie[] | null = useSelector(selectTopMovies);
+
+  useEffect(() => {
+    dispatch(getTopMovies());
+  }, []);
 
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
     <MovieTile
@@ -31,10 +34,6 @@ const TopMovies: React.FunctionComponent = () => {
       isDeleteBtn={false}
     />
   );
-
-  useEffect(() => {
-    dispatch(getTopMovies);
-  }, []);
 
   const renderContent = (): ReactElement => {
     if (isLoading) {
@@ -51,10 +50,12 @@ const TopMovies: React.FunctionComponent = () => {
         data={data}
         renderItem={renderItem}
         style={styles.moviesContainer}
+        showsVerticalScrollIndicator={false}
       />
     );
   };
-  return <View>{renderContent()}</View>;
+
+  return <View style={styles.container}>{renderContent()}</View>;
 };
 
 export default TopMovies;

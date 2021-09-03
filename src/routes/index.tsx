@@ -35,6 +35,7 @@ const Tabs: React.FunctionComponent = () => {
           options={{
             title: t('top250'),
             tabBarIcon: () => <TabIcon iconName="thumb-up" />,
+            unmountOnBlur: true,
           }}
         />
         <Tab.Screen

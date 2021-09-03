@@ -27,14 +27,14 @@ export const getTopMovies = (): RootThunkAction<GetTopMoviesActions> => (
 ) => {
   dispatch(getTopMoviesStarted());
   api
-    .get<SearchMovieResponse>(`Top250Movies/${API_KEY}`)
+    .get<GetTopMoviesResponse>(`Top250Movies/${API_KEY}`)
     .then((res) => {
-      const { errorMessage, results } = res.data;
+      const { items, errorMessage } = res.data;
       if (errorMessage) {
         const error = new Error(errorMessage);
         dispatch(getTopMoviesFail(error));
       } else {
-        dispatch(getTopMoviesSuccess(results));
+        dispatch(getTopMoviesSuccess(items));
       }
     })
     .catch((err) => {
