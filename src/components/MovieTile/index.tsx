@@ -7,16 +7,19 @@ interface Props {
 }
 
 const MovieTile: React.FC<Props> = ({ data }) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const closeModal = (): void => {
-    setIsModalVisible(false);
-  };
-  const showModal = (): void => {
-    setIsModalVisible(true);
+  const [isVisible, setIsVisible] = useState(false);
+  const toggleModal = (isVisibleModal: boolean): void => {
+    setIsVisible(!isVisibleModal);
   };
   return (
     <Card>
-      <Card.Title onPress={showModal}>{data.title}</Card.Title>
+      <Card.Title
+        onPress={() => {
+          toggleModal(isVisible);
+        }}
+      >
+        {data.title}
+      </Card.Title>
       <Card.Image
         source={{
           uri: data.image,
@@ -24,8 +27,10 @@ const MovieTile: React.FC<Props> = ({ data }) => {
         resizeMode="contain"
       />
       <MovieInfo
-        isModalVisible={isModalVisible}
-        closeModal={closeModal}
+        isVisible={isVisible}
+        onClose={() => {
+          toggleModal(isVisible);
+        }}
         data={data}
       />
     </Card>
