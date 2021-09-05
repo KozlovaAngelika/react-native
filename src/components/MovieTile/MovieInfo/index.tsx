@@ -23,7 +23,6 @@ const MovieInfo: React.FC<Props> = ({ isVisible, onClose, data }) => {
             color: `${COLORS.GREY}`,
           }}
           buttonStyle={styles.closeBtn}
-          // containerStyle={styles.btnContainer}
           onPress={onClose}
         />
       </View>
