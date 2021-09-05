@@ -15,16 +15,18 @@ const MovieInfo: React.FC<Props> = ({ isVisible, onClose, data }) => {
   const { t } = useTranslation();
   return (
     <Overlay isVisible={isVisible} fullScreen overlayStyle={styles.overlay}>
-      <Button
-        icon={{
-          name: 'close',
-          size: 20,
-          color: `${COLORS.GREY}`,
-        }}
-        buttonStyle={styles.closeBtn}
-        containerStyle={styles.btnContainer}
-        onPress={onClose}
-      />
+      <View style={styles.btnContainer}>
+        <Button
+          icon={{
+            name: 'close',
+            size: 20,
+            color: `${COLORS.GREY}`,
+          }}
+          buttonStyle={styles.closeBtn}
+          // containerStyle={styles.btnContainer}
+          onPress={onClose}
+        />
+      </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Card containerStyle={styles.card}>
           <Card.Title>{data.title}</Card.Title>

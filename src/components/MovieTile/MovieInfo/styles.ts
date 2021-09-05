@@ -28,7 +28,9 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   btnContainer: {
-    flexDirection: 'row-reverse',
+    position: 'relative',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
   },
   closeBtn: {
     backgroundColor: COLORS.WHITE,

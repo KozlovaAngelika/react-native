@@ -6,36 +6,25 @@ import styles from './styles';
 
 interface Props {
   data: Movie;
-  isDeleteBtn: boolean;
+  isInFavorites: boolean;
 }
 
-const MovieTile: React.FC<Props> = ({ data, isDeleteBtn }) => {
+const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const toggleModal = (): void =>
+  const toggleModal = (): void => {
     setIsVisible((isVisibleModal: boolean) => !isVisibleModal);
+  };
   return (
     <Card>
-      <Card.Title
-        onPress={() => {
-          toggleModal();
-        }}
-      >
-        {data.title}
-      </Card.Title>
+      <Card.Title onPress={toggleModal}>{data.title}</Card.Title>
       <Card.Image
         source={{
           uri: data.image,
         }}
         resizeMode="contain"
       />
-      <MovieInfo
-        isVisible={isVisible}
-        onClose={() => {
-          toggleModal();
-        }}
-        data={data}
-      />
-      {isDeleteBtn ? (
+      <MovieInfo isVisible={isVisible} onClose={toggleModal} data={data} />
+      {isInFavorites ? (
         <Button
           icon={{
             name: 'delete',
