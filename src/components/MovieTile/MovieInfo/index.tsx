@@ -34,12 +34,7 @@ const MovieInfo: React.FC<Props> = ({ isVisible, onClose, data }) => {
             <Text>{data.imDbRating}</Text>
           </View>
           <Text>{data.description}</Text>
-          <Card.Image
-            source={{
-              uri: data.image,
-            }}
-            resizeMode="contain"
-          />
+          <Card.Image source={{ uri: data.image }} resizeMode="contain" />
         </Card>
       </ScrollView>
       <Button title={t('addToFavorites')} />
