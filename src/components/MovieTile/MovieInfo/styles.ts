@@ -42,10 +42,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: COLORS.GREY,
   },
-  addBtn: {
-    backgroundColor: COLORS.LIGHT_GREY,
-    borderRadius: 10,
-  },
 });
 
 export default styles;

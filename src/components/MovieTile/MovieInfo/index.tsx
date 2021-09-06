@@ -42,7 +42,7 @@ const MovieInfo: React.FC<Props> = ({ isVisible, onClose, data }) => {
           />
         </Card>
       </ScrollView>
-      <Button title={t('addToFavorites')} buttonStyle={styles.addBtn} />
+      <Button title={t('addToFavorites')} />
     </Overlay>
   );
 };
