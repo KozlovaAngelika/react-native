@@ -17,12 +17,7 @@ const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
   return (
     <Card>
       <Card.Title onPress={toggleModal}>{data.title}</Card.Title>
-      <Card.Image
-        source={{
-          uri: data.image,
-        }}
-        resizeMode="contain"
-      />
+      <Card.Image source={{ uri: data.image }} resizeMode="contain" />
       <MovieInfo isVisible={isVisible} onClose={toggleModal} data={data} />
       {isInFavorites ? (
         <Button
