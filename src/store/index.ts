@@ -2,12 +2,14 @@ import axios, { AxiosInstance } from 'axios';
 import { API_URL } from 'react-native-dotenv';
 import { createStore, applyMiddleware, combineReducers, Action } from 'redux';
 import thunk, { ThunkAction } from 'redux-thunk';
+import { favoritesReducer } from './favorites/reducers';
 import { moviesReducer } from './movies/reducers';
 import { topMoviesReducer } from './topMovies/reducers';
 
 const reducer = combineReducers({
   movies: moviesReducer,
   topMovies: topMoviesReducer,
+  favorites: favoritesReducer,
 });
 
 const api = axios.create({
