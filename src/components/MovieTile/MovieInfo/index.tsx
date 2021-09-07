@@ -1,9 +1,8 @@
 import React from 'react';
 import { Text, View, ScrollView } from 'react-native';
-import { Button, Overlay, Card } from 'react-native-elements';
+import { Button, Overlay, Card, Icon } from 'react-native-elements';
 import { useTranslation } from 'react-i18next';
 import styles from './styles';
-import { COLORS } from '../../../utils/constants';
 
 interface Props {
   isVisible: boolean;
@@ -17,11 +16,7 @@ const MovieInfo: React.FC<Props> = ({ isVisible, onClose, data }) => {
     <Overlay isVisible={isVisible} fullScreen overlayStyle={styles.overlay}>
       <View style={styles.btnContainer}>
         <Button
-          icon={{
-            name: 'close',
-            size: 20,
-            color: `${COLORS.GREY}`,
-          }}
+          icon={<Icon name="close" />}
           buttonStyle={styles.closeBtn}
           onPress={onClose}
         />

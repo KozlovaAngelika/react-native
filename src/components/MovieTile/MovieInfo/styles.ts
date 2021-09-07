@@ -34,13 +34,12 @@ const styles = StyleSheet.create({
   },
   closeBtn: {
     backgroundColor: COLORS.WHITE,
-    color: COLORS.GREY,
     width: 35,
     height: 35,
     padding: 0,
     borderRadius: 20,
     borderWidth: 2,
-    borderColor: COLORS.GREY,
+    borderColor: COLORS.LIGHT_GREY,
   },
 });
 

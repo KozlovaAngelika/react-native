@@ -40,6 +40,7 @@
     "max-len": ["error", { "code": 180 }],
     "brace-style": 0,
     "function-paren-newline": "off",
-    "implicit-arrow-linebreak": "off"
+    "implicit-arrow-linebreak": "off",
+    "object-curly-newline": "off"
   }
 }

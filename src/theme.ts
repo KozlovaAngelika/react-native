@@ -10,6 +10,10 @@ const theme = {
       borderRadius: 10,
     },
   },
+  Icon: {
+    color: COLORS.LIGHT_GREY,
+    size: 25,
+  },
 };
 
 export default theme;

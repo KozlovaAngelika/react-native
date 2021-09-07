@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card } from 'react-native-elements';
-import { COLORS } from '../../utils/constants';
+import { Button, Card, Icon } from 'react-native-elements';
 import MovieInfo from './MovieInfo';
 import styles from './styles';
 
@@ -21,11 +20,7 @@ const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
       <MovieInfo isVisible={isVisible} onClose={toggleModal} data={data} />
       {isInFavorites ? (
         <Button
-          icon={{
-            name: 'delete',
-            size: 20,
-            color: COLORS.LIGHT_GREY,
-          }}
+          icon={<Icon name="delete" />}
           buttonStyle={styles.removeBtn}
           containerStyle={styles.btnContainer}
           onPress={() => {}}
