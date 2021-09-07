@@ -19,13 +19,10 @@ const Home: React.FunctionComponent = () => {
     );
     setDataForDisplay(displayedData);
   }, 300);
-  const onChangeValue = useCallback(
-    (value: string): void => {
-      setSearchValue(value);
-      searchMovie(value);
-    },
-    [searchMovie],
-  );
+  const onChangeValue = useCallback((value: string): void => {
+    setSearchValue(value);
+    searchMovie(value);
+  }, []);
 
   return (
     <View style={styles.container}>
