@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
-import { Card } from 'react-native-elements';
+import React, { useState, useCallback } from 'react';
+import { Button, Card, Icon } from 'react-native-elements';
 import defaultImg from 'media/defaultImg.png';
 import Loader from 'components/Loader';
+import MovieInfo from './MovieInfo';
+import styles from './styles';
 
 interface Props {
-  title: string;
-  imgSrc: string;
+  data: Movie;
+  isInFavorites: boolean;
 }
-
-const MovieTile: React.FC<Props> = ({ title, imgSrc }) => {
+const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
+  const [isVisible, setIsVisible] = useState(false);
   const [isLoadingImg, setIsLoadingImg] = useState(false);
-  const source = imgSrc ? { uri: imgSrc } : defaultImg;
+  const source = data.image ? { uri: data.image } : defaultImg;
+  const toggleModal = useCallback((): void => {
+    setIsVisible((isVisibleModal: boolean) => !isVisibleModal);
+  }, []);
   return (
     <Card>
-      <Card.Title>{title}</Card.Title>
+      <Card.Title onPress={toggleModal}>{data.title}</Card.Title>
       <Card.Image
         source={source}
         onLoadStart={() => {
@@ -25,8 +30,17 @@ const MovieTile: React.FC<Props> = ({ title, imgSrc }) => {
         PlaceholderContent={<Loader />}
         resizeMode="contain"
       />
+      <MovieInfo isVisible={isVisible} onClose={toggleModal} data={data} />
+      {isInFavorites ? (
+        <Button
+          icon={<Icon name="delete" />}
+          buttonStyle={styles.removeBtn}
+          containerStyle={styles.btnContainer}
+          onPress={() => {}}
+        />
+      ) : null}
     </Card>
   );
 };
 
-export default MovieTile;
+export default React.memo(MovieTile);
