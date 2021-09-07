@@ -11,7 +11,7 @@ const Home: React.FunctionComponent = () => {
   const [searchValue, setSearchValue] = useState('');
   const [dataForDisplay, setDataForDisplay] = useState(data);
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile data={item} key={item.id} />
+    <MovieTile data={item} key={item.id} isInFavorites={false} />
   );
   const searchMovie = debounce((value: string) => {
     const displayedData = data.filter((item: { title: string }) =>

@@ -7,7 +7,7 @@ import styles from './styles';
 const TopMovies: React.FunctionComponent = () => {
   const data: Movie[] = useSelector((state: MovieState) => state.movies);
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile title={item.title} imgSrc={item.image} key={item.id} />
+    <MovieTile data={item} isInFavorites={false} key={item.id} />
   );
   return (
     <View style={styles.container}>
