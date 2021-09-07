@@ -27,12 +27,7 @@ const Home: React.FunctionComponent = () => {
   const noResultsMessage = t('noResults');
 
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile
-      title={item.title}
-      imgSrc={item.image}
-      key={item.id}
-      isDeleteBtn={false}
-    />
+    <MovieTile data={item} key={item.id} />
   );
   const searchMovie = useCallback(
     debounce((value: string) => {
