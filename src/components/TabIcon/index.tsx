@@ -4,10 +4,15 @@ import { COLORS } from '../../utils/constants';
 
 interface Props {
   iconName: string;
+  focused: boolean;
 }
 
-const TabIcon: React.FC<Props> = ({ iconName }) => (
-  <MaterialCommunityIcons name={iconName} size={26} color={COLORS.DARK_GREY} />
+const TabIcon: React.FC<Props> = ({ iconName, focused }) => (
+  <MaterialCommunityIcons
+    name={iconName}
+    size={26}
+    color={focused ? COLORS.BLACK : COLORS.GREY}
+  />
 );
 
 export default React.memo(TabIcon);

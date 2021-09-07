@@ -26,7 +26,9 @@ const Tabs: React.FunctionComponent = () => {
           component={Home}
           options={{
             title: t('home'),
-            tabBarIcon: () => <TabIcon iconName="home" />,
+            tabBarIcon: ({ focused }) => (
+              <TabIcon iconName="home" focused={focused} />
+            ),
           }}
         />
         <Tab.Screen
@@ -34,7 +36,9 @@ const Tabs: React.FunctionComponent = () => {
           component={TopMovies}
           options={{
             title: t('top250'),
-            tabBarIcon: () => <TabIcon iconName="thumb-up" />,
+            tabBarIcon: ({ focused }) => (
+              <TabIcon iconName="thumb-up" focused={focused} />
+            ),
           }}
         />
         <Tab.Screen
@@ -42,7 +46,9 @@ const Tabs: React.FunctionComponent = () => {
           component={Favorites}
           options={{
             title: t('favorites'),
-            tabBarIcon: () => <TabIcon iconName="star" />,
+            tabBarIcon: ({ focused }) => (
+              <TabIcon iconName="star" focused={focused} />
+            ),
           }}
         />
       </Tab.Navigator>
