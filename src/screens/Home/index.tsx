@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import debounce from 'lodash.debounce';
 import { View, FlatList, ListRenderItem } from 'react-native';
@@ -10,9 +10,8 @@ const Home: React.FunctionComponent = () => {
   const data: Movie[] = useSelector((state: MovieState) => state.movies);
   const [searchValue, setSearchValue] = useState('');
   const [dataForDisplay, setDataForDisplay] = useState(data);
-  const keyExtractor = (item: Movie): string => item.id;
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile data={item} />
+    <MovieTile data={item} key={item.id} isInFavorites={false} />
   );
   const searchMovie = debounce((value: string) => {
     const displayedData = data.filter((item: { title: string }) =>
@@ -20,10 +19,10 @@ const Home: React.FunctionComponent = () => {
     );
     setDataForDisplay(displayedData);
   }, 300);
-  const onChangeValue = (value: string): void => {
+  const onChangeValue = useCallback((value: string): void => {
     setSearchValue(value);
     searchMovie(value);
-  };
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -31,7 +30,6 @@ const Home: React.FunctionComponent = () => {
       <FlatList
         data={dataForDisplay}
         renderItem={renderItem}
-        keyExtractor={keyExtractor}
         style={styles.moviesContainer}
       />
     </View>

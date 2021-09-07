@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Button, Card, Icon } from 'react-native-elements';
 import MovieInfo from './MovieInfo';
 import styles from './styles';
@@ -10,9 +10,9 @@ interface Props {
 
 const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const toggleModal = (): void => {
+  const toggleModal = useCallback((): void => {
     setIsVisible((isVisibleModal: boolean) => !isVisibleModal);
-  };
+  }, []);
   return (
     <Card>
       <Card.Title onPress={toggleModal}>{data.title}</Card.Title>
@@ -30,4 +30,4 @@ const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
   );
 };
 
-export default MovieTile;
+export default React.memo(MovieTile);

@@ -15,4 +15,4 @@ const TabIcon: React.FC<Props> = ({ iconName, focused }) => (
   />
 );
 
-export default TabIcon;
+export default React.memo(TabIcon);
