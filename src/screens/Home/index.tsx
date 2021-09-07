@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import debounce from 'lodash.debounce';
 import { View, FlatList, ListRenderItem } from 'react-native';
@@ -19,10 +19,13 @@ const Home: React.FunctionComponent = () => {
     );
     setDataForDisplay(displayedData);
   }, 300);
-  const onChangeValue = (value: string): void => {
-    setSearchValue(value);
-    searchMovie(value);
-  };
+  const onChangeValue = useCallback(
+    (value: string): void => {
+      setSearchValue(value);
+      searchMovie(value);
+    },
+    [searchMovie],
+  );
 
   return (
     <View style={styles.container}>
