@@ -2,6 +2,7 @@ interface Movie {
   id: string;
   title: string;
   image: string;
+  description: string;
   imDbRating: string;
 }
 

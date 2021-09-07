@@ -2,5 +2,7 @@
   "home": "Главная",
   "top250": "Топ 250",
   "favorites": "Избранное",
-  "search": "Поиск"
+  "search": "Поиск",
+  "addToFavorites": "Добавить в избранное",
+  "rating": " Рейтинг IMDb:"
 }

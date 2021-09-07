@@ -2,5 +2,7 @@
   "home": "Home",
   "top250": "Top 250",
   "favorites": "Favorites",
-  "search": "Search"
+  "search": "Search",
+  "addToFavorites": "Add to favorites",
+  "rating": "Rating IMDb:"
 }
