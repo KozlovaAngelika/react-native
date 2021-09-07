@@ -37,4 +37,4 @@ const MovieInfo: React.FC<Props> = ({ isVisible, onClose, data }) => {
   );
 };
 
-export default MovieInfo;
+export default React.memo(MovieInfo);
