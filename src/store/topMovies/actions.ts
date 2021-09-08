@@ -19,7 +19,6 @@ export const getTopMoviesFail = (error: Error | null): GetTopMoviesFail => ({
   type: types.GET_TOP_MOVIES_FAIL,
   payload: error,
 });
-
 export const getTopMovies = (): RootThunkAction<GetTopMoviesActions> => (
   dispatch,
   getState,

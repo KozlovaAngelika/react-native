@@ -8,12 +8,7 @@ import styles from './styles';
 const Favorites: React.FunctionComponent = () => {
   const data: Movie[] = useSelector(selectMovies);
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile
-      title={item.title}
-      imgSrc={item.image}
-      isInFavorites
-      key={item.id}
-    />
+    <MovieTile data={item} key={item.id} />
   );
   return (
     <View style={styles.container}>
