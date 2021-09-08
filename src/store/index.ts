@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import { API_URL } from 'react-native-dotenv';
 import { createStore, applyMiddleware, combineReducers, Action } from 'redux';
 import thunk, { ThunkAction } from 'redux-thunk';
-import { moviesReducer } from './movies/reducers';
+import moviesReducer from './movies/reducers';
 
 const reducer = combineReducers({
   movies: moviesReducer,

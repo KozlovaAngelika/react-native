@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/default-param-last */
-/* eslint-disable import/prefer-default-export */
+import { Reducer } from 'react';
 import { SearchMoviesActions } from './types';
 import * as types from './actionTypes';
 
@@ -8,7 +7,7 @@ const initialState = {
   error: null,
   data: null,
 };
-export const moviesReducer = (
+const moviesReducer = (
   state: MoviesState = initialState,
   action: SearchMoviesActions,
 ): MoviesState => {
@@ -45,3 +44,4 @@ export const moviesReducer = (
       return state;
   }
 };
+export default moviesReducer;
