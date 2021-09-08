@@ -1,7 +1,7 @@
 declare module '*.png';
 
-interface AsyncState {
+interface AsyncState<T> {
   loading: boolean;
   error: Error | null;
-  data: Movie[];
+  data: T;
 }
