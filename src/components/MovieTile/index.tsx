@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { Button, Card, Icon } from 'react-native-elements';
 import defaultImg from 'media/defaultImg.png';
 import Loader from 'components/Loader';
+import { COLORS } from 'utils/constants';
 import MovieInfo from './MovieInfo';
 import styles from './styles';
 
@@ -27,6 +28,7 @@ const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
         onLoadEnd={() => {
           setIsLoadingImg(false);
         }}
+        placeholderStyle={{ backgroundColor: COLORS.GREY }}
         PlaceholderContent={<Loader />}
         resizeMode="contain"
       />
