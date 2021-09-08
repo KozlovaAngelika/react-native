@@ -18,7 +18,7 @@ import styles from './styles';
 const Home: React.FunctionComponent = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const data: Movie[] | null = useSelector(selectMovies);
+  const data: Movie[] = useSelector(selectMovies);
   const isLoading: boolean = useSelector(selectLoadingStatus);
   const error: Error | null = useSelector(selectError);
   const [searchValue, setSearchValue] = useState('');
