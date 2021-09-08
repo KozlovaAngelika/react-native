@@ -22,10 +22,6 @@ const Home: React.FunctionComponent = () => {
   const isLoading: boolean = useSelector(selectLoadingStatus);
   const error: Error | null = useSelector(selectError);
   const [searchValue, setSearchValue] = useState('');
-  const errorMessage = t('error');
-  const emptyRequest = t('emptyRequestNotice');
-  const noResultsMessage = t('noResults');
-
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
     <MovieTile data={item} key={item.id} isInFavorites={false} />
   );
@@ -45,16 +41,16 @@ const Home: React.FunctionComponent = () => {
   }, []);
   const renderContent = (): ReactElement => {
     if (!searchValue.trim()) {
-      return <Notice message={emptyRequest} />;
+      return <Notice message={t('emptyRequestNotice')} />;
     }
     if (isLoading) {
       return <Loader />;
     }
     if (error) {
-      return <Notice isError message={errorMessage} />;
+      return <Notice isError message={t('error')} />;
     }
     if (data?.length === 0) {
-      return <Notice message={noResultsMessage} />;
+      return <Notice message={t('noResults')} />;
     }
     return (
       <FlatList
