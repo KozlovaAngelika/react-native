@@ -39,10 +39,10 @@ const Home: React.FunctionComponent = () => {
     }, 300),
     [],
   );
-  const onChangeValue = (value: string): void => {
+  const onChangeValue = useCallback((value: string): void => {
     setSearchValue(value);
     searchMovie(value.trim());
-  };
+  }, []);
   const renderContent = (): ReactElement => {
     if (!searchValue.trim()) {
       return <Notice isError={false} message={emptyRequest} />;
