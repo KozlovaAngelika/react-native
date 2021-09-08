@@ -4,7 +4,6 @@ import { Icon } from 'react-native-elements';
 import { useTranslation } from 'react-i18next';
 import { COLORS } from 'utils/constants';
 import styles from './styles';
-import 'utils/i18n';
 
 interface Props {
   value: string;

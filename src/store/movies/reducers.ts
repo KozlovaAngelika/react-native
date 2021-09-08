@@ -5,7 +5,7 @@ import * as types from './actionTypes';
 const initialState = {
   loading: false,
   error: null,
-  data: null,
+  data: [],
 };
 const moviesReducer = (
   state: MoviesState = initialState,
@@ -17,7 +17,7 @@ const moviesReducer = (
         ...state,
         loading: true,
         error: null,
-        data: null,
+        data: [],
       };
     case types.SEARCH_MOVIES_SUCCESS:
       return {
@@ -31,14 +31,14 @@ const moviesReducer = (
         ...state,
         loading: false,
         error: action.payload,
-        data: null,
+        data: [],
       };
     case types.CLEAR_SEARCH_RESULTS:
       return {
         ...state,
         loading: false,
         error: null,
-        data: null,
+        data: [],
       };
     default:
       return state;
