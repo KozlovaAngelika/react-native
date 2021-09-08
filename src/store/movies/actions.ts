@@ -29,8 +29,8 @@ export const searchMovies = (
   dispatch(searchMoviesStarted());
   api
     .get<SearchMovieResponse>(`SearchMovie/${API_KEY}/${value}`)
-    .then((res) => {
-      const { errorMessage, results } = res.data;
+    .then(({ data }) => {
+      const { errorMessage, results } = data;
       if (errorMessage) {
         const error = new Error(errorMessage);
         dispatch(searchMoviesFail(error));
