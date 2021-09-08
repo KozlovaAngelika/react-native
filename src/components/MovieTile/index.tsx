@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Card } from 'react-native-elements';
 import defaultImg from 'media/defaultImg.png';
 import Loader from 'components/Loader';
-import { COLORS } from '../../utils/constants';
+import { COLORS } from 'utils/constants';
 import styles from './styles';
 
 interface Props {
@@ -12,19 +12,13 @@ interface Props {
 }
 
 const MovieTile: React.FC<Props> = ({ title, imgSrc, isDeleteBtn }) => {
-  const [isLoadingImg, setIsLoadingImg] = useState(false);
   const source = imgSrc ? { uri: imgSrc } : defaultImg;
   return (
     <Card>
       <Card.Title>{title}</Card.Title>
       <Card.Image
         source={source}
-        onLoadStart={() => {
-          setIsLoadingImg(true);
-        }}
-        onLoadEnd={() => {
-          setIsLoadingImg(false);
-        }}
+        placeholderStyle={{ backgroundColor: COLORS.GREY }}
         PlaceholderContent={<Loader />}
         resizeMode="contain"
       />

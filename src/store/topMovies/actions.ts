@@ -28,8 +28,8 @@ export const getTopMovies = (): RootThunkAction<GetTopMoviesActions> => (
   dispatch(getTopMoviesStarted());
   api
     .get<GetTopMoviesResponse>(`Top250Movies/${API_KEY}`)
-    .then((res) => {
-      const { items, errorMessage } = res.data;
+    .then(({ data }) => {
+      const { items, errorMessage } = data;
       if (errorMessage) {
         const error = new Error(errorMessage);
         dispatch(getTopMoviesFail(error));

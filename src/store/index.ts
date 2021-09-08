@@ -3,7 +3,7 @@ import { API_URL } from 'react-native-dotenv';
 import { createStore, applyMiddleware, combineReducers, Action } from 'redux';
 import thunk, { ThunkAction } from 'redux-thunk';
 import { moviesReducer } from './movies/reducers';
-import { topMoviesReducer } from './topMovies/reducers';
+import topMoviesReducer from './topMovies/reducers';
 
 const reducer = combineReducers({
   movies: moviesReducer,
@@ -17,7 +17,7 @@ const api = axios.create({
   baseURL: API_URL,
 });
 
-export type State = ReturnType<typeof rootState.getState>;
+export type RootState = ReturnType<typeof rootState.getState>;
 
 export const rootState = createStore(
   reducer,
@@ -26,7 +26,7 @@ export const rootState = createStore(
 
 export type RootThunkAction<TAction extends Action> = ThunkAction<
   void,
-  State,
+  RootState,
   AxiosInstance,
   TAction
 >;
