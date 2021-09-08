@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
   title: {
     paddingHorizontal: 20,
-    paddingTop: 5,
+    paddingTop: 15,
   },
   btn: {
     backgroundColor: COLORS.WHITE,
