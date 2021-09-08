@@ -1,6 +1,6 @@
 import { RootState } from '..';
 
-export const selectTopMovies = (state: RootState): Movie[] | null =>
+export const selectTopMovies = (state: RootState): Movie[] =>
   state.topMovies.data;
 export const selectLoadingStatus = (state: RootState): boolean =>
   state.topMovies.loading;

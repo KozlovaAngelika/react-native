@@ -18,7 +18,7 @@ const TopMovies: React.FunctionComponent = () => {
   const dispatch = useDispatch();
   const isLoading: boolean = useSelector(selectLoadingStatus);
   const error: Error | null = useSelector(selectError);
-  const data: Movie[] | null = useSelector(selectTopMovies);
+  const data: Movie[] = useSelector(selectTopMovies);
 
   useEffect(() => {
     dispatch(getTopMovies());
