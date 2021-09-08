@@ -45,7 +45,7 @@ const Home: React.FunctionComponent = () => {
   }, []);
   const renderContent = (): ReactElement => {
     if (!searchValue.trim()) {
-      return <Notice isError={false} message={emptyRequest} />;
+      return <Notice message={emptyRequest} />;
     }
     if (isLoading) {
       return <Loader />;
@@ -54,7 +54,7 @@ const Home: React.FunctionComponent = () => {
       return <Notice isError message={errorMessage} />;
     }
     if (data?.length === 0) {
-      return <Notice isError={false} message={noResultsMessage} />;
+      return <Notice message={noResultsMessage} />;
     }
     return (
       <FlatList
