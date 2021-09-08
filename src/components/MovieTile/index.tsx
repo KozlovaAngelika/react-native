@@ -12,7 +12,6 @@ interface Props {
 }
 const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isLoadingImg, setIsLoadingImg] = useState(false);
   const source = data.image ? { uri: data.image } : defaultImg;
   const toggleModal = useCallback((): void => {
     setIsVisible((isVisibleModal: boolean) => !isVisibleModal);
@@ -22,12 +21,6 @@ const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
       <Card.Title onPress={toggleModal}>{data.title}</Card.Title>
       <Card.Image
         source={source}
-        onLoadStart={() => {
-          setIsLoadingImg(true);
-        }}
-        onLoadEnd={() => {
-          setIsLoadingImg(false);
-        }}
         placeholderStyle={{ backgroundColor: COLORS.GREY }}
         PlaceholderContent={<Loader />}
         resizeMode="contain"
