@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
   },
   moviesContainer: {
     paddingHorizontal: 50,
+    flex: 1,
   },
 });
 

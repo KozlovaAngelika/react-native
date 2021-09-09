@@ -35,6 +35,5 @@ const topMoviesReducer = (
     default:
       return state;
   }
-  return state;
 };
 export default topMoviesReducer;
