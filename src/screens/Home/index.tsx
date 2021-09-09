@@ -61,6 +61,7 @@ const Home: React.FunctionComponent = () => {
         data={data}
         renderItem={renderItem}
         style={styles.moviesContainer}
+        showsVerticalScrollIndicator={false}
       />
     );
   };
