@@ -9,7 +9,7 @@ import { moviesReducer } from './movies/reducers';
 import { topMoviesReducer } from './topMovies/reducers';
 
 const persistConfig = {
-  key: 'favorites',
+  key: 'rootState',
   storage: AsyncStorage,
   blackList: ['movies', 'topMovies'],
   whiteList: ['favorites'],

@@ -25,7 +25,6 @@ const Home: React.FunctionComponent = () => {
   const errorMessage = t('error');
   const emptyRequest = t('emptyRequestNotice');
   const noResultsMessage = t('noResults');
-
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
     <MovieTile data={item} key={item.id} />
   );
