@@ -1,5 +1,5 @@
 import { API_KEY } from 'react-native-dotenv';
-import { RootThunkAction } from '..';
+import { RootThunkAction } from 'store';
 import * as types from './actionTypes';
 import {
   SearchMovies,

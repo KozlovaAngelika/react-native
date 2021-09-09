@@ -1,4 +1,3 @@
-import { Reducer } from 'react';
 import { SearchMoviesActions } from './types';
 import * as types from './actionTypes';
 

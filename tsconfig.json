@@ -2,13 +2,13 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "components": ["./src/components"],
-      "media": ["./src/media"],
-      "store": ["src/store"],
-      "routes": ["./src/routes"],
-      "screens": ["./src/screens"],
-      "types": ["./src/types"],
-      "utils": ["./src/utils"]
+      "components/*": ["./components/*"],
+      "media/*": ["./media/*"],
+      "store/*": ["./store/*"],
+      "routes/*": ["./routes/*"],
+      "screens/*": ["./screens/*"],
+      "types/*": ["./types/*"],
+      "utils/*": ["./utils/*"]
     },
     "target": "esnext",
     "module": "commonjs",
@@ -22,7 +22,7 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "skipLibCheck": false
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules",
@@ -30,5 +30,5 @@
     "metro.config.js",
     "jest.config.js"
   ],
-  "include": ["./**/*", "./*", "./src"]
+  "include": ["./**/*", "./*", "./src", "./src/**/*.ts"]
 }
