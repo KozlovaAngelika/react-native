@@ -18,13 +18,15 @@ import styles from './styles';
 const Home: React.FunctionComponent = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const data: Movie[] = useSelector(selectMovies);
+  const data: Movie[] | null = useSelector(selectMovies);
   const isLoading: boolean = useSelector(selectLoadingStatus);
   const error: Error | null = useSelector(selectError);
   const [searchValue, setSearchValue] = useState('');
+
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
     <MovieTile data={item} key={item.id} isInFavorites={false} />
   );
+
   const searchMovie = useCallback(
     debounce((value: string) => {
       if (!value) {
@@ -35,10 +37,12 @@ const Home: React.FunctionComponent = () => {
     }, 300),
     [],
   );
+
   const onChangeValue = useCallback((value: string): void => {
     setSearchValue(value);
     searchMovie(value.trim());
   }, []);
+
   const renderContent = (): ReactElement => {
     if (!searchValue.trim()) {
       return <Notice message={t('emptyRequestNotice')} />;

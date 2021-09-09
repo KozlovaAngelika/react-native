@@ -7,6 +7,7 @@ const initialState = {
   error: null,
   data: [],
 };
+
 const moviesReducer = (
   state: MoviesState = initialState,
   action: SearchMoviesActions,
@@ -17,7 +18,7 @@ const moviesReducer = (
         ...state,
         loading: true,
         error: null,
-        data: [],
+        data: null,
       };
     case types.SEARCH_MOVIES_SUCCESS:
       return {
@@ -31,14 +32,14 @@ const moviesReducer = (
         ...state,
         loading: false,
         error: action.payload,
-        data: [],
+        data: null,
       };
     case types.CLEAR_SEARCH_RESULTS:
       return {
         ...state,
         loading: false,
         error: null,
-        data: [],
+        data: null,
       };
     default:
       return state;

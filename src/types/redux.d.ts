@@ -1,6 +1,6 @@
-type MoviesState = AsyncState<Movie[]>;
-type TopMovieState = AsyncState<Movie[]>;
+type MoviesState = AsyncState<Movie[] | null>;
+type TopMovieState = AsyncState<Movie[] | null>;
 
 interface FavoritesState {
-  data: Movie[];
+  data: Movie[] | null;
 }
