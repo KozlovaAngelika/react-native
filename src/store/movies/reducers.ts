@@ -5,7 +5,7 @@ import * as types from './actionTypes';
 const initialState = {
   loading: false,
   error: null,
-  data: [],
+  data: null,
 };
 
 const moviesReducer = (
