@@ -6,6 +6,7 @@ const initialState = {
   error: null,
   data: [],
 };
+
 const topMoviesReducer = (
   state: TopMovieState = initialState,
   action: GetTopMoviesActions,
@@ -36,4 +37,5 @@ const topMoviesReducer = (
       return state;
   }
 };
+
 export default topMoviesReducer;

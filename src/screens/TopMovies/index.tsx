@@ -52,7 +52,6 @@ const TopMovies: React.FunctionComponent = () => {
       />
     );
   };
-
   return <View style={styles.container}>{renderContent()}</View>;
 };
 
