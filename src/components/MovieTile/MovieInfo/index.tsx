@@ -2,6 +2,8 @@ import React from 'react';
 import { Text, View, ScrollView } from 'react-native';
 import { Button, Overlay, Card, Icon } from 'react-native-elements';
 import { useTranslation } from 'react-i18next';
+import { COLORS } from 'utils/constants';
+import Loader from 'components/Loader';
 import styles from './styles';
 
 interface Props {
@@ -24,7 +26,7 @@ const MovieInfo: React.FC<Props> = ({
     <Overlay isVisible={isVisible} fullScreen overlayStyle={styles.overlay}>
       <View style={styles.btnContainer}>
         <Button
-          icon={<Icon name="close" />}
+          icon={<Icon name="close" color={COLORS.LIGHT_GREY} />}
           buttonStyle={styles.closeBtn}
           onPress={onClose}
         />
@@ -35,11 +37,21 @@ const MovieInfo: React.FC<Props> = ({
           <View style={styles.ratingContainer}>
             <Text style={styles.ratingTitle}>{t('rating')}</Text>
           </View>
-          <Card.Image source={{ uri: data.image }} resizeMode="contain" />
+          <Card.Image
+            source={{ uri: data.image }}
+            placeholderStyle={{ backgroundColor: COLORS.GREY }}
+            PlaceholderContent={<Loader />}
+            resizeMode="contain"
+          />
         </Card>
       </ScrollView>
       <Button
         title={isInFavorites ? t('removeFromFavorites') : t('addToFavorites')}
+        buttonStyle={
+          isInFavorites
+            ? { backgroundColor: COLORS.RED_DARK }
+            : { backgroundColor: COLORS.GREEN }
+        }
         onPress={toggleIsFavorite}
       />
     </Overlay>

@@ -4,11 +4,11 @@ import { COLORS } from '../../utils/constants';
 const styles = StyleSheet.create({
   container: {
     position: 'relative',
-    paddingHorizontal: 5,
+    padding: 15,
   },
   title: {
     paddingHorizontal: 20,
-    paddingTop: 15,
+    paddingTop: 25,
   },
   btn: {
     backgroundColor: COLORS.WHITE,
