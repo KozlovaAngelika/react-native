@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, combineReducers, Action } from 'redux';
 import thunk, { ThunkAction } from 'redux-thunk';
 import { NativeModules } from 'react-native';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { favoritesReducer } from './favorites/reducers';
+import favoritesReducer from './favorites/reducers';
 import moviesReducer from './movies/reducers';
 import topMoviesReducer from './topMovies/reducers';
 

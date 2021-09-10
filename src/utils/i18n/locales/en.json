@@ -8,5 +8,6 @@
   "noResults": "No results... Please, try again.",
   "noFavorites": "You haven't added anything to your favorites yet.",
   "addToFavorites": "Add to favorites",
+  "removeFromFavorites": "Remove from favorites",
   "rating": "Rating IMDb:"
 }

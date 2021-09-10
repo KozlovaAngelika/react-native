@@ -7,10 +7,18 @@ import styles from './styles';
 interface Props {
   isVisible: boolean;
   onClose: () => void;
+  toggleIsFavorite: () => void;
+  isInFavorites: boolean;
   data: Movie;
 }
 
-const MovieInfo: React.FC<Props> = ({ isVisible, onClose, data }) => {
+const MovieInfo: React.FC<Props> = ({
+  isVisible,
+  onClose,
+  toggleIsFavorite,
+  isInFavorites,
+  data,
+}) => {
   const { t } = useTranslation();
   return (
     <Overlay isVisible={isVisible} fullScreen overlayStyle={styles.overlay}>
@@ -26,13 +34,14 @@ const MovieInfo: React.FC<Props> = ({ isVisible, onClose, data }) => {
           <Card.Title>{data.title}</Card.Title>
           <View style={styles.ratingContainer}>
             <Text style={styles.ratingTitle}>{t('rating')}</Text>
-            <Text>{data.imDbRating}</Text>
           </View>
-          <Text>{data.description}</Text>
           <Card.Image source={{ uri: data.image }} resizeMode="contain" />
         </Card>
       </ScrollView>
-      <Button title={t('addToFavorites')} />
+      <Button
+        title={isInFavorites ? t('removeFromFavorites') : t('addToFavorites')}
+        onPress={toggleIsFavorite}
+      />
     </Overlay>
   );
 };

@@ -22,12 +22,9 @@ const Home: React.FunctionComponent = () => {
   const isLoading: boolean = useSelector(selectLoadingStatus);
   const error: Error | null = useSelector(selectError);
   const [searchValue, setSearchValue] = useState('');
-  const errorMessage = t('error');
-  const emptyRequest = t('emptyRequestNotice');
-  const noResultsMessage = t('noResults');
 
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile data={item} key={item.id} isInFavorites={false} />
+    <MovieTile data={item} key={item.id} />
   );
 
   const searchMovie = useCallback(

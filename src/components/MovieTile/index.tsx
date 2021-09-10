@@ -19,15 +19,19 @@ const MovieTile: React.FC<Props> = ({ data }) => {
   const [isInFavorites, setIsInFavorites] = useState(false);
   const favoritesMovies = useSelector(selectMovies);
   const [isVisible, setIsVisible] = useState(false);
+  const dispatch = useDispatch();
+
   const source = data.image ? { uri: data.image } : defaultImg;
+
   const toggleModal = useCallback((): void => {
     setIsVisible((isVisibleModal: boolean) => !isVisibleModal);
   }, []);
-  const dispatch = useDispatch();
+
   const findMovieInFavorites = (): void => {
     const isFavorite = favoritesMovies.some((movie) => movie.id === data.id);
     setIsInFavorites(isFavorite);
   };
+
   const toggleIsFavorite = (): void => {
     if (isInFavorites) {
       dispatch(removeMovieFromFavorites(data.id));
@@ -35,6 +39,7 @@ const MovieTile: React.FC<Props> = ({ data }) => {
       dispatch(addMovieToFavorites(data));
     }
   };
+
   useEffect(findMovieInFavorites);
 
   return (
@@ -48,12 +53,20 @@ const MovieTile: React.FC<Props> = ({ data }) => {
         PlaceholderContent={<Loader />}
         resizeMode="contain"
       />
+      <MovieInfo
+        isVisible={isVisible}
+        onClose={toggleModal}
+        data={data}
+        isInFavorites={isInFavorites}
+        toggleIsFavorite={toggleIsFavorite}
+      />
       <Button
-        icon={{
-          name: 'star',
-          size: 25,
-          color: isInFavorites ? COLORS.YELLOW : COLORS.GREY,
-        }}
+        icon={
+          <Icon
+            name="star"
+            color={isInFavorites ? COLORS.YELLOW : COLORS.GREY}
+          />
+        }
         buttonStyle={styles.btn}
         containerStyle={styles.btnContainer}
         onPress={toggleIsFavorite}

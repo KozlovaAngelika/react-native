@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/default-param-last */
-/* eslint-disable import/prefer-default-export */
 import { FavoritesActions } from './types';
 import * as types from './actionTypes';
 
@@ -7,7 +5,7 @@ const initialState = {
   data: [],
 };
 
-export const favoritesReducer = (
+const favoritesReducer = (
   state: FavoritesState = initialState,
   action: FavoritesActions,
 ): FavoritesState => {
@@ -26,3 +24,4 @@ export const favoritesReducer = (
       return state;
   }
 };
+export default favoritesReducer;

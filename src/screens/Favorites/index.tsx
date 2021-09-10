@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { View, FlatList, ListRenderItem } from 'react-native';
 import { useSelector } from 'react-redux';
 import { selectMovies } from 'store/favorites/selectors';
-import MovieTile from '../../components/MovieTile';
+import MovieTile from 'components/MovieTile';
 import styles from './styles';
 
 const Favorites: React.FunctionComponent = () => {
@@ -24,10 +24,10 @@ const Favorites: React.FunctionComponent = () => {
         data={data}
         renderItem={renderItem}
         style={styles.moviesContainer}
+        showsVerticalScrollIndicator={false}
       />
     );
   };
-
   return <View style={styles.container}>{renderContent()}</View>;
 };
 
