@@ -18,6 +18,11 @@ interface Props {
 const MovieTile: React.FC<Props> = ({ data }) => {
   const [isInFavorites, setIsInFavorites] = useState(false);
   const favoritesMovies = useSelector(selectMovies);
+  const [isVisible, setIsVisible] = useState(false);
+  const source = data.image ? { uri: data.image } : defaultImg;
+  const toggleModal = useCallback((): void => {
+    setIsVisible((isVisibleModal: boolean) => !isVisibleModal);
+  }, []);
   const dispatch = useDispatch();
   const findMovieInFavorites = (): void => {
     const isFavorite = favoritesMovies.some((movie) => movie.id === data.id);
@@ -32,11 +37,11 @@ const MovieTile: React.FC<Props> = ({ data }) => {
   };
   useEffect(findMovieInFavorites);
 
-  const source = data.image ? { uri: data.image } : defaultImg;
-
   return (
     <Card containerStyle={styles.container}>
-      <Card.Title style={styles.title}>{data.title}</Card.Title>
+      <Card.Title style={styles.title} onPress={toggleModal}>
+        {data.title}
+      </Card.Title>
       <Card.Image
         source={source}
         placeholderStyle={{ backgroundColor: COLORS.GREY }}

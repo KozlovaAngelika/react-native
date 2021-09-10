@@ -7,7 +7,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   moviesContainer: {
-    paddingHorizontal: 50,
+    flex: 1,
+    paddingHorizontal: 35,
   },
 });
 

@@ -10,7 +10,7 @@ import {
   selectLoadingStatus,
   selectTopMovies,
 } from 'store/topMovies/selectors';
-import MovieTile from '../../components/MovieTile';
+import MovieTile from 'components/MovieTile';
 import styles from './styles';
 
 const TopMovies: React.FunctionComponent = () => {
@@ -18,9 +18,7 @@ const TopMovies: React.FunctionComponent = () => {
   const dispatch = useDispatch();
   const isLoading: boolean = useSelector(selectLoadingStatus);
   const error: Error | null = useSelector(selectError);
-  const errorMessage = t('error');
-  const noResultsMessage = t('noResults');
-  const data: Movie[] | null = useSelector(selectTopMovies);
+  const data: Movie[] = useSelector(selectTopMovies);
 
   useEffect(() => {
     dispatch(getTopMovies());
@@ -35,10 +33,10 @@ const TopMovies: React.FunctionComponent = () => {
       return <Loader />;
     }
     if (error) {
-      return <Notice isError message={errorMessage} />;
+      return <Notice isError message={t('error')} />;
     }
     if (data?.length === 0) {
-      return <Notice isError={false} message={noResultsMessage} />;
+      return <Notice message={t('noResults')} />;
     }
     return (
       <FlatList
@@ -49,7 +47,6 @@ const TopMovies: React.FunctionComponent = () => {
       />
     );
   };
-
   return <View style={styles.container}>{renderContent()}</View>;
 };
 
