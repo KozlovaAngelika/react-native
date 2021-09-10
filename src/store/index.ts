@@ -4,24 +4,27 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { API_URL } from 'react-native-dotenv';
 import { createStore, applyMiddleware, combineReducers, Action } from 'redux';
 import thunk, { ThunkAction } from 'redux-thunk';
+import { NativeModules } from 'react-native';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { favoritesReducer } from './favorites/reducers';
 import { moviesReducer } from './movies/reducers';
 import { topMoviesReducer } from './topMovies/reducers';
 
+if (__DEV__) {
+  NativeModules.DevSettings.setIsDebuggingRemotely(true);
+}
+
 const persistConfig = {
-  key: 'rootState',
+  key: 'favorites',
   storage: AsyncStorage,
-  blackList: ['movies', 'topMovies'],
-  whiteList: ['favorites'],
 };
+const persistedReducer = persistReducer(persistConfig, favoritesReducer);
 
 const reducer = combineReducers({
   movies: moviesReducer,
   topMovies: topMoviesReducer,
-  favorites: favoritesReducer,
+  favorites: persistedReducer,
 });
-
-const persistedRootReducer = persistReducer(persistConfig, reducer);
 
 const api = axios.create({
   headers: {
@@ -30,12 +33,12 @@ const api = axios.create({
   baseURL: API_URL,
 });
 
+const addThunk = applyMiddleware(thunk.withExtraArgument(api));
+const composedEnhancers = composeWithDevTools(addThunk);
+
 export type State = ReturnType<typeof rootState.getState>;
 
-export const rootState = createStore(
-  persistedRootReducer,
-  applyMiddleware(thunk.withExtraArgument(api)),
-);
+export const rootState = createStore(reducer, composedEnhancers);
 
 export const persistedState = persistStore(rootState);
 

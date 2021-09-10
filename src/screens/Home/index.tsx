@@ -28,6 +28,7 @@ const Home: React.FunctionComponent = () => {
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
     <MovieTile data={item} key={item.id} />
   );
+
   const searchMovie = useCallback(
     debounce((value: string) => {
       if (!value) {
@@ -38,10 +39,12 @@ const Home: React.FunctionComponent = () => {
     }, 300),
     [],
   );
+
   const onChangeValue = (value: string): void => {
     setSearchValue(value);
     searchMovie(value.trim());
   };
+
   const renderContent = (): ReactElement => {
     if (!searchValue.trim()) {
       return <Notice isError={false} message={emptyRequest} />;
@@ -63,6 +66,7 @@ const Home: React.FunctionComponent = () => {
       />
     );
   };
+
   return (
     <View style={styles.container}>
       <SearchBar value={searchValue} onChangeValue={onChangeValue} />
