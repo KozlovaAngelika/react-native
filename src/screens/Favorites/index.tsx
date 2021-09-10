@@ -12,7 +12,7 @@ const Favorites: React.FunctionComponent = () => {
   const data: Movie[] = useSelector(selectMovies);
 
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile data={item} key={item.id} />
+    <MovieTile data={item} isInFavorites={false} key={item.id} />
   );
 
   const renderContent = (): ReactElement => {
@@ -21,7 +21,7 @@ const Favorites: React.FunctionComponent = () => {
     }
     return (
       <FlatList
-        data={data}
+        data={null}
         renderItem={renderItem}
         style={styles.moviesContainer}
       />

@@ -43,7 +43,10 @@
     "brace-style": 0,
     "function-paren-newline": "off",
     "implicit-arrow-linebreak": "off",
-    "@typescript-eslint/strict-boolean-expressions": 0
+    "@typescript-eslint/strict-boolean-expressions": 0,
+    "object-curly-newline": "off",
+    "default-param-last": "off",
+    "@typescript-eslint/default-param-last": ["off"]
   },
   "settings": {
     "import/resolver": {

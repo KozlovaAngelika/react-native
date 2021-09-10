@@ -25,8 +25,9 @@ const Home: React.FunctionComponent = () => {
   const errorMessage = t('error');
   const emptyRequest = t('emptyRequestNotice');
   const noResultsMessage = t('noResults');
+
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile data={item} key={item.id} />
+    <MovieTile data={item} key={item.id} isInFavorites={false} />
   );
 
   const searchMovie = useCallback(
@@ -40,29 +41,30 @@ const Home: React.FunctionComponent = () => {
     [],
   );
 
-  const onChangeValue = (value: string): void => {
+  const onChangeValue = useCallback((value: string): void => {
     setSearchValue(value);
     searchMovie(value.trim());
-  };
+  }, []);
 
   const renderContent = (): ReactElement => {
     if (!searchValue.trim()) {
-      return <Notice isError={false} message={emptyRequest} />;
+      return <Notice message={t('emptyRequestNotice')} />;
     }
     if (isLoading) {
       return <Loader />;
     }
     if (error) {
-      return <Notice isError message={errorMessage} />;
+      return <Notice isError message={t('error')} />;
     }
     if (data?.length === 0) {
-      return <Notice isError={false} message={noResultsMessage} />;
+      return <Notice message={t('noResults')} />;
     }
     return (
       <FlatList
         data={data}
         renderItem={renderItem}
         style={styles.moviesContainer}
+        showsVerticalScrollIndicator={false}
       />
     );
   };

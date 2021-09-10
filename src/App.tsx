@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeProvider } from 'react-native-elements';
 import { Provider } from 'react-redux';
 import './utils/i18n/index';
 import 'react-native-vector-icons';

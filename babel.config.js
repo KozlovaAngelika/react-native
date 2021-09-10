@@ -11,6 +11,7 @@ module.exports = {
       'module-resolver',
       {
         root: ['./src'],
+        extensions: ['.ts', '.tsx'],
         alias: {
           components: './src/components',
           media: './src/media',

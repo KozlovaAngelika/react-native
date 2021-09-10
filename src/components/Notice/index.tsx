@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import styles from './styles';
 
 interface Props {
-  isError: boolean;
+  isError?: boolean;
   message: string;
 }
 const Notice: React.FC<Props> = ({ isError, message }) => (

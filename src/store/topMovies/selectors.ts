@@ -1,4 +1,4 @@
-import { State } from '..';
+import { State } from 'store';
 
 export const selectTopMovies = (state: State): Movie[] | null =>
   state.topMovies.data;

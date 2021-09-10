@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Card } from 'react-native-elements';
+import React, { useState, useCallback, useEffect } from 'react';
+import { Button, Card, Icon } from 'react-native-elements';
 import defaultImg from 'media/defaultImg.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectMovies } from 'store/favorites/selectors';
@@ -8,7 +8,8 @@ import {
   addMovieToFavorites,
   removeMovieFromFavorites,
 } from 'store/favorites/actions';
-import { COLORS } from '../../utils/constants';
+import { COLORS } from 'utils/constants';
+import MovieInfo from './MovieInfo';
 import styles from './styles';
 
 interface Props {
@@ -30,6 +31,7 @@ const MovieTile: React.FC<Props> = ({ data }) => {
     }
   };
   useEffect(findMovieInFavorites);
+
   const source = data.image ? { uri: data.image } : defaultImg;
 
   return (
@@ -55,4 +57,4 @@ const MovieTile: React.FC<Props> = ({ data }) => {
   );
 };
 
-export default MovieTile;
+export default React.memo(MovieTile);

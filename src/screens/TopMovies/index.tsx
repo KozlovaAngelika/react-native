@@ -27,7 +27,7 @@ const TopMovies: React.FunctionComponent = () => {
   }, []);
 
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile data={item} key={item.id} />
+    <MovieTile data={item} isInFavorites={false} key={item.id} />
   );
 
   const renderContent = (): ReactElement => {

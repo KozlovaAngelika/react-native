@@ -37,6 +37,7 @@ const addThunk = applyMiddleware(thunk.withExtraArgument(api));
 const composedEnhancers = composeWithDevTools(addThunk);
 
 export type State = ReturnType<typeof rootState.getState>;
+export type RootState = ReturnType<typeof rootState.getState>;
 
 export const rootState = createStore(reducer, composedEnhancers);
 
@@ -44,7 +45,7 @@ export const persistedState = persistStore(rootState);
 
 export type RootThunkAction<TAction extends Action> = ThunkAction<
   void,
-  State,
+  RootState,
   AxiosInstance,
   TAction
 >;
