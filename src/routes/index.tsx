@@ -35,7 +35,9 @@ const Tabs: React.FunctionComponent = () => {
           component={TopMovies}
           options={{
             title: t('top250'),
-            tabBarIcon: () => <TabIcon iconName="thumb-up" />,
+            tabBarIcon: ({ focused }) => (
+              <TabIcon iconName="thumb-up" focused={focused} />
+            ),
             unmountOnBlur: true,
           }}
         />
