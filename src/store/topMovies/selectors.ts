@@ -1,4 +1,4 @@
-import { RootState } from '..';
+import { RootState } from 'store';
 
 export const selectTopMovies = (state: RootState): Movie[] =>
   state.topMovies.data;

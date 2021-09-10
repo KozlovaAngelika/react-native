@@ -5,5 +5,7 @@
   "search": "Search",
   "error": "Something went wrong... Please, try again.",
   "emptyRequestNotice": "To see a list of films, enter your request in the search bar.",
-  "noResults": "No results... Please, try again."
+  "noResults": "No results... Please, try again.",
+  "addToFavorites": "Add to favorites",
+  "rating": "Rating IMDb:"
 }

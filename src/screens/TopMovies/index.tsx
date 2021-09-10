@@ -10,7 +10,7 @@ import {
   selectLoadingStatus,
   selectTopMovies,
 } from 'store/topMovies/selectors';
-import MovieTile from '../../components/MovieTile';
+import MovieTile from 'components/MovieTile';
 import styles from './styles';
 
 const TopMovies: React.FunctionComponent = () => {
@@ -25,12 +25,7 @@ const TopMovies: React.FunctionComponent = () => {
   }, []);
 
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile
-      title={item.title}
-      imgSrc={item.image}
-      key={item.id}
-      isDeleteBtn={false}
-    />
+    <MovieTile data={item} isInFavorites={false} key={item.id} />
   );
 
   const renderContent = (): ReactElement => {
