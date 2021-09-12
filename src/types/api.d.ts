@@ -4,3 +4,9 @@ interface SearchMovieResponse {
   results: Movie[];
   errorMessage: string;
 }
+
+interface GetAdditionalInfoResponse {
+  plot: string;
+  imDbRating: string;
+  errorMessage: string;
+}
