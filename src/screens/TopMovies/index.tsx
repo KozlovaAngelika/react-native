@@ -1,6 +1,6 @@
 import Loader from 'components/Loader';
 import Notice from 'components/Notice';
-import React, { ReactElement, useEffect } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View, FlatList, ListRenderItem } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -21,9 +21,14 @@ const TopMovies: React.FunctionComponent = () => {
   const data: Movie[] = useSelector(selectTopMovies);
 
   useEffect(() => {
-    dispatch(getTopMovies());
+    if (!data.length) {
+      dispatch(getTopMovies());
+    }
   }, []);
 
+  const onRefresh = (): void => {
+    dispatch(getTopMovies());
+  };
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
     <MovieTile data={item} isInFavorites={false} key={item.id} />
   );
@@ -44,6 +49,8 @@ const TopMovies: React.FunctionComponent = () => {
         renderItem={renderItem}
         style={styles.moviesContainer}
         showsVerticalScrollIndicator={false}
+        refreshing={isLoading}
+        onRefresh={onRefresh}
       />
     );
   };

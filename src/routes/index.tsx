@@ -38,7 +38,6 @@ const Tabs: React.FunctionComponent = () => {
             tabBarIcon: ({ focused }) => (
               <TabIcon iconName="thumb-up" focused={focused} />
             ),
-            unmountOnBlur: true,
           }}
         />
         <Tab.Screen
