@@ -25,7 +25,9 @@ const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
         PlaceholderContent={<Loader />}
         resizeMode="contain"
       />
-      <MovieInfo isVisible={isVisible} onClose={toggleModal} data={data} />
+      {isVisible ? (
+        <MovieInfo isVisible={isVisible} onClose={toggleModal} data={data} />
+      ) : null}
       {isInFavorites ? (
         <Button
           icon={<Icon name="delete" />}
