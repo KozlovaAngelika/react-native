@@ -18,7 +18,7 @@ const Tabs: React.FunctionComponent = () => {
       <Tab.Navigator
         initialRouteName="Home"
         screenOptions={{
-          tabBarActiveTintColor: `${COLORS.BLACK}`,
+          tabBarActiveTintColor: COLORS.BLACK,
         }}>
         <Tab.Screen
           name={ROUTES.HOME}

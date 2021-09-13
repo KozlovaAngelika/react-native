@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { TouchableOpacity } from 'react-native';
 import { Button, Card, Icon } from 'react-native-elements';
 import defaultImg from 'media/defaultImg.png';
 import Loader from 'components/Loader';
@@ -17,24 +18,26 @@ const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
     setIsVisible((isVisibleModal: boolean) => !isVisibleModal);
   }, []);
   return (
-    <Card>
-      <Card.Title onPress={toggleModal}>{data.title}</Card.Title>
-      <Card.Image
-        source={source}
-        placeholderStyle={{ backgroundColor: COLORS.GREY }}
-        PlaceholderContent={<Loader />}
-        resizeMode="contain"
-      />
-      <MovieInfo isVisible={isVisible} onClose={toggleModal} data={data} />
-      {isInFavorites ? (
-        <Button
-          icon={<Icon name="delete" />}
-          buttonStyle={styles.removeBtn}
-          containerStyle={styles.btnContainer}
-          onPress={() => {}}
+    <TouchableOpacity onPress={toggleModal}>
+      <Card>
+        <Card.Title>{data.title}</Card.Title>
+        <Card.Image
+          source={source}
+          placeholderStyle={{ backgroundColor: COLORS.GREY }}
+          PlaceholderContent={<Loader />}
+          resizeMode="contain"
         />
-      ) : null}
-    </Card>
+        <MovieInfo isVisible={isVisible} onClose={toggleModal} data={data} />
+        {isInFavorites ? (
+          <Button
+            icon={<Icon name="delete" />}
+            buttonStyle={styles.removeBtn}
+            containerStyle={styles.btnContainer}
+            onPress={() => {}}
+          />
+        ) : null}
+      </Card>
+    </TouchableOpacity>
   );
 };
 
