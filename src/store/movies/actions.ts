@@ -30,9 +30,11 @@ export const clearSearchResults = (): ClearSearchResults => ({
 export const searchMovies = (
   value: string,
 ): RootThunkAction<SearchMoviesActions> => (dispatch, getState, api) => {
+  const state = getState();
+  const lang = state.currentLanguage;
   dispatch(searchMoviesStarted());
   api
-    .get<SearchMovieResponse>(`SearchMovie/${API_KEY}/${value}`)
+    .get<SearchMovieResponse>(`/${lang}/API/SearchMovie/${API_KEY}/${value}`)
     .then(({ data }) => {
       const { errorMessage, results } = data;
       if (errorMessage) {

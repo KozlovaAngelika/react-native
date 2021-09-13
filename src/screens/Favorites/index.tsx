@@ -1,3 +1,4 @@
+import LanguageSelection from 'components/LanguageSelection';
 import React from 'react';
 import { View, FlatList, ListRenderItem } from 'react-native';
 import MovieTile from '../../components/MovieTile';
@@ -9,6 +10,7 @@ const Favorites: React.FunctionComponent = () => {
   );
   return (
     <View style={styles.container}>
+      <LanguageSelection />
       <FlatList
         data={null}
         renderItem={renderItem}
