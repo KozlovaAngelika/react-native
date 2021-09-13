@@ -32,7 +32,7 @@ export const searchMovies = (
 ): RootThunkAction<SearchMoviesActions> => (dispatch, getState, api) => {
   dispatch(searchMoviesStarted());
   api
-    .get<SearchMovieResponse>(`SearchMovie/k_02yh3p7j/${value}`)
+    .get<SearchMovieResponse>(`SearchMovie/${API_KEY}/${value}`)
     .then(({ data }) => {
       const { errorMessage, results } = data;
       if (errorMessage) {
