@@ -23,7 +23,7 @@ const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
         <Card.Title>{data.title}</Card.Title>
         <Card.Image
           source={source}
-          placeholderStyle={{ backgroundColor: COLORS.GREY }}
+          placeholderStyle={styles.placeholderStyle}
           PlaceholderContent={<Loader />}
           resizeMode="contain"
         />

@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
     right: 0,
     padding: 0,
   },
+  placeholderStyle: {
+    backgroundColor: COLORS.GREY,
+  },
 });
 
 export default styles;
