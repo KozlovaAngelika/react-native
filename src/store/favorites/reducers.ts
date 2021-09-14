@@ -24,4 +24,5 @@ const favoritesReducer = (
       return state;
   }
 };
+
 export default favoritesReducer;

@@ -9,7 +9,6 @@
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "prepare": "husky install",
-    "precommit": "lint-staged",
     "reboot": "watchman watch-del-all && rm -rf node_modules && rm -rf ios/Pods && npm install && cd ios && pod install && cd ../"
   },
   "dependencies": {
