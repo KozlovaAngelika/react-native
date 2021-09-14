@@ -41,6 +41,9 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: COLORS.LIGHT_GREY,
   },
+  placeholderStyle: {
+    backgroundColor: COLORS.WHITE,
+  },
 });
 
 export default styles;

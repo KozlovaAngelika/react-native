@@ -3,7 +3,6 @@ import { TouchableOpacity } from 'react-native';
 import { Button, Card, Icon } from 'react-native-elements';
 import defaultImg from 'media/defaultImg.png';
 import Loader from 'components/Loader';
-import { COLORS } from 'utils/constants';
 import MovieInfo from './MovieInfo';
 import styles from './styles';
 
@@ -27,7 +26,12 @@ const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
           PlaceholderContent={<Loader />}
           resizeMode="contain"
         />
-        <MovieInfo isVisible={isVisible} onClose={toggleModal} data={data} />
+        <MovieInfo
+          isVisible={isVisible}
+          onClose={toggleModal}
+          title={data.title}
+          imgSource={source}
+        />
         {isInFavorites ? (
           <Button
             icon={<Icon name="delete" />}
