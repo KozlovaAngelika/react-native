@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
 import defaultImg from 'media/defaultImg.png';
 import configureMockStore from 'redux-mock-store';
 import MovieTile from 'components/MovieTile';
@@ -7,6 +7,8 @@ import { Provider } from 'react-redux';
 import '@testing-library/jest-native';
 
 describe('MovieTile', () => {
+  const mockFn = jest.fn();
+
   const data = {
     id: 'test',
     title: 'test',
@@ -38,5 +40,17 @@ describe('MovieTile', () => {
       </Provider>,
     );
     expect(component.getByTestId('cardImage')).toHaveProp('source', defaultImg);
+  });
+
+  it('should call toggleIsFavorite method', () => {
+    const toggleIsFavorite = mockFn();
+    const component = render(
+      <Provider store={mockStore(initialState)}>
+        <MovieTile data={data} />
+      </Provider>,
+    );
+    const button = component.getByTestId('toggleIsFavoriteButton');
+    fireEvent.press(button);
+    expect(mockFn).toBeCalled();
   });
 });

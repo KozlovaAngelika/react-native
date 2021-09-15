@@ -72,6 +72,7 @@ const MovieTile: React.FC<Props> = ({ data }) => {
         buttonStyle={styles.btn}
         containerStyle={styles.btnContainer}
         onPress={toggleIsFavorite}
+        testID="toggleIsFavoriteButton"
       />
       {isVisible ? (
         <MovieInfo
