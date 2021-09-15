@@ -1,6 +1,16 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import React from 'react';
 import { render, fireEvent, RenderAPI } from '@testing-library/react-native';
 import SearchBar from 'components/SearchBar';
+
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (str: string) => str,
+    i18n: {
+      changeLanguage: async () => await new Promise(() => {}),
+    },
+  }),
+}));
 
 describe('SearchBar', () => {
   const mockFn = jest.fn();
