@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
 import React from 'react';
 import { render, fireEvent, RenderAPI } from '@testing-library/react-native';
 import SearchBar from 'components/SearchBar';

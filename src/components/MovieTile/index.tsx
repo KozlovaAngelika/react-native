@@ -44,7 +44,7 @@ const MovieTile: React.FC<Props> = ({ data }) => {
 
   return (
     <Card containerStyle={styles.container}>
-      <Card.Title style={styles.title} onPress={toggleModal}>
+      <Card.Title style={styles.title} onPress={toggleModal} testID="title">
         {data.title}
       </Card.Title>
       <Card.Image
@@ -66,6 +66,7 @@ const MovieTile: React.FC<Props> = ({ data }) => {
           <Icon
             name="star"
             color={isInFavorites ? COLORS.YELLOW : COLORS.GREY}
+            testID="btnToggleFavoritesIcon"
           />
         }
         buttonStyle={styles.btn}

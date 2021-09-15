@@ -23,12 +23,17 @@ const MovieInfo: React.FC<Props> = ({
 }) => {
   const { t } = useTranslation();
   return (
-    <Overlay isVisible={isVisible} fullScreen overlayStyle={styles.overlay}>
+    <Overlay
+      isVisible={isVisible}
+      fullScreen
+      overlayStyle={styles.overlay}
+      testID="overlay">
       <View style={styles.btnContainer}>
         <Button
           icon={<Icon name="close" color={COLORS.LIGHT_GREY} />}
           buttonStyle={styles.closeBtn}
           onPress={onClose}
+          testID="closeBtn"
         />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -53,6 +58,7 @@ const MovieInfo: React.FC<Props> = ({
             : { backgroundColor: COLORS.GREEN }
         }
         onPress={toggleIsFavorite}
+        testID="toggleBtn"
       />
     </Overlay>
   );
