@@ -6,15 +6,19 @@ import '@testing-library/jest-native';
 
 describe('Notice', () => {
   it('should display correct value', () => {
-    const { getByTestId } = render(<Notice message="text" />);
-    expect(getByTestId('noticeText')).toHaveTextContent('text');
+    const component = render(<Notice message="text" />);
+    expect(component.getByTestId('noticeText')).toHaveTextContent('text');
   });
   it('should have correct style if it is error', () => {
-    const { getByTestId } = render(<Notice message="text" isError />);
-    expect(getByTestId('noticeText')).toHaveStyle({ color: COLORS.RED });
+    const component = render(<Notice message="text" isError />);
+    expect(component.getByTestId('noticeText')).toHaveStyle({
+      color: COLORS.RED,
+    });
   });
   it('should have correct style if it isn`t error', () => {
-    const { getByTestId } = render(<Notice message="text" isError={false} />);
-    expect(getByTestId('noticeText')).toHaveStyle({ color: COLORS.LIGHT_GREY });
+    const component = render(<Notice message="text" isError={false} />);
+    expect(component.getByTestId('noticeText')).toHaveStyle({
+      color: COLORS.LIGHT_GREY,
+    });
   });
 });
