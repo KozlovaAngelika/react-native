@@ -1,24 +1,50 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Button, Card, Icon } from 'react-native-elements';
 import defaultImg from 'media/defaultImg.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectMovies } from 'store/favorites/selectors';
 import Loader from 'components/Loader';
+import {
+  addMovieToFavorites,
+  removeMovieFromFavorites,
+} from 'store/favorites/actions';
 import { COLORS } from 'utils/constants';
 import MovieInfo from './MovieInfo';
 import styles from './styles';
 
 interface Props {
   data: Movie;
-  isInFavorites: boolean;
 }
-const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
+const MovieTile: React.FC<Props> = ({ data }) => {
+  const [isInFavorites, setIsInFavorites] = useState(false);
+  const favoritesMovies = useSelector(selectMovies);
   const [isVisible, setIsVisible] = useState(false);
+  const dispatch = useDispatch();
+
   const source = data.image ? { uri: data.image } : defaultImg;
+
   const toggleModal = useCallback((): void => {
     setIsVisible((isVisibleModal: boolean) => !isVisibleModal);
   }, []);
+
+  const findMovieInFavorites = (): void => {
+    const isFavorite = favoritesMovies.some((movie) => movie.id === data.id);
+    setIsInFavorites(isFavorite);
+  };
+
+  const toggleIsFavorite = (): void => {
+    if (isInFavorites) {
+      dispatch(removeMovieFromFavorites(data.id));
+    } else {
+      dispatch(addMovieToFavorites(data));
+    }
+  };
+
+  useEffect(findMovieInFavorites);
+
   return (
-    <Card>
-      <Card.Title onPress={toggleModal} testID="CardTitle">
+    <Card containerStyle={styles.container}>
+      <Card.Title style={styles.title} onPress={toggleModal}>
         {data.title}
       </Card.Title>
       <Card.Image
@@ -28,15 +54,24 @@ const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
         resizeMode="contain"
         testID="cardImage"
       />
-      <MovieInfo isVisible={isVisible} onClose={toggleModal} data={data} />
-      {isInFavorites ? (
-        <Button
-          icon={<Icon name="delete" />}
-          buttonStyle={styles.removeBtn}
-          containerStyle={styles.btnContainer}
-          onPress={() => {}}
-        />
-      ) : null}
+      <MovieInfo
+        isVisible={isVisible}
+        onClose={toggleModal}
+        data={data}
+        isInFavorites={isInFavorites}
+        toggleIsFavorite={toggleIsFavorite}
+      />
+      <Button
+        icon={
+          <Icon
+            name="star"
+            color={isInFavorites ? COLORS.YELLOW : COLORS.GREY}
+          />
+        }
+        buttonStyle={styles.btn}
+        containerStyle={styles.btnContainer}
+        onPress={toggleIsFavorite}
+      />
     </Card>
   );
 };
