@@ -15,6 +15,7 @@ interface Props {
   toggleIsFavorite: () => void;
   isInFavorites: boolean;
   data: Movie;
+  testID: string;
 }
 
 const MovieInfo: React.FC<Props> = ({
@@ -23,6 +24,7 @@ const MovieInfo: React.FC<Props> = ({
   toggleIsFavorite,
   isInFavorites,
   data,
+  testID,
 }) => {
   const { t } = useTranslation();
   const [description, setDescription] = useState('');
@@ -71,7 +73,7 @@ const MovieInfo: React.FC<Props> = ({
       isVisible={isVisible}
       fullScreen
       overlayStyle={styles.overlay}
-      testID="overlay">
+      testID={testID}>
       <View style={styles.btnContainer}>
         <Button
           icon={<Icon name="close" color={COLORS.LIGHT_GREY} />}

@@ -54,13 +54,6 @@ const MovieTile: React.FC<Props> = ({ data }) => {
         resizeMode="contain"
         testID="cardImage"
       />
-      <MovieInfo
-        isVisible={isVisible}
-        onClose={toggleModal}
-        data={data}
-        isInFavorites={isInFavorites}
-        toggleIsFavorite={toggleIsFavorite}
-      />
       <Button
         icon={
           <Icon
@@ -81,6 +74,7 @@ const MovieTile: React.FC<Props> = ({ data }) => {
           toggleIsFavorite={toggleIsFavorite}
           isInFavorites={isInFavorites}
           data={data}
+          testID="movieInfo"
         />
       ) : null}
     </Card>

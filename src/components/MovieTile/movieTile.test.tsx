@@ -14,10 +14,12 @@ describe('MovieTile', () => {
     title: 'test',
     image: 'test',
   };
+
   const initialState = {
     topMovies: { data: null },
     favorites: { data: [] },
   };
+
   const mockStore = configureMockStore();
 
   it('should display correct value', () => {
