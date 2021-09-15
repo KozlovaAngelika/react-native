@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react-native';
+import defaultImg from 'media/defaultImg.png';
 import configureMockStore from 'redux-mock-store';
 import MovieTile from 'components/MovieTile';
 import { Provider } from 'react-redux';
@@ -45,8 +46,6 @@ describe('MovieTile', () => {
         <MovieTile data={data} />
       </Provider>,
     );
-    expect(component.getByTestId('cardImage')).toHaveProp('source', {
-      testUri: '../../../src/media/defaultImg.png',
-    });
+    expect(component.getByTestId('cardImage')).toHaveProp('source', defaultImg);
   });
 });
