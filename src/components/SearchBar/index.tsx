@@ -15,6 +15,7 @@ const SearchBar: React.FC<Props> = ({ value, onChangeValue }) => {
   return (
     <View style={styles.searchPanel}>
       <TextInput
+        testID="searchBar"
         placeholder={t('search')}
         selectionColor={COLORS.BLACK}
         value={value}

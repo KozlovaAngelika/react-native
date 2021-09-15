@@ -8,7 +8,9 @@ interface Props {
 }
 const Notice: React.FC<Props> = ({ isError, message }) => (
   <View style={styles.container}>
-    <Text style={isError ? styles.error : styles.text}>{message}</Text>
+    <Text style={isError ? styles.error : styles.text} testID="noticeText">
+      {message}
+    </Text>
   </View>
 );
 
