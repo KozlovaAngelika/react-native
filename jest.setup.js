@@ -2,7 +2,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable import/no-unresolved */
 
-import React from 'react';
 import '@testing-library/jest-native/extend-expect';
 
 jest.mock('react-i18next', () => ({
