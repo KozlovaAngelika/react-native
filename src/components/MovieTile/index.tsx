@@ -18,12 +18,15 @@ const MovieTile: React.FC<Props> = ({ data, isInFavorites }) => {
   }, []);
   return (
     <Card>
-      <Card.Title onPress={toggleModal}>{data.title}</Card.Title>
+      <Card.Title onPress={toggleModal} testID="CardTitle">
+        {data.title}
+      </Card.Title>
       <Card.Image
         source={source}
         placeholderStyle={{ backgroundColor: COLORS.GREY }}
         PlaceholderContent={<Loader />}
         resizeMode="contain"
+        testID="cardImage"
       />
       <MovieInfo isVisible={isVisible} onClose={toggleModal} data={data} />
       {isInFavorites ? (
