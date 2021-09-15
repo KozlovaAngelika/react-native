@@ -2,15 +2,6 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react-native';
 import MovieInfo from 'components/MovieTile/MovieInfo';
 
-jest.mock('react-i18next', () => ({
-  useTranslation: () => ({
-    t: (str: string) => str,
-    i18n: {
-      changeLanguage: async () => await new Promise(() => {}),
-    },
-  }),
-}));
-
 describe('MovieInfo', () => {
   const data = {
     id: 'test',

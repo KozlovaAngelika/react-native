@@ -6,15 +6,6 @@ import MovieTile from 'components/MovieTile';
 import { Provider } from 'react-redux';
 import '@testing-library/jest-native';
 
-jest.mock('react-i18next', () => ({
-  useTranslation: () => ({
-    t: (str: string) => str,
-    i18n: {
-      changeLanguage: async () => await new Promise(() => {}),
-    },
-  }),
-}));
-
 describe('MovieTile', () => {
   const data = {
     id: 'test',
