@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { COLORS } from '../../../utils/constants';
+import { COLORS } from 'utils/constants';
 
 const styles = StyleSheet.create({
   overlay: {
@@ -11,17 +11,20 @@ const styles = StyleSheet.create({
   card: {
     padding: 30,
     borderWidth: 0,
-    shadowColor: 'black',
+    shadowColor: COLORS.BLACK,
     shadowOpacity: 0.26,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 10,
     elevation: 3,
   },
   description: {
-    padding: 10,
+    color: COLORS.LIGHT_GREY,
   },
   ratingContainer: {
     flexDirection: 'row',
+    padding: 10,
+  },
+  descriptionContainer: {
     padding: 10,
   },
   ratingTitle: {

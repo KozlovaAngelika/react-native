@@ -5,7 +5,8 @@ interface SearchMovieResponse {
   errorMessage: string;
 }
 
-interface GetTopMoviesResponse {
-  items: Movie[];
+interface GetAdditionalInfoResponse {
+  plot: string;
+  imDbRating: string;
   errorMessage: string;
 }

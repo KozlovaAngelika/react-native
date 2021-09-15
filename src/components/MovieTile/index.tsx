@@ -73,6 +73,17 @@ const MovieTile: React.FC<Props> = ({ data }) => {
         containerStyle={styles.btnContainer}
         onPress={toggleIsFavorite}
       />
+      {isVisible ? (
+        <MovieInfo isVisible={isVisible} onClose={toggleModal} data={data} />
+      ) : null}
+      {isInFavorites ? (
+        <Button
+          icon={<Icon name="delete" />}
+          buttonStyle={styles.removeBtn}
+          containerStyle={styles.btnContainer}
+          onPress={() => {}}
+        />
+      ) : null}
     </Card>
   );
 };
