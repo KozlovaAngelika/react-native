@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Button, Card, Icon } from 'react-native-elements';
 import defaultImg from 'media/defaultImg.png';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,21 +16,16 @@ interface Props {
   data: Movie;
 }
 const MovieTile: React.FC<Props> = ({ data }) => {
-  const [isInFavorites, setIsInFavorites] = useState(false);
   const favoritesMovies = useSelector(selectMovies);
   const [isVisible, setIsVisible] = useState(false);
   const dispatch = useDispatch();
 
+  const isInFavorites = favoritesMovies.some((movie) => movie.id === data.id);
   const source = data.image ? { uri: data.image } : defaultImg;
 
   const toggleModal = useCallback((): void => {
     setIsVisible((isVisibleModal: boolean) => !isVisibleModal);
   }, []);
-
-  const findMovieInFavorites = (): void => {
-    const isFavorite = favoritesMovies.some((movie) => movie.id === data.id);
-    setIsInFavorites(isFavorite);
-  };
 
   const toggleIsFavorite = (): void => {
     if (isInFavorites) {
@@ -39,8 +34,6 @@ const MovieTile: React.FC<Props> = ({ data }) => {
       dispatch(addMovieToFavorites(data));
     }
   };
-
-  useEffect(findMovieInFavorites);
 
   return (
     <Card containerStyle={styles.container}>
@@ -53,13 +46,6 @@ const MovieTile: React.FC<Props> = ({ data }) => {
         PlaceholderContent={<Loader />}
         resizeMode="contain"
       />
-      <MovieInfo
-        isVisible={isVisible}
-        onClose={toggleModal}
-        data={data}
-        isInFavorites={isInFavorites}
-        toggleIsFavorite={toggleIsFavorite}
-      />
       <Button
         icon={
           <Icon
@@ -71,6 +57,15 @@ const MovieTile: React.FC<Props> = ({ data }) => {
         containerStyle={styles.btnContainer}
         onPress={toggleIsFavorite}
       />
+      {isVisible ? (
+        <MovieInfo
+          isVisible={isVisible}
+          onClose={toggleModal}
+          toggleIsFavorite={toggleIsFavorite}
+          isInFavorites={isInFavorites}
+          data={data}
+        />
+      ) : null}
     </Card>
   );
 };
