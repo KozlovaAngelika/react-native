@@ -74,7 +74,6 @@ const MovieTile: React.FC<Props> = ({ data }) => {
           toggleIsFavorite={toggleIsFavorite}
           isInFavorites={isInFavorites}
           data={data}
-          testID="movieInfo"
         />
       ) : null}
     </Card>

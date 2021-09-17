@@ -15,7 +15,6 @@ interface Props {
   toggleIsFavorite: () => void;
   isInFavorites: boolean;
   data: Movie;
-  testID: string;
 }
 
 const MovieInfo: React.FC<Props> = ({
@@ -24,7 +23,6 @@ const MovieInfo: React.FC<Props> = ({
   toggleIsFavorite,
   isInFavorites,
   data,
-  testID,
 }) => {
   const { t } = useTranslation();
   const [description, setDescription] = useState('');
@@ -39,8 +37,8 @@ const MovieInfo: React.FC<Props> = ({
         `${API_URL}/Title/${API_KEY}/${data.id}/Ratings`,
       )
       .then((res) => {
-        const { plot, imDbRating, errorMessage } = res.data;
         setLoading(false);
+        const { plot, imDbRating, errorMessage } = res.data;
         if (errorMessage) {
           setError(true);
         } else {
@@ -73,7 +71,7 @@ const MovieInfo: React.FC<Props> = ({
       isVisible={isVisible}
       fullScreen
       overlayStyle={styles.overlay}
-      testID={testID}>
+      testID="overlay">
       <View style={styles.btnContainer}>
         <Button
           icon={<Icon name="close" color={COLORS.LIGHT_GREY} />}
@@ -90,7 +88,9 @@ const MovieInfo: React.FC<Props> = ({
             <View>{renderContent(raiting)}</View>
           </View>
           <View style={styles.descriptionContainer}>
-            <Text style={styles.description}>{renderContent(description)}</Text>
+            <Text style={styles.description} testID="description">
+              {renderContent(description)}
+            </Text>
           </View>
           <Card.Image source={{ uri: data.image }} resizeMode="contain" />
         </Card>
