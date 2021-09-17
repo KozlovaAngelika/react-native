@@ -85,7 +85,9 @@ const MovieInfo: React.FC<Props> = ({
           <Card.Title>{data.title}</Card.Title>
           <View style={styles.ratingContainer}>
             <Text style={styles.ratingTitle}>{t('rating')}</Text>
-            <View>{renderContent(raiting)}</View>
+            <View>
+              <Text testID="raiting">{renderContent(raiting)}</Text>
+            </View>
           </View>
           <View style={styles.descriptionContainer}>
             <Text style={styles.description} testID="description">
