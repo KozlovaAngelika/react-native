@@ -30,4 +30,5 @@ const Favorites: React.FunctionComponent = () => {
   };
   return <View style={styles.container}>{renderContent()}</View>;
 };
+
 export default Favorites;
