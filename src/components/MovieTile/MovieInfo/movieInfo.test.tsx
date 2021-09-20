@@ -5,12 +5,11 @@ import MovieInfo, {
 } from 'components/MovieTile/MovieInfo';
 import { COLORS } from 'utils/constants';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 
-jest.mock('axios', () => ({
-  get: jest.fn().mockResolvedValue({
-    data: { plot: 'test', imDbRating: 'test', errorMessage: null },
-  }),
-}));
+axios.get = jest.fn().mockResolvedValue({
+  data: { plot: 'test', imDbRating: 'test', errorMessage: null },
+});
 
 describe('MovieInfo', () => {
   const data = {
