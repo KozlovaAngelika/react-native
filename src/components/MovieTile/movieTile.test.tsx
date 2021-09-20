@@ -8,7 +8,6 @@ import '@testing-library/jest-native';
 import { COLORS } from 'utils/constants';
 
 describe('MovieTile', () => {
-
   const data = {
     id: 'test',
     title: 'test',
@@ -33,20 +32,19 @@ describe('MovieTile', () => {
 
   const mockStore = configureMockStore();
 
-  const renderComponent = () => {
-    const store = mockStore(initialState)
+  const renderComponent = (): any => {
+    const store = mockStore(initialState);
     const component = render(
       <Provider store={store}>
         <MovieTile data={data} />
       </Provider>,
     );
-    return { component, store }
-  }
+    return { component, store };
+  };
 
   it('should display correct title', () => {
     const { component } = renderComponent();
     expect(component.getByTestId('title')).toHaveTextContent('test');
-
   });
 
   it('should display correct image', () => {
@@ -67,10 +65,10 @@ describe('MovieTile', () => {
     initialState.favorites = {
       data: [],
     };
-    const {component, store} = renderComponent();
+    const { component, store } = renderComponent();
     const button = component.getByTestId('toggleIsFavoriteButton');
     fireEvent.press(button);
-    const actions = store.getActions()
+    const actions = store.getActions();
     expect(actions[0].type).toBe('ADD_MOVIE_TO_FAVORITES');
   });
 
@@ -78,10 +76,10 @@ describe('MovieTile', () => {
     initialState.favorites = {
       data: [data],
     };
-    const {component, store} = renderComponent();
+    const { component, store } = renderComponent();
     const button = component.getByTestId('toggleIsFavoriteButton');
     fireEvent.press(button);
-    const actions = store.getActions()
+    const actions = store.getActions();
     expect(actions[0].type).toBe('REMOVE_MOVIE_FROM_FAVORITES');
   });
 

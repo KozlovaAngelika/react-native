@@ -1,6 +1,8 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
-import MovieInfo, { Props as MovieInfoProps } from 'components/MovieTile/MovieInfo';
+import MovieInfo, {
+  Props as MovieInfoProps,
+} from 'components/MovieTile/MovieInfo';
 import { COLORS } from 'utils/constants';
 import { useTranslation } from 'react-i18next';
 
@@ -11,7 +13,6 @@ jest.mock('axios', () => ({
 }));
 
 describe('MovieInfo', () => {
-
   const data = {
     id: 'test',
     title: 'test',
@@ -21,18 +22,17 @@ describe('MovieInfo', () => {
   const mockToggleIsFavorite = jest.fn();
   const mockOnCLose = jest.fn();
 
-  const renderComponent = (props?: Partial<MovieInfoProps>) => {
-    return render(
+  const renderComponent = (props?: Partial<MovieInfoProps>): any =>
+    render(
       <MovieInfo
         isVisible
         onClose={mockOnCLose}
         toggleIsFavorite={mockToggleIsFavorite}
         isInFavorites
         data={data}
-        { ...props }
+        {...props}
       />,
     );
-  }
 
   it('should call onClose method', async () => {
     const component = renderComponent();
@@ -52,8 +52,9 @@ describe('MovieInfo', () => {
   });
 
   it('button should be green if movie isn`t favorite', async () => {
-    const component = renderComponent({isInFavorites: false});
-    const buttonColor = component.getByTestId('toggleBtn').props.children[0].props.style.backgroundColor;
+    const component = renderComponent({ isInFavorites: false });
+    const buttonColor = component.getByTestId('toggleBtn').props.children[0]
+      .props.style.backgroundColor;
     await waitFor(() => {
       expect(buttonColor).toBe(COLORS.GREEN);
     });
@@ -80,7 +81,7 @@ describe('MovieInfo', () => {
 
   it('button should has correct text if movie isn`t favorite', async () => {
     const { t } = useTranslation();
-    const component = renderComponent({isInFavorites: false});
+    const component = renderComponent({ isInFavorites: false });
     const button = component.getByTestId('toggleBtn');
     const text = t('addToFavorites');
     await waitFor(() => {

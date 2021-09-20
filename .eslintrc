@@ -24,6 +24,7 @@
     "react/prop-types": "off",
     "import/extensions": "off",
     "eol-last": 0,
+    "react/jsx-props-no-spreading": "off",
     "@typescript-eslint/member-delimiter-style": [
       "error",
       {

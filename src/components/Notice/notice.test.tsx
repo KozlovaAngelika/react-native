@@ -16,7 +16,7 @@ describe('Notice', () => {
       color: COLORS.RED,
     });
   });
-  
+
   it('should have correct style if it isn`t error', () => {
     const component = render(<Notice message="text" isError={false} />);
     expect(component.getByTestId('noticeText')).toHaveStyle({
