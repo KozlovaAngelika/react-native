@@ -29,7 +29,7 @@ export const clearSearchResults = (): ClearSearchResults => ({
 
 export const searchMovies = (
   value: string,
-): RootThunkAction<SearchMoviesActions> => (dispatch, getState, api) => {
+): RootThunkAction<SearchMoviesActions> => (dispatch, _getState, api) => {
   dispatch(searchMoviesStarted());
   api
     .get<SearchMovieResponse>(`SearchMovie/${API_KEY}/${value}`)

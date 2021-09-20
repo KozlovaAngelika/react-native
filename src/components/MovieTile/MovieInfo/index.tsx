@@ -9,7 +9,7 @@ import { API_KEY, API_URL } from 'react-native-dotenv';
 import Notice from 'components/Notice';
 import styles from './styles';
 
-interface Props {
+export interface Props {
   isVisible: boolean;
   onClose: () => void;
   toggleIsFavorite: () => void;

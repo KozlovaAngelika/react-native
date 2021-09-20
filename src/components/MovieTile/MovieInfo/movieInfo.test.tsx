@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
-import MovieInfo from 'components/MovieTile/MovieInfo';
+import MovieInfo, { Props as MovieInfoProps } from 'components/MovieTile/MovieInfo';
 import { COLORS } from 'utils/constants';
 import { useTranslation } from 'react-i18next';
 
@@ -11,57 +11,40 @@ jest.mock('axios', () => ({
 }));
 
 describe('MovieInfo', () => {
+
   const data = {
     id: 'test',
     title: 'test',
     image: 'test',
   };
-  const mockFn = jest.fn();
 
-  it('should call onClose method', async () => {
-    const component = render(
+  const mockToggleIsFavorite = jest.fn();
+  const mockOnCLose = jest.fn();
+
+  const renderComponent = (props?: Partial<MovieInfoProps>) => {
+    return render(
       <MovieInfo
         isVisible
-        onClose={mockFn}
-        toggleIsFavorite={mockFn}
+        onClose={mockOnCLose}
+        toggleIsFavorite={mockToggleIsFavorite}
         isInFavorites
         data={data}
+        { ...props }
       />,
     );
+  }
+
+  it('should call onClose method', async () => {
+    const component = renderComponent();
     const button = component.getByTestId('closeBtn');
     fireEvent.press(button);
     await waitFor(() => {
-      expect(mockFn).toBeCalled();
-    });
-  });
-
-  it('should call toggleIsFavorite method', async () => {
-    const component = render(
-      <MovieInfo
-        isVisible
-        onClose={mockFn}
-        toggleIsFavorite={mockFn}
-        isInFavorites
-        data={data}
-      />,
-    );
-    const button = component.getByTestId('toggleBtn');
-    fireEvent.press(button);
-    await waitFor(() => {
-      expect(mockFn).toBeCalled();
+      expect(mockOnCLose).toBeCalled();
     });
   });
 
   it('overlay should has isVisible true', async () => {
-    const component = render(
-      <MovieInfo
-        isVisible
-        onClose={mockFn}
-        toggleIsFavorite={mockFn}
-        isInFavorites
-        data={data}
-      />,
-    );
+    const component = renderComponent();
     const overlay = component.getByTestId('overlay').props.visible;
     await waitFor(() => {
       expect(overlay).toBe(true);
@@ -69,32 +52,15 @@ describe('MovieInfo', () => {
   });
 
   it('button should be green if movie isn`t favorite', async () => {
-    const component = render(
-      <MovieInfo
-        isVisible
-        onClose={mockFn}
-        toggleIsFavorite={mockFn}
-        isInFavorites={false}
-        data={data}
-      />,
-    );
-    const buttonColor = component.getByTestId('toggleBtn').props.children[0]
-      .props.style.backgroundColor;
+    const component = renderComponent({isInFavorites: false});
+    const buttonColor = component.getByTestId('toggleBtn').props.children[0].props.style.backgroundColor;
     await waitFor(() => {
       expect(buttonColor).toBe(COLORS.GREEN);
     });
   });
 
   it('button should be red if movie is favorite', async () => {
-    const component = render(
-      <MovieInfo
-        isVisible
-        onClose={mockFn}
-        toggleIsFavorite={mockFn}
-        isInFavorites
-        data={data}
-      />,
-    );
+    const component = renderComponent();
     const buttonColor = component.getByTestId('toggleBtn').props.children[0]
       .props.style.backgroundColor;
     await waitFor(() => {
@@ -102,17 +68,9 @@ describe('MovieInfo', () => {
     });
   });
 
-  it('button should has correct text if movie is favorite ', async () => {
+  it('button should has correct text if movie is favorite', async () => {
     const { t } = useTranslation();
-    const component = render(
-      <MovieInfo
-        isVisible
-        onClose={mockFn}
-        toggleIsFavorite={mockFn}
-        isInFavorites
-        data={data}
-      />,
-    );
+    const component = renderComponent();
     const button = component.getByTestId('toggleBtn');
     const text = t('removeFromFavorites');
     await waitFor(() => {
@@ -122,15 +80,7 @@ describe('MovieInfo', () => {
 
   it('button should has correct text if movie isn`t favorite', async () => {
     const { t } = useTranslation();
-    const component = render(
-      <MovieInfo
-        isVisible
-        onClose={mockFn}
-        toggleIsFavorite={mockFn}
-        isInFavorites={false}
-        data={data}
-      />,
-    );
+    const component = renderComponent({isInFavorites: false});
     const button = component.getByTestId('toggleBtn');
     const text = t('addToFavorites');
     await waitFor(() => {
@@ -139,15 +89,7 @@ describe('MovieInfo', () => {
   });
 
   it('should display correct description', async () => {
-    const component = render(
-      <MovieInfo
-        isVisible
-        onClose={mockFn}
-        toggleIsFavorite={mockFn}
-        isInFavorites
-        data={data}
-      />,
-    );
+    const component = renderComponent();
     await waitFor(() => {
       expect(
         component.getByTestId('description').props.children.props.children,
@@ -156,15 +98,7 @@ describe('MovieInfo', () => {
   });
 
   it('should display correct raiting ', async () => {
-    const component = render(
-      <MovieInfo
-        isVisible
-        onClose={mockFn}
-        toggleIsFavorite={mockFn}
-        isInFavorites
-        data={data}
-      />,
-    );
+    const component = renderComponent();
     await waitFor(() => {
       expect(
         component.getByTestId('raiting').props.children.props.children,
