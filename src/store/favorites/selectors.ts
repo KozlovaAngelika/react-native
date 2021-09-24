@@ -1,4 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-import { State } from 'store';
+import { RootState } from 'store';
 
-export const selectMovies = (state: State): Movie[] => state.favorites.data;
+export const selectMovies = (state: RootState): Movie[] => state.favorites.data;
