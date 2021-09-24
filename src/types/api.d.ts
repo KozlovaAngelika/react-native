@@ -4,3 +4,8 @@ interface SearchMovieResponse {
   results: Movie[];
   errorMessage: string;
 }
+
+interface GetTopMoviesResponse {
+  items: Movie[];
+  errorMessage: string;
+}

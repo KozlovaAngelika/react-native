@@ -3,9 +3,11 @@ import { API_URL } from 'react-native-dotenv';
 import { createStore, applyMiddleware, combineReducers, Action } from 'redux';
 import thunk, { ThunkAction } from 'redux-thunk';
 import moviesReducer from './movies/reducers';
+import topMoviesReducer from './topMovies/reducers';
 
 const reducer = combineReducers({
   movies: moviesReducer,
+  topMovies: topMoviesReducer,
 });
 
 const api = axios.create({
