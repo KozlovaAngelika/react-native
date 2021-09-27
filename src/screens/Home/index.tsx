@@ -62,6 +62,7 @@ const Home: React.FunctionComponent = () => {
         renderItem={renderItem}
         style={styles.moviesContainer}
         showsVerticalScrollIndicator={false}
+        testID="moviesList"
       />
     );
   };
@@ -69,7 +70,9 @@ const Home: React.FunctionComponent = () => {
   return (
     <View style={styles.container}>
       <SearchBar value={searchValue} onChangeValue={onChangeValue} />
-      <View style={styles.container}>{renderContent()}</View>
+      <View style={styles.container} testID="content">
+        {renderContent()}
+      </View>
     </View>
   );
 };

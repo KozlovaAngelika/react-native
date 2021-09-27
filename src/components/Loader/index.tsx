@@ -4,7 +4,7 @@ import { COLORS } from 'utils/constants';
 import styles from './styles';
 
 const Loader: React.FunctionComponent = () => (
-  <View style={styles.container}>
+  <View style={styles.container} testID="loader">
     <ActivityIndicator size="large" color={COLORS.LIGHT_GREY} />
   </View>
 );

@@ -2,6 +2,7 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
 import { Provider } from 'react-redux';
 import Home from 'screens/Home';
+import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import moviesReducer from './reducers';
 import * as types from './actionTypes';
@@ -72,8 +73,15 @@ describe('movies reducer', () => {
 });
 
 describe('movies selectors', () => {
-  const initialState = {
+  const api = {
+    get: async () => await Promise.resolve(),
+  };
+  const mockStore = configureMockStore([thunk.withExtraArgument(api)]);
+
+  let initialState = {
     movies: {
+      loading: false,
+      error: null,
       data: [
         {
           id: 'firstMovie',
@@ -82,6 +90,44 @@ describe('movies selectors', () => {
         },
       ],
     },
-    favorites: [],
+    favorites: {
+      data: [],
+    },
   };
+
+  it('the list of movies should contain the correct number of items', () => {
+    const store = mockStore(initialState);
+    const component = render(
+      <Provider store={store}>
+        <Home />
+      </Provider>,
+    );
+    const searchBar = component.getByTestId('searchBar');
+    fireEvent.changeText(searchBar, 'test');
+    const moviesListLength = component.getByTestId('moviesList').props.data
+      .length;
+    expect(moviesListLength).toEqual(1);
+  });
+
+  it('should display loader', () => {
+    initialState = {
+      movies: {
+        loading: true,
+        error: null,
+        data: [],
+      },
+      favorites: {
+        data: [],
+      },
+    };
+    const store = mockStore(initialState);
+    const component = render(
+      <Provider store={store}>
+        <Home />
+      </Provider>,
+    );
+    const searchBar = component.getByTestId('searchBar');
+    fireEvent.changeText(searchBar, 'test');
+    expect(component.getByTestId('loader')).toBeDefined();
+  });
 });
