@@ -39,7 +39,7 @@ const MovieInfo: React.FC<Props> = ({
           </View>
           <Card.Image
             source={{ uri: data.image }}
-            placeholderStyle={{ backgroundColor: COLORS.GREY }}
+            placeholderStyle={{ backgroundColor: COLORS.WHITE }}
             PlaceholderContent={<Loader />}
             resizeMode="contain"
           />

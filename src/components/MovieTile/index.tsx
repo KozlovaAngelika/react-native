@@ -44,7 +44,7 @@ const MovieTile: React.FC<Props> = ({ data }) => {
         </Card.Title>
         <Card.Image
           source={source}
-          placeholderStyle={{ backgroundColor: COLORS.GREY }}
+          placeholderStyle={{ backgroundColor: COLORS.WHITE }}
           PlaceholderContent={<Loader />}
           resizeMode="contain"
         />
