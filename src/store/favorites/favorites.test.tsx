@@ -1,12 +1,15 @@
 import React from 'react';
+import { render } from '@testing-library/react-native';
+import { Provider } from 'react-redux';
+import configureMockStore from 'redux-mock-store';
+import Favorites from 'screens/Favorites';
 import favoritesReducer from './reducers';
 import * as types from './actionTypes';
 
-let initialState: FavoritesState = {
-  data: [],
-};
-
 describe('favorites reducer', () => {
+  let initialState: FavoritesState = {
+    data: [],
+  };
   it('ADD_MOVIE_TO_FAVORITES', () => {
     const action = {
       type: types.ADD_MOVIE_TO_FAVORITES,
@@ -41,4 +44,28 @@ describe('favorites reducer', () => {
       data: [],
     });
   });
+});
+
+describe('favorites selectors', () => {
+  const initialState = {
+    favorites: {
+      data: [
+        {
+          id: 'firstMovie',
+          title: 'test',
+          image: 'test',
+        },
+        {
+          id: 'secondMovie',
+          title: 'test',
+          image: 'test',
+        },
+        {
+          id: 'thirdMovie',
+          title: 'test',
+          image: 'test',
+        },
+      ],
+    },
+  };
 });

@@ -25,6 +25,7 @@ const Favorites: React.FunctionComponent = () => {
         renderItem={renderItem}
         style={styles.moviesContainer}
         showsVerticalScrollIndicator={false}
+        testID="favoritesMoviesList"
       />
     );
   };
