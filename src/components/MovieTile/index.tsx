@@ -59,7 +59,7 @@ const MovieTile: React.FC<Props> = ({ data }) => {
           containerStyle={styles.btnContainer}
           onPress={toggleIsFavorite}
         />
-        {isVisible ? (
+        {isVisible && (
           <MovieInfo
             isVisible={isVisible}
             onClose={toggleModal}
@@ -67,7 +67,7 @@ const MovieTile: React.FC<Props> = ({ data }) => {
             isInFavorites={isInFavorites}
             data={data}
           />
-        ) : null}
+        )}
       </Card>
     </TouchableOpacity>
   );
