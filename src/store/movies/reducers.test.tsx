@@ -8,7 +8,7 @@ const initialState: MoviesState = {
   data: [],
 };
 
-describe('movies reducers', () => {
+describe('movies reducer', () => {
   it('SEARCH_MOVIES_STARTED', () => {
     const action = {
       type: types.SEARCH_MOVIES_STARTED,

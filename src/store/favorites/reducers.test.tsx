@@ -6,7 +6,7 @@ let initialState: FavoritesState = {
   data: [],
 };
 
-describe('favorites reducers', () => {
+describe('favorites reducer', () => {
   it('ADD_MOVIE_TO_FAVORITES', () => {
     const action = {
       type: types.ADD_MOVIE_TO_FAVORITES,
