@@ -45,15 +45,19 @@ const MovieInfo: React.FC<Props> = ({
           />
         </Card>
       </ScrollView>
-      <Button
-        title={isInFavorites ? t('removeFromFavorites') : t('addToFavorites')}
-        buttonStyle={
-          isInFavorites
-            ? { backgroundColor: COLORS.RED_DARK }
-            : { backgroundColor: COLORS.GREEN }
-        }
-        onPress={toggleIsFavorite}
-      />
+      {isInFavorites ? (
+        <Button
+          title={t('removeFromFavorites')}
+          buttonStyle={{ backgroundColor: COLORS.RED_DARK }}
+          onPress={toggleIsFavorite}
+        />
+      ) : (
+        <Button
+          title={t('addToFavorites')}
+          buttonStyle={{ backgroundColor: COLORS.GREEN }}
+          onPress={toggleIsFavorite}
+        />
+      )}
     </Overlay>
   );
 };
