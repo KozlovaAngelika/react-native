@@ -15,19 +15,20 @@ const Favorites: React.FunctionComponent = () => {
     <MovieTile data={item} key={item.id} />
   );
 
-  const renderContent = (): ReactElement =>
-    !data.length ? (
-      <Notice isError={false} message={t('noFavorites')} />
-    ) : (
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        style={styles.moviesContainer}
-        showsVerticalScrollIndicator={false}
-      />
-    );
-
-  return <View style={styles.container}>{renderContent()}</View>;
+  return (
+    <View style={styles.container}>
+      {!data.length ? (
+        <Notice isError={false} message={t('noFavorites')} />
+      ) : (
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          style={styles.moviesContainer}
+          showsVerticalScrollIndicator={false}
+        />
+      )}
+    </View>
+  );
 };
 
 export default Favorites;
