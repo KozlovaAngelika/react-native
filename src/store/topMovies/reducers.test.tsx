@@ -2,29 +2,28 @@ import React from 'react';
 import moviesReducer from './reducers';
 import * as types from './actionTypes';
 
-const initialState: MoviesState = {
+const initialState: TopMovieState = {
   loading: false,
   error: null,
   data: [],
 };
 
-describe('movies reducers', () => {
-  it('SEARCH_MOVIES_STARTED', () => {
+describe('top movies reducers', () => {
+  it('GET_TOP_MOVIES_STARTED', () => {
     const action = {
-      type: types.SEARCH_MOVIES_STARTED,
-      payload: 'test',
+      type: types.GET_TOP_MOVIES_STARTED,
     };
     expect(moviesReducer(initialState, action)).toEqual({
       ...initialState,
       loading: true,
       error: null,
-      data: null,
+      data: [],
     });
   });
 
-  it('SEARCH_MOVIES_SUCCESS', () => {
+  it('GET_TOP_MOVIES_SUCCESS', () => {
     const action = {
-      type: types.SEARCH_MOVIES_SUCCESS,
+      type: types.GET_TOP_MOVIES_SUCCESS,
       payload: [
         {
           id: 'test',
@@ -41,28 +40,16 @@ describe('movies reducers', () => {
     });
   });
 
-  it('SEARCH_MOVIES_FAIL', () => {
+  it('GET_TOP_MOVIES_FAIL', () => {
     const action = {
-      type: types.SEARCH_MOVIES_FAIL,
+      type: types.GET_TOP_MOVIES_FAIL,
       payload: 'error',
     };
     expect(moviesReducer(initialState, action)).toEqual({
       ...initialState,
       loading: false,
       error: action.payload,
-      data: null,
-    });
-  });
-
-  it('CLEAR_SEARCH_RESULTS', () => {
-    const action = {
-      type: types.CLEAR_SEARCH_RESULTS,
-    };
-    expect(moviesReducer(initialState, action)).toEqual({
-      ...initialState,
-      loading: false,
-      error: null,
-      data: null,
+      data: [],
     });
   });
 });
