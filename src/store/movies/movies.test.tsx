@@ -5,7 +5,6 @@ import Home from 'screens/Home';
 import configureMockStore from 'redux-mock-store';
 import moviesReducer from './reducers';
 import * as types from './actionTypes';
-import { RootState } from '..';
 
 describe('movies reducer', () => {
   const initialState: MoviesState = {
