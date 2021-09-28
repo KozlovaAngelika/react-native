@@ -1,8 +1,4 @@
 import React from 'react';
-import { render } from '@testing-library/react-native';
-import { Provider } from 'react-redux';
-import configureMockStore from 'redux-mock-store';
-import Favorites from 'screens/Favorites';
 import favoritesReducer from './reducers';
 import { selectMovies } from './selectors';
 import * as types from './actionTypes';
@@ -47,7 +43,7 @@ describe('favorites reducer', () => {
   });
 });
 
-describe('favorites selectors', () => {
+describe('favorite movies selectors', () => {
   const state = {
     favorites: {
       data: [
