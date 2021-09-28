@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import { Button, Card, Icon } from 'react-native-elements';
 import defaultImg from 'media/defaultImg.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectMovies } from 'store/favorites/selectors';
+import { selectMovies, isFavoriteMovie } from 'store/favorites/selectors';
 import Loader from 'components/Loader';
 import {
   addMovieToFavorites,
@@ -17,11 +17,10 @@ interface Props {
   data: Movie;
 }
 const MovieTile: React.FC<Props> = ({ data }) => {
-  const favoritesMovies = useSelector(selectMovies);
+  const isInFavorites = useSelector(isFavoriteMovie(data.id));
   const [isVisible, setIsVisible] = useState(false);
   const dispatch = useDispatch();
 
-  const isInFavorites = favoritesMovies.some((movie) => movie.id === data.id);
   const source = data.image ? { uri: data.image } : defaultImg;
 
   const toggleModal = useCallback((): void => {
