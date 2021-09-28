@@ -66,6 +66,7 @@ const MovieInfo: React.FC<Props> = ({
     }
     return <Text>{type}</Text>;
   };
+
   return (
     <Overlay isVisible={isVisible} fullScreen overlayStyle={styles.overlay}>
       <View style={styles.btnContainer}>
@@ -80,6 +81,10 @@ const MovieInfo: React.FC<Props> = ({
           <Card.Title>{data.title}</Card.Title>
           <View style={styles.ratingContainer}>
             <Text style={styles.ratingTitle}>{t('rating')}</Text>
+            <View>{renderContent(raiting)}</View>
+          </View>
+          <View style={styles.descriptionContainer}>
+            <Text style={styles.description}>{renderContent(description)}</Text>
           </View>
           <Card.Image
             source={{ uri: data.image }}

@@ -8,6 +8,7 @@ interface SearchMovieResponse {
 interface GetAdditionalInfoResponse {
   plot: string;
   imDbRating: string;
+  errorMessage: string;
 }
 
 interface GetTopMoviesResponse {
