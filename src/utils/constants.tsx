@@ -5,6 +5,9 @@ export const COLORS = {
   BLACK: '#000',
   WHITE: '#fff',
   RED: '#ff4040',
+  RED_DARK: '#B22222',
+  YELLOW: '#ffd700',
+  GREEN: '#2E8B57',
 };
 export const ROUTES = {
   HOME: 'Home',

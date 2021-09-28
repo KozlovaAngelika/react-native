@@ -21,7 +21,6 @@ export const getTopMoviesFail = (error: Error | null): GetTopMoviesFail => ({
   type: types.GET_TOP_MOVIES_FAIL,
   payload: error,
 });
-
 export const getTopMovies = (): RootThunkAction<GetTopMoviesActions> => (
   dispatch,
   getState,
@@ -29,7 +28,7 @@ export const getTopMovies = (): RootThunkAction<GetTopMoviesActions> => (
 ) => {
   dispatch(getTopMoviesStarted());
   api
-    .get<GetTopMoviesResponse>(`ru/API/Top250Movies/${API_KEY}`)
+    .get<GetTopMoviesResponse>(`/Top250Movies/${API_KEY}`)
     .then(({ data }) => {
       const { items, errorMessage } = data;
       if (errorMessage) {

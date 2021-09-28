@@ -2,47 +2,62 @@ import React from 'react';
 import { Text, View, ScrollView } from 'react-native';
 import { Button, Overlay, Card, Icon } from 'react-native-elements';
 import { useTranslation } from 'react-i18next';
+import { COLORS } from 'utils/constants';
 import Loader from 'components/Loader';
 import styles from './styles';
 
 interface Props {
   isVisible: boolean;
   onClose: () => void;
-  title: string;
-  imgSource: any;
+  toggleIsFavorite: () => void;
+  isInFavorites: boolean;
+  data: Movie;
 }
 
 const MovieInfo: React.FC<Props> = ({
   isVisible,
   onClose,
-  title,
-  imgSource,
+  toggleIsFavorite,
+  isInFavorites,
+  data,
 }) => {
   const { t } = useTranslation();
   return (
     <Overlay isVisible={isVisible} fullScreen overlayStyle={styles.overlay}>
       <View style={styles.btnContainer}>
         <Button
-          icon={<Icon name="close" />}
+          icon={<Icon name="close" color={COLORS.LIGHT_GREY} />}
           buttonStyle={styles.closeBtn}
           onPress={onClose}
         />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Card containerStyle={styles.card}>
-          <Card.Title>{title}</Card.Title>
+          <Card.Title>{data.title}</Card.Title>
           <View style={styles.ratingContainer}>
             <Text style={styles.ratingTitle}>{t('rating')}</Text>
           </View>
           <Card.Image
-            source={imgSource}
-            placeholderStyle={styles.placeholderStyle}
+            source={{ uri: data.image }}
+            placeholderStyle={{ backgroundColor: COLORS.WHITE }}
             PlaceholderContent={<Loader />}
             resizeMode="contain"
           />
         </Card>
       </ScrollView>
-      <Button title={t('addToFavorites')} />
+      {isInFavorites ? (
+        <Button
+          title={t('removeFromFavorites')}
+          buttonStyle={{ backgroundColor: COLORS.RED_DARK }}
+          onPress={toggleIsFavorite}
+        />
+      ) : (
+        <Button
+          title={t('addToFavorites')}
+          buttonStyle={{ backgroundColor: COLORS.GREEN }}
+          onPress={toggleIsFavorite}
+        />
+      )}
     </Overlay>
   );
 };
