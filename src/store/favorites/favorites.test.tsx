@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import Favorites from 'screens/Favorites';
 import favoritesReducer from './reducers';
+import { selectMovies } from './selectors';
 import * as types from './actionTypes';
 
 describe('favorites reducer', () => {
@@ -47,7 +48,7 @@ describe('favorites reducer', () => {
 });
 
 describe('favorites selectors', () => {
-  const initialState = {
+  const state = {
     favorites: {
       data: [
         {
@@ -68,4 +69,7 @@ describe('favorites selectors', () => {
       ],
     },
   };
+  it('should return correct data', () => {
+    expect(selectMovies(state)).toEqual(state.favorites.data);
+  });
 });
