@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import React, { useState, useEffect, ReactElement } from 'react';
 import axios from 'axios';
 import { Text, View, ScrollView } from 'react-native';
@@ -30,29 +31,29 @@ const MovieInfo: React.FC<Props> = ({
   const [raiting, setRaiting] = useState('');
   const [error, setError] = useState(false);
 
-  const getAdditionalInfo = (): void => {
-    setLoading(true);
-    axios
-      .get<GetAdditionalInfoResponse>(
+  const getAdditionalInfo = async (): Promise<void> => {
+    try {
+      setLoading(true);
+      const response = await axios.get<GetAdditionalInfoResponse>(
         `${API_URL}/Title/${API_KEY}/${data.id}/Ratings`,
-      )
-      .then((res) => {
-        const { plot, imDbRating, errorMessage } = res.data;
-        setLoading(false);
-        if (errorMessage) {
-          setError(true);
-        } else {
-          setDescription(plot);
-          setRaiting(imDbRating);
-        }
-      })
-      .catch(() => {
-        setLoading(false);
+      );
+      const { plot, imDbRating, errorMessage } = response.data;
+      setLoading(false);
+      if (errorMessage) {
         setError(true);
-      });
+      } else {
+        setDescription(plot);
+        setRaiting(imDbRating);
+      }
+    } catch (err) {
+      setLoading(false);
+      setError(true);
+    }
   };
 
-  useEffect(getAdditionalInfo, []);
+  useEffect(() => {
+    getAdditionalInfo();
+  }, []);
 
   const renderContent = (type: string): ReactElement => {
     if (loading) {
