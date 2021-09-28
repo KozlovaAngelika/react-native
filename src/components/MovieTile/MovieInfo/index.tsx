@@ -6,15 +6,24 @@ import { useTranslation } from 'react-i18next';
 import { API_KEY, API_URL } from 'react-native-dotenv';
 import Loader from 'components/Loader';
 import Notice from 'components/Notice';
+import { COLORS } from 'utils/constants';
 import styles from './styles';
 
 interface Props {
   isVisible: boolean;
   onClose: () => void;
+  toggleIsFavorite: () => void;
+  isInFavorites: boolean;
   data: Movie;
 }
 
-const MovieInfo: React.FC<Props> = ({ isVisible, onClose, data }) => {
+const MovieInfo: React.FC<Props> = ({
+  isVisible,
+  onClose,
+  toggleIsFavorite,
+  isInFavorites,
+  data,
+}) => {
   const { t } = useTranslation();
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
@@ -61,7 +70,7 @@ const MovieInfo: React.FC<Props> = ({ isVisible, onClose, data }) => {
     <Overlay isVisible={isVisible} fullScreen overlayStyle={styles.overlay}>
       <View style={styles.btnContainer}>
         <Button
-          icon={<Icon name="close" />}
+          icon={<Icon name="close" color={COLORS.LIGHT_GREY} />}
           buttonStyle={styles.closeBtn}
           onPress={onClose}
         />
@@ -71,15 +80,28 @@ const MovieInfo: React.FC<Props> = ({ isVisible, onClose, data }) => {
           <Card.Title>{data.title}</Card.Title>
           <View style={styles.ratingContainer}>
             <Text style={styles.ratingTitle}>{t('rating')}</Text>
-            <View>{renderContent(raiting)}</View>
           </View>
-          <View style={styles.descriptionContainer}>
-            <Text style={styles.description}>{renderContent(description)}</Text>
-          </View>
-          <Card.Image source={{ uri: data.image }} resizeMode="contain" />
+          <Card.Image
+            source={{ uri: data.image }}
+            placeholderStyle={{ backgroundColor: COLORS.WHITE }}
+            PlaceholderContent={<Loader />}
+            resizeMode="contain"
+          />
         </Card>
       </ScrollView>
-      <Button title={t('addToFavorites')} />
+      {isInFavorites ? (
+        <Button
+          title={t('removeFromFavorites')}
+          buttonStyle={{ backgroundColor: COLORS.RED_DARK }}
+          onPress={toggleIsFavorite}
+        />
+      ) : (
+        <Button
+          title={t('addToFavorites')}
+          buttonStyle={{ backgroundColor: COLORS.GREEN }}
+          onPress={toggleIsFavorite}
+        />
+      )}
     </Overlay>
   );
 };

@@ -24,7 +24,7 @@ const Home: React.FunctionComponent = () => {
   const [searchValue, setSearchValue] = useState('');
 
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile data={item} key={item.id} isInFavorites={false} />
+    <MovieTile data={item} key={item.id} />
   );
 
   const searchMovie = useCallback(
@@ -65,6 +65,7 @@ const Home: React.FunctionComponent = () => {
       />
     );
   };
+
   return (
     <View style={styles.container}>
       <SearchBar value={searchValue} onChangeValue={onChangeValue} />

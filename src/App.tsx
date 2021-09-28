@@ -3,16 +3,16 @@ import { ThemeProvider } from 'react-native-elements';
 import { Provider } from 'react-redux';
 import './utils/i18n/index';
 import 'react-native-vector-icons';
-import { rootState } from 'store';
+import { PersistGate } from 'redux-persist/integration/react';
 import Tabs from './routes';
-import theme from './theme';
+import { rootState, persistedState } from './store';
 
 const App: React.FunctionComponent = () => (
-  <ThemeProvider theme={theme}>
-    <Provider store={rootState}>
+  <Provider store={rootState}>
+    <PersistGate loading={null} persistor={persistedState}>
       <Tabs />
-    </Provider>
-  </ThemeProvider>
+    </PersistGate>
+  </Provider>
 );
 
 export default App;
