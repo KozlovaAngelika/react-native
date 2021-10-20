@@ -4,7 +4,7 @@
   "favorites": "Favorites",
   "search": "Search",
   "error": "Something went wrong... Please, try again.",
-  "errorShortMessage": "Error",
+  "errorShortMessage": "No data to display...",
   "emptyRequestNotice": "To see a list of films, enter your request in the search bar.",
   "noResults": "No results... Please, try again.",
   "noFavorites": "You haven't added anything to your favorites yet.",

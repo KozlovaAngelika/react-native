@@ -62,7 +62,7 @@ const MovieInfo: React.FC<Props> = ({
     if (error) {
       return <Notice message={t('errorShortMessage')} isError />;
     }
-    if (!type.length) {
+    if (type && !type.length) {
       return <Text>-</Text>;
     }
     return <Text>{type}</Text>;
