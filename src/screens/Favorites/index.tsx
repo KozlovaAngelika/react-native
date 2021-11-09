@@ -1,7 +1,6 @@
 import LanguageSelection from 'components/LanguageSelection';
-import React from 'react';
-import Notice from 'components/Notice';
 import React, { ReactElement } from 'react';
+import Notice from 'components/Notice';
 import { useTranslation } from 'react-i18next';
 import { View, FlatList, ListRenderItem } from 'react-native';
 import { useSelector } from 'react-redux';
