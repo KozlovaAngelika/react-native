@@ -36,7 +36,7 @@ const Home: React.FunctionComponent = () => {
       setMessage('');
     }
   }, [searchValue, error, data]);
-
+  
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
     <MovieTile data={item} key={item.id} />
   );
@@ -61,7 +61,7 @@ const Home: React.FunctionComponent = () => {
     <View style={styles.container}>
       <SearchBar value={searchValue} onChangeValue={onChangeValue} />
       <View style={styles.container}>
-        <Content isLoading={isLoading} message={message} error={error}>
+        <Content isLoading={isLoading} message={message} error={Boolean(error)}>
           <FlatList
             data={data}
             renderItem={renderItem}

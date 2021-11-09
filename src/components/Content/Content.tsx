@@ -6,7 +6,7 @@ import { View } from 'react-native';
 interface Props {
   isLoading: boolean;
   message: string;
-  error: Error | null;
+  error: boolean;
 }
 
 const Content = ({
@@ -18,8 +18,8 @@ const Content = ({
   if (isLoading) {
     return <Loader />;
   }
-  if (message || error) {
-    return <Notice isError={Boolean(error)} message={message} />;
+  if (message) {
+    return <Notice isError={error} message={message} />;
   }
   return <View>{children}</View>;
 };
