@@ -26,9 +26,11 @@ export const getTopMovies = (): RootThunkAction<GetTopMoviesActions> => (
   getState,
   api,
 ) => {
+  const state = getState();
+  const lang = state.currentLanguage;
   dispatch(getTopMoviesStarted());
   api
-    .get<GetTopMoviesResponse>(`/Top250Movies/${API_KEY}`)
+    .get<GetTopMoviesResponse>(`/${lang}/API/Top250Movies/${API_KEY}`)
     .then(({ data }) => {
       const { items, errorMessage } = data;
       if (errorMessage) {

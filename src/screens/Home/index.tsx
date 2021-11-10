@@ -36,7 +36,7 @@ const Home: React.FunctionComponent = () => {
       setMessage('');
     }
   }, [searchValue, error, data]);
-  
+
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
     <MovieTile data={item} key={item.id} />
   );

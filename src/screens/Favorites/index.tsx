@@ -19,11 +19,6 @@ const Favorites: React.FunctionComponent = () => {
   return (
     <View style={styles.container}>
       <LanguageSelection />
-      <FlatList
-        data={null}
-        renderItem={renderItem}
-        style={styles.moviesContainer}
-      />
       {!data.length ? (
         <Notice isError={false} message={t('noFavorites')} />
       ) : (
