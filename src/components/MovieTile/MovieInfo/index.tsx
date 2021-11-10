@@ -35,7 +35,7 @@ const MovieInfo: React.FC<Props> = ({
     try {
       setLoading(true);
       const response = await axios.get<GetAdditionalInfoResponse>(
-        `${API_URL}/en/API/Title/${API_KEY}/${data.id}/Ratings`,
+        `${API_URL}en/API/Title/${API_KEY}/${data.id}/Ratings`,
       );
       const { plot, imDbRating, errorMessage } = response.data;
       setLoading(false);
