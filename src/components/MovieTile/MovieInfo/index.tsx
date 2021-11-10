@@ -1,13 +1,18 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import { Text, View, ScrollView } from 'react-native';
 import { Button, Overlay, Card, Icon } from 'react-native-elements';
 import { useTranslation } from 'react-i18next';
-import { API_KEY, API_URL } from 'react-native-dotenv';
 import Loader from 'components/Loader';
 import { COLORS } from 'utils/constants';
 import Content from 'components/Content/Content';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMovieInfo, clearMovieInfo } from 'store/movieInfo/actions';
+import {
+  selectDescription,
+  selectError,
+  selectLoadingStatus,
+  selectRating,
+} from 'store/movieInfo/selectors';
 import styles from './styles';
 
 interface Props {
@@ -26,50 +31,18 @@ const MovieInfo: React.FC<Props> = ({
   data,
 }) => {
   const { t } = useTranslation();
-  const [description, setDescription] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [raiting, setRaiting] = useState('');
-  const [error, setError] = useState(false);
+  const loading: boolean = useSelector(selectLoadingStatus);
+  const description: string = useSelector(selectDescription);
+  const rating: string = useSelector(selectRating);
+  const error: Error | null = useSelector(selectError);
+  const dispatch = useDispatch();
 
-  const getAdditionalInfo = async (): Promise<void> => {
-    try {
-      setLoading(true);
-      const response = await axios.get<GetAdditionalInfoResponse>(
-        `${API_URL}/Title/${API_KEY}/${data.id}/Ratings`,
-      );
-      const { plot, imDbRating, errorMessage } = response.data;
-      setLoading(false);
-      if (errorMessage) {
-        setError(true);
-      } else {
-        setDescription(plot);
-        setRaiting(imDbRating);
-      }
-    } catch (err) {
-      setLoading(false);
-      setError(true);
-    }
-  };
+  const errorMessage = t('errorShortMessage');
 
   useEffect(() => {
-    getAdditionalInfo();
+    dispatch(clearMovieInfo());
+    dispatch(getMovieInfo(data.id));
   }, []);
-
-  useEffect(() => {
-    if (error) {
-      setDescription(t('errorShortMessage'));
-      setRaiting(t('errorShortMessage'));
-    } else if (
-      (description && !description.length) ||
-      (raiting && !raiting.length)
-    ) {
-      setDescription(t('noData'));
-      setRaiting(t('noData'));
-    } else {
-      setDescription('');
-      setRaiting('');
-    }
-  }, [error, data]);
 
   return (
     <Overlay isVisible={isVisible} fullScreen overlayStyle={styles.overlay}>
@@ -85,10 +58,18 @@ const MovieInfo: React.FC<Props> = ({
           <Card.Title>{data.title}</Card.Title>
           <View style={styles.ratingContainer}>
             <Text style={styles.ratingTitle}>{t('rating')}</Text>
-            <Content isLoading={loading} message={raiting} error={error} />
+            <Content
+              isLoading={loading}
+              message={error ? errorMessage : rating}
+              error={!!error}
+            />
           </View>
           <View style={styles.descriptionContainer}>
-            <Content isLoading={loading} message={description} error={error} />
+            <Content
+              isLoading={loading}
+              message={error ? errorMessage : description}
+              error={!!error}
+            />
           </View>
           <Card.Image
             source={{ uri: data.image }}
