@@ -7,12 +7,7 @@ import { COLORS } from 'utils/constants';
 import Content from 'components/Content';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMovieInfo, clearMovieInfo } from 'store/movieInfo/actions';
-import {
-  selectDescription,
-  selectError,
-  selectLoadingStatus,
-  selectRating,
-} from 'store/movieInfo/selectors';
+import selectMovieInfo from 'store/movieInfo/selectors';
 import styles from './styles';
 
 interface Props {
@@ -20,7 +15,7 @@ interface Props {
   onClose: () => void;
   toggleIsFavorite: () => void;
   isInFavorites: boolean;
-  data: Movie;
+  basicData: Movie;
 }
 
 const MovieInfo: React.FC<Props> = ({
@@ -28,20 +23,16 @@ const MovieInfo: React.FC<Props> = ({
   onClose,
   toggleIsFavorite,
   isInFavorites,
-  data,
+  basicData,
 }) => {
   const { t } = useTranslation();
-  const loading: boolean = useSelector(selectLoadingStatus);
-  const description: string = useSelector(selectDescription);
-  const rating: string = useSelector(selectRating);
-  const error: Error | null = useSelector(selectError);
+  const { loading, error, data }: MovieInfoState = useSelector(selectMovieInfo);
   const dispatch = useDispatch();
-
   const errorMessage = t('errorShortMessage');
 
   useEffect(() => {
     dispatch(clearMovieInfo());
-    dispatch(getMovieInfo(data.id));
+    dispatch(getMovieInfo(basicData.id));
   }, []);
 
   return (
@@ -55,24 +46,24 @@ const MovieInfo: React.FC<Props> = ({
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Card containerStyle={styles.card}>
-          <Card.Title>{data.title}</Card.Title>
+          <Card.Title>{basicData.title}</Card.Title>
           <View style={styles.ratingContainer}>
             <Text style={styles.ratingTitle}>{t('rating')}</Text>
             <Content
               isLoading={loading}
-              message={error ? errorMessage : rating}
+              message={error ? errorMessage : data.imDbRating}
               error={!!error}
             />
           </View>
           <View style={styles.descriptionContainer}>
             <Content
               isLoading={loading}
-              message={error ? errorMessage : description}
+              message={error ? errorMessage : data.plot}
               error={!!error}
             />
           </View>
           <Card.Image
-            source={{ uri: data.image }}
+            source={{ uri: basicData.image }}
             placeholderStyle={{ backgroundColor: COLORS.WHITE }}
             PlaceholderContent={<Loader />}
             resizeMode="contain"
