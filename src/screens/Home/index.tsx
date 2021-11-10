@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-else-return */
 import React, { useState, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -31,13 +30,14 @@ const Home: React.FunctionComponent = () => {
   const message = useMemo(() => {
     if (!searchValue.trim()) {
       return t('emptyRequestNotice');
-    } else if (error) {
-      return t('error');
-    } else if (data?.length === 0) {
-      return t('noResults');
-    } else {
-      return '';
     }
+    if (error) {
+      return t('error');
+    }
+    if (!data?.length) {
+      return t('noResults');
+    }
+    return '';
   }, [error, data]);
 
   const searchMovie = useCallback(
