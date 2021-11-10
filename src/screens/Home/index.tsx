@@ -13,7 +13,7 @@ import {
   selectMovies,
 } from 'store/movies/selectors';
 import { clearSearchResults, searchMovies } from 'store/movies/actions';
-import Content from 'components/Content/Content';
+import Content from 'components/Content';
 import styles from './styles';
 
 const Home: React.FunctionComponent = () => {

@@ -4,7 +4,7 @@ import { Button, Overlay, Card, Icon } from 'react-native-elements';
 import { useTranslation } from 'react-i18next';
 import Loader from 'components/Loader';
 import { COLORS } from 'utils/constants';
-import Content from 'components/Content/Content';
+import Content from 'components/Content';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMovieInfo, clearMovieInfo } from 'store/movieInfo/actions';
 import {
