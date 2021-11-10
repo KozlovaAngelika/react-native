@@ -5,11 +5,11 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
+    "start": "react-native start --reset-cache",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "prepare": "husky install",
-    "reboot": "watchman watch-del-all && rm -rf node_modules && rm -rf ios/Pods && npm install && cd ios && pod install && cd ../"
+    "clean": "watchman watch-del-all && rm -rf node_modules && rm -rf ios/Pods && npm install && cd ios && pod install && cd ../"
   },
   "dependencies": {
     "@material-ui/icons": "4.11.2",
@@ -34,10 +34,12 @@
     "react-native": "0.64.2",
     "react-native-dotenv": "3.2.0",
     "react-native-elements": "3.4.2",
+    "react-native-flags": "1.0.0",
     "react-native-i18n": "2.0.15",
     "react-native-ico-material-design": "3.3.1",
     "react-native-safe-area-context": "3.3.0",
     "react-native-screens": "3.5.0",
+    "react-native-select-dropdown": "1.1.0",
     "react-native-vector-icons": "8.1.0",
     "react-redux": "7.2.4",
     "redux": "4.1.1",

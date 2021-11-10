@@ -1,4 +1,5 @@
-import React, { useState, useEffect, ReactElement } from 'react';
+/* eslint-disable @typescript-eslint/no-floating-promises */
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Text, View, ScrollView } from 'react-native';
 import { Button, Overlay, Card, Icon } from 'react-native-elements';
@@ -6,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { COLORS } from 'utils/constants';
 import Loader from 'components/Loader';
 import { API_KEY, API_URL } from 'react-native-dotenv';
-import Notice from 'components/Notice';
+import Content from 'components/Content/Content';
 import styles from './styles';
 
 export interface Props {
@@ -30,42 +31,46 @@ const MovieInfo: React.FC<Props> = ({
   const [raiting, setRaiting] = useState('');
   const [error, setError] = useState(false);
 
-  const getAdditionalInfo = (): void => {
-    setLoading(true);
-    axios
-      .get<GetAdditionalInfoResponse>(
+  const getAdditionalInfo = async (): Promise<void> => {
+    try {
+      setLoading(true);
+      const response = await axios.get<GetAdditionalInfoResponse>(
         `${API_URL}/Title/${API_KEY}/${data.id}/Ratings`,
-      )
-      .then((res) => {
-        setLoading(false);
-        const { plot, imDbRating, errorMessage } = res.data;
-        if (errorMessage) {
-          setError(true);
-        } else {
-          setDescription(plot);
-          setRaiting(imDbRating);
-        }
-      })
-      .catch(() => {
-        setLoading(false);
+      );
+      const { plot, imDbRating, errorMessage } = response.data;
+      setLoading(false);
+      if (errorMessage) {
         setError(true);
-      });
+      } else {
+        setDescription(plot);
+        setRaiting(imDbRating);
+      }
+    } catch (err) {
+      setLoading(false);
+      setError(true);
+    }
   };
 
-  useEffect(getAdditionalInfo, []);
+  useEffect(() => {
+    getAdditionalInfo();
+  }, []);
 
-  const renderContent = (type: string): ReactElement => {
-    if (loading) {
-      return <Loader />;
-    }
+  useEffect(() => {
     if (error) {
-      return <Notice message={t('errorShortMessage')} isError />;
+      setDescription(t('errorShortMessage'));
+      setRaiting(t('errorShortMessage'));
+    } else if (
+      (description && !description.length) ||
+      (raiting && !raiting.length)
+    ) {
+      setDescription(t('noData'));
+      setRaiting(t('noData'));
+    } else {
+      setDescription('');
+      setRaiting('');
     }
-    if (!type.length) {
-      return <Text>-</Text>;
-    }
-    return <Text>{type}</Text>;
-  };
+  }, [error, data]);
+
   return (
     <Overlay
       isVisible={isVisible}
@@ -85,28 +90,32 @@ const MovieInfo: React.FC<Props> = ({
           <Card.Title>{data.title}</Card.Title>
           <View style={styles.ratingContainer}>
             <Text style={styles.ratingTitle}>{t('rating')}</Text>
-            <View>
-              <Text testID="raiting">{renderContent(raiting)}</Text>
-            </View>
+            <Content isLoading={loading} message={raiting} error={error} />
           </View>
           <View style={styles.descriptionContainer}>
-            <Text style={styles.description} testID="description">
-              {renderContent(description)}
-            </Text>
+            <Content isLoading={loading} message={description} error={error} />
           </View>
-          <Card.Image source={{ uri: data.image }} resizeMode="contain" />
+          <Card.Image
+            source={{ uri: data.image }}
+            placeholderStyle={{ backgroundColor: COLORS.WHITE }}
+            PlaceholderContent={<Loader />}
+            resizeMode="contain"
+          />
         </Card>
       </ScrollView>
-      <Button
-        title={isInFavorites ? t('removeFromFavorites') : t('addToFavorites')}
-        buttonStyle={
-          isInFavorites
-            ? { backgroundColor: COLORS.RED_DARK }
-            : { backgroundColor: COLORS.GREEN }
-        }
-        onPress={toggleIsFavorite}
-        testID="toggleBtn"
-      />
+      {isInFavorites ? (
+        <Button
+          title={t('removeFromFavorites')}
+          buttonStyle={{ backgroundColor: COLORS.RED_DARK }}
+          onPress={toggleIsFavorite}
+        />
+      ) : (
+        <Button
+          title={t('addToFavorites')}
+          buttonStyle={{ backgroundColor: COLORS.GREEN }}
+          onPress={toggleIsFavorite}
+        />
+      )}
     </Overlay>
   );
 };

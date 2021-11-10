@@ -10,3 +10,8 @@ interface GetAdditionalInfoResponse {
   imDbRating: string;
   errorMessage: string;
 }
+
+interface GetTopMoviesResponse {
+  items: Movie[];
+  errorMessage: string;
+}

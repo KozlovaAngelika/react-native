@@ -6,6 +6,7 @@ import { createStore, applyMiddleware, combineReducers, Action } from 'redux';
 import thunk, { ThunkAction } from 'redux-thunk';
 import { NativeModules } from 'react-native';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import changeLanguageReducer from './languageSelection/reducers';
 import favoritesReducer from './favorites/reducers';
 import moviesReducer from './movies/reducers';
 import topMoviesReducer from './topMovies/reducers';
@@ -22,6 +23,7 @@ const persistedReducer = persistReducer(persistConfig, favoritesReducer);
 
 const reducer = combineReducers({
   movies: moviesReducer,
+  currentLanguage: changeLanguageReducer,
   topMovies: topMoviesReducer,
   favorites: persistedReducer,
 });

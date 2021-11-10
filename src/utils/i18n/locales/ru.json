@@ -10,5 +10,6 @@
   "noFavorites": "Вы пока ничего не добавили в избранное",
   "addToFavorites": "Добавить в избранное",
   "removeFromFavorites": "Удалить из избранного",
-  "rating": "Рейтинг IMDb:"
+  "rating": "Рейтинг IMDb:",
+  "noData": "нет данных"
 }

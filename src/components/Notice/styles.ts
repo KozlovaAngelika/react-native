@@ -3,7 +3,7 @@ import { COLORS } from 'utils/constants';
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 0,
   },
   text: {
     color: COLORS.LIGHT_GREY,

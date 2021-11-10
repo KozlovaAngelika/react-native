@@ -16,9 +16,9 @@ const Tabs: React.FunctionComponent = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Home"
+        initialRouteName={ROUTES.HOME}
         screenOptions={{
-          tabBarActiveTintColor: `${COLORS.BLACK}`,
+          tabBarActiveTintColor: COLORS.BLACK,
         }}>
         <Tab.Screen
           name={ROUTES.HOME}
@@ -38,7 +38,6 @@ const Tabs: React.FunctionComponent = () => {
             tabBarIcon: ({ focused }) => (
               <TabIcon iconName="thumb-up" focused={focused} />
             ),
-            unmountOnBlur: true,
           }}
         />
         <Tab.Screen
