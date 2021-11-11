@@ -1,4 +1,5 @@
-import React, { ReactElement, useState, useCallback } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import debounce from 'lodash.debounce';
@@ -10,9 +11,8 @@ import {
   selectLoadingStatus,
   selectMovies,
 } from 'store/movies/selectors';
-import Loader from 'components/Loader';
 import { clearSearchResults, searchMovies } from 'store/movies/actions';
-import Notice from 'components/Notice';
+import Content from 'components/Content';
 import styles from './styles';
 
 const Home: React.FunctionComponent = () => {
@@ -26,6 +26,19 @@ const Home: React.FunctionComponent = () => {
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
     <MovieTile data={item} key={item.id} />
   );
+
+  const getMessage = (): string => {
+    if (!searchValue.trim()) {
+      return t('emptyRequestNotice');
+    }
+    if (error) {
+      return t('error');
+    }
+    if (!data?.length) {
+      return t('noResults');
+    }
+    return '';
+  };
 
   const searchMovie = useCallback(
     debounce((value: string) => {
@@ -43,33 +56,19 @@ const Home: React.FunctionComponent = () => {
     searchMovie(value.trim());
   }, []);
 
-  const renderContent = (): ReactElement => {
-    if (!searchValue.trim()) {
-      return <Notice message={t('emptyRequestNotice')} />;
-    }
-    if (isLoading) {
-      return <Loader />;
-    }
-    if (error) {
-      return <Notice isError message={t('error')} />;
-    }
-    if (data?.length === 0) {
-      return <Notice message={t('noResults')} />;
-    }
-    return (
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        style={styles.moviesContainer}
-        showsVerticalScrollIndicator={false}
-      />
-    );
-  };
-
   return (
     <View style={styles.container}>
       <SearchBar value={searchValue} onChangeValue={onChangeValue} />
-      <View style={styles.container}>{renderContent()}</View>
+      <View style={styles.container}>
+        <Content isLoading={isLoading} message={getMessage()} error={!!error}>
+          <FlatList
+            data={data}
+            renderItem={renderItem}
+            style={styles.moviesContainer}
+            showsVerticalScrollIndicator={false}
+          />
+        </Content>
+      </View>
     </View>
   );
 };

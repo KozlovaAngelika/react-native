@@ -9,6 +9,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import favoritesReducer from './favorites/reducers';
 import moviesReducer from './movies/reducers';
 import topMoviesReducer from './topMovies/reducers';
+import movieInfoReducer from './movieInfo/reducers';
 
 if (__DEV__) {
   NativeModules.DevSettings.setIsDebuggingRemotely(true);
@@ -24,6 +25,7 @@ const reducer = combineReducers({
   movies: moviesReducer,
   topMovies: topMoviesReducer,
   favorites: persistedReducer,
+  movieInfo: movieInfoReducer,
 });
 
 const api = axios.create({
