@@ -15,7 +15,7 @@ interface Props {
   onClose: () => void;
   toggleIsFavorite: () => void;
   isInFavorites: boolean;
-  basicData: Movie;
+  data: Movie;
 }
 
 const MovieInfo: React.FC<Props> = ({
@@ -23,16 +23,18 @@ const MovieInfo: React.FC<Props> = ({
   onClose,
   toggleIsFavorite,
   isInFavorites,
-  basicData,
+  data,
 }) => {
   const { t } = useTranslation();
-  const { loading, error, data }: MovieInfoState = useSelector(selectMovieInfo);
+  const { loading, error, data: additionalInfo }: MovieInfoState = useSelector(
+    selectMovieInfo,
+  );
   const dispatch = useDispatch();
   const errorMessage = t('errorShortMessage');
 
   useEffect(() => {
     dispatch(clearMovieInfo());
-    dispatch(getMovieInfo(basicData.id));
+    dispatch(getMovieInfo(data.id));
   }, []);
 
   return (
@@ -46,24 +48,24 @@ const MovieInfo: React.FC<Props> = ({
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Card containerStyle={styles.card}>
-          <Card.Title>{basicData.title}</Card.Title>
+          <Card.Title>{data.title}</Card.Title>
           <View style={styles.ratingContainer}>
             <Text style={styles.ratingTitle}>{t('rating')}</Text>
             <Content
               isLoading={loading}
-              message={error ? errorMessage : data.imDbRating}
+              message={error ? errorMessage : additionalInfo.imDbRating}
               error={!!error}
             />
           </View>
           <View style={styles.descriptionContainer}>
             <Content
               isLoading={loading}
-              message={error ? errorMessage : data.plot}
+              message={error ? errorMessage : additionalInfo.plot}
               error={!!error}
             />
           </View>
           <Card.Image
-            source={{ uri: basicData.image }}
+            source={{ uri: data.image }}
             placeholderStyle={{ backgroundColor: COLORS.WHITE }}
             PlaceholderContent={<Loader />}
             resizeMode="contain"

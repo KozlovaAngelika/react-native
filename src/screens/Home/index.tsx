@@ -27,7 +27,7 @@ const Home: React.FunctionComponent = () => {
     <MovieTile data={item} key={item.id} />
   );
 
-  const message = useMemo(() => {
+  const getMessage = (): string => {
     if (!searchValue.trim()) {
       return t('emptyRequestNotice');
     }
@@ -38,7 +38,7 @@ const Home: React.FunctionComponent = () => {
       return t('noResults');
     }
     return '';
-  }, [error, data]);
+  };
 
   const searchMovie = useCallback(
     debounce((value: string) => {
@@ -60,7 +60,7 @@ const Home: React.FunctionComponent = () => {
     <View style={styles.container}>
       <SearchBar value={searchValue} onChangeValue={onChangeValue} />
       <View style={styles.container}>
-        <Content isLoading={isLoading} message={message} error={!!error}>
+        <Content isLoading={isLoading} message={getMessage()} error={!!error}>
           <FlatList
             data={data}
             renderItem={renderItem}

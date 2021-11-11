@@ -64,7 +64,7 @@ const MovieTile: React.FC<Props> = ({ data }) => {
             onClose={toggleModal}
             toggleIsFavorite={toggleIsFavorite}
             isInFavorites={isInFavorites}
-            basicData={data}
+            data={data}
           />
         )}
       </Card>
