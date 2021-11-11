@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-else-return */
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import debounce from 'lodash.debounce';
@@ -13,7 +12,7 @@ import {
   selectMovies,
 } from 'store/movies/selectors';
 import { clearSearchResults, searchMovies } from 'store/movies/actions';
-import Content from 'components/Content/Content';
+import Content from 'components/Content';
 import styles from './styles';
 
 const Home: React.FunctionComponent = () => {
@@ -23,23 +22,23 @@ const Home: React.FunctionComponent = () => {
   const isLoading: boolean = useSelector(selectLoadingStatus);
   const error: Error | null = useSelector(selectError);
   const [searchValue, setSearchValue] = useState('');
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    if (!searchValue.trim()) {
-      setMessage(t('emptyRequestNotice'));
-    } else if (error) {
-      setMessage(t('error'));
-    } else if (data?.length === 0) {
-      setMessage(t('noResults'));
-    } else {
-      setMessage('');
-    }
-  }, [searchValue, error, data]);
 
   const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
     <MovieTile data={item} key={item.id} />
   );
+
+  const getMessage = (): string => {
+    if (!searchValue.trim()) {
+      return t('emptyRequestNotice');
+    }
+    if (error) {
+      return t('error');
+    }
+    if (!data?.length) {
+      return t('noResults');
+    }
+    return '';
+  };
 
   const searchMovie = useCallback(
     debounce((value: string) => {
@@ -61,7 +60,7 @@ const Home: React.FunctionComponent = () => {
     <View style={styles.container}>
       <SearchBar value={searchValue} onChangeValue={onChangeValue} />
       <View style={styles.container}>
-        <Content isLoading={isLoading} message={message} error={Boolean(error)}>
+        <Content isLoading={isLoading} message={getMessage()} error={!!error}>
           <FlatList
             data={data}
             renderItem={renderItem}

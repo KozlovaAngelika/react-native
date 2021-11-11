@@ -10,6 +10,7 @@ import changeLanguageReducer from './languageSelection/reducers';
 import favoritesReducer from './favorites/reducers';
 import moviesReducer from './movies/reducers';
 import topMoviesReducer from './topMovies/reducers';
+import movieInfoReducer from './movieInfo/reducers';
 
 if (__DEV__) {
   NativeModules.DevSettings.setIsDebuggingRemotely(true);
@@ -26,6 +27,7 @@ const reducer = combineReducers({
   currentLanguage: changeLanguageReducer,
   topMovies: topMoviesReducer,
   favorites: persistedReducer,
+  movieInfo: movieInfoReducer,
 });
 
 const api = axios.create({
