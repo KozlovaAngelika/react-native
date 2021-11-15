@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +10,7 @@ import {
   selectLoadingStatus,
   selectMovies,
 } from 'store/movies/selectors';
-import { clearSearchResults, searchMovies } from 'store/movies/actions';
+import { clearSearchResults, searchMoviesStarted } from 'store/movies/actions';
 import Content from 'components/Content';
 import styles from './styles';
 
@@ -34,7 +33,7 @@ const Home: React.FunctionComponent = () => {
     if (error) {
       return t('error');
     }
-    if (!data?.length) {
+    if (data && !data?.length) {
       return t('noResults');
     }
     return '';
@@ -46,7 +45,7 @@ const Home: React.FunctionComponent = () => {
         dispatch(clearSearchResults());
         return;
       }
-      dispatch(searchMovies(value));
+      dispatch(searchMoviesStarted(value));
     }, 300),
     [],
   );

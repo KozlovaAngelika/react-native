@@ -1,5 +1,5 @@
-import { SearchMoviesActions } from './types';
 import * as types from './actionTypes';
+import { SearchMoviesActions } from './types';
 
 const initialState = {
   loading: false,
@@ -44,4 +44,5 @@ const moviesReducer = (
       return state;
   }
 };
+
 export default moviesReducer;

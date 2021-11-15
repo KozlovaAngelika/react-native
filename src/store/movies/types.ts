@@ -7,6 +7,7 @@ import {
 
 export interface SearchMovies {
   type: typeof SEARCH_MOVIES_STARTED;
+  payload: string;
 }
 
 export interface ClearSearchResults {
