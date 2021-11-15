@@ -35,7 +35,7 @@ export const getMovieInfo = (id: string): RootThunkAction<MovieInfoActions> => (
   api,
 ) => {
   const state = getState();
-  const lang = state.currentLanguage;
+  const lang = state.customizationApp.currentLanguage;
   dispatch(getNovieInfoStarted);
   api
     .get<GetAdditionalInfoResponse>(

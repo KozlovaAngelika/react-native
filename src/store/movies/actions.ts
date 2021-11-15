@@ -31,7 +31,7 @@ export const searchMovies = (
   value: string,
 ): RootThunkAction<SearchMoviesActions> => (dispatch, getState, api) => {
   const state = getState();
-  const lang = state.currentLanguage;
+  const lang = state.customizationApp.currentLanguage;
   dispatch(searchMoviesStarted());
   api
     .get<SearchMovieResponse>(`/${lang}/API/SearchMovie/${API_KEY}/${value}`)

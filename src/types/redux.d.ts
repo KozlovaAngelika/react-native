@@ -1,8 +1,12 @@
+import { currentLanguage } from 'store/customization/selectors';
+
 type MoviesState = AsyncState<Movie[] | null>;
 type TopMovieState = AsyncState<Movie[]>;
 type MovieInfoState = AsyncState<GetAdditionalInfoResponse>;
 
-type CurrentLanguageState = string;
+interface CurrentLanguageState {
+  currentLanguage: string;
+}
 
 interface FavoritesState {
   data: Movie[];

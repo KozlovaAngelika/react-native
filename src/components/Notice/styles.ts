@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
   },
   text: {
-    color: COLORS.LIGHT_GREY,
+    color: COLORS.GREY,
     textAlign: 'center',
   },
   error: {

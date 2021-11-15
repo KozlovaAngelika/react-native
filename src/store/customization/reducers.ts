@@ -1,17 +1,23 @@
+import { CurrentLanguageState } from 'types/redux';
 import { ChangeLanguageActions } from './types';
 import * as types from './actionTypes';
 
-const initialState = 'en';
+const initialState = {
+  currentLanguage: 'en',
+};
 
-const changeLanguageReducer = (
+const customizationAppReducer = (
   state: CurrentLanguageState = initialState,
   action: ChangeLanguageActions,
 ): CurrentLanguageState => {
   switch (action.type) {
     case types.SET_CURRENT_LANGUAGE:
-      return action.payload;
+      return {
+        ...state,
+        currentLanguage: action.payload,
+      };
     default:
       return state;
   }
 };
-export default changeLanguageReducer;
+export default customizationAppReducer;

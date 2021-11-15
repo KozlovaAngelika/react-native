@@ -27,7 +27,7 @@ export const getTopMovies = (): RootThunkAction<GetTopMoviesActions> => (
   api,
 ) => {
   const state = getState();
-  const lang = state.currentLanguage;
+  const lang = state.customizationApp.currentLanguage;
   dispatch(getTopMoviesStarted());
   api
     .get<GetTopMoviesResponse>(`/${lang}/API/Top250Movies/${API_KEY}`)

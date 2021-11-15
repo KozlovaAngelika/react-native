@@ -1,18 +1,24 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
 import React from 'react';
 import { Text, View } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import Flag from 'react-native-flags';
 import { useDispatch } from 'react-redux';
-import { changeLanguage } from 'store/languageSelection/actions';
+import { changeLanguage } from 'store/customization/actions';
 import i18next from 'i18next';
 import { flagKeys, languages } from 'utils/constants';
 import styles from './styles';
 
 const LanguageSelection: React.FunctionComponent = () => {
   const dispatch = useDispatch();
-  const getFlag = (flagName: string): string =>
-    flagKeys.get(flagName) ?? 'shiny';
+  const getFlag = (flagName: string): string => {
+    return flagKeys.get(flagName) ?? 'shiny';
+  };
+  const onSelectHandler = (selectedItem: any, index: number) => {
+    const langKey = languages[index];
+    dispatch(changeLanguage(langKey));
+    i18next.changeLanguage(langKey);
+  };
+
   return (
     <SelectDropdown
       renderCustomizedRowChild={(selectedItem) => (
@@ -26,15 +32,11 @@ const LanguageSelection: React.FunctionComponent = () => {
       buttonStyle={styles.btn}
       dropdownStyle={styles.dropdown}
       rowStyle={styles.row}
-      onSelect={(selectedItem, index) => {
-        const langKey = languages[index];
-        dispatch(changeLanguage(langKey));
-        i18next.changeLanguage(langKey);
-      }}
-      buttonTextAfterSelection={(selectedItem, index) => selectedItem}
-      rowTextForSelection={(item, index) => item}
+      onSelect={onSelectHandler}
+      buttonTextAfterSelection={(selectedItem) => selectedItem}
+      rowTextForSelection={(item) => item}
     />
   );
 };
 
-export default LanguageSelection;
+export default React.memo(LanguageSelection);

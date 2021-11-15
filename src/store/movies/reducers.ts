@@ -1,3 +1,4 @@
+import { MoviesState } from 'types/redux';
 import { SearchMoviesActions } from './types';
 import * as types from './actionTypes';
 
@@ -44,4 +45,5 @@ const moviesReducer = (
       return state;
   }
 };
+
 export default moviesReducer;

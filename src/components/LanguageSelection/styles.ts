@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 0,
     borderRadius: 15,
-    borderColor: COLORS.LIGHT_GREY,
+    borderColor: COLORS.GREY,
     borderWidth: 1.5,
     color: COLORS.GREY,
     backgroundColor: COLORS.WHITE,

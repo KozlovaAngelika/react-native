@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   description: {
-    color: COLORS.LIGHT_GREY,
+    color: COLORS.GREY,
   },
   ratingContainer: {
     flexDirection: 'row',
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     padding: 0,
     borderRadius: 20,
     borderWidth: 2,
-    borderColor: COLORS.LIGHT_GREY,
+    borderColor: COLORS.GREY,
   },
   placeholderStyle: {
     backgroundColor: COLORS.WHITE,
