@@ -6,14 +6,8 @@ import Flag from 'react-native-flags';
 import { useDispatch } from 'react-redux';
 import { changeLanguage } from 'store/languageSelection/actions';
 import i18next from 'i18next';
+import { flagKeys, languages } from 'utils/constants';
 import styles from './styles';
-
-const languages = ['en', 'ru'];
-
-const flagKeys = new Map([
-  ['en', 'GB'],
-  ['ru', 'RU'],
-]);
 
 const LanguageSelection: React.FunctionComponent = () => {
   const dispatch = useDispatch();
