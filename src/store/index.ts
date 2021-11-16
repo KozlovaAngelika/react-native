@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, combineReducers, Action } from 'redux';
 import thunk, { ThunkAction } from 'redux-thunk';
 import { NativeModules } from 'react-native';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import customizationAppReducer from './customization/reducers';
+import configAppReducer from './config/reducers';
 import favoritesReducer from './favorites/reducers';
 import moviesReducer from './movies/reducers';
 import topMoviesReducer from './topMovies/reducers';
@@ -25,7 +25,7 @@ const persistedReducer = persistReducer(persistConfig, favoritesReducer);
 
 const reducer = combineReducers({
   movies: moviesReducer,
-  customizationApp: customizationAppReducer,
+  customizationApp: configAppReducer,
   topMovies: topMoviesReducer,
   favorites: persistedReducer,
   movieInfo: movieInfoReducer,

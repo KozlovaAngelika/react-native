@@ -1,10 +1,10 @@
-import { currentLanguage } from 'store/customization/selectors';
+import { currentLanguage } from 'store/config/selectors';
 
 type MoviesState = AsyncState<Movie[] | null>;
 type TopMovieState = AsyncState<Movie[]>;
 type MovieInfoState = AsyncState<GetAdditionalInfoResponse>;
 
-interface CurrentLanguageState {
+interface ConfigAppState {
   currentLanguage: string;
 }
 

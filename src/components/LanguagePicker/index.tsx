@@ -3,20 +3,17 @@ import { Text, View } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import Flag from 'react-native-flags';
 import { useDispatch } from 'react-redux';
-import { changeLanguage } from 'store/customization/actions';
+import { changeLanguage } from 'store/config/actions';
 import i18next from 'i18next';
 import { flagKeys, languages } from 'utils/constants';
 import styles from './styles';
 
 const LanguageSelection: React.FunctionComponent = () => {
   const dispatch = useDispatch();
-  const getFlag = (flagName: string): string => {
-    return flagKeys[flagName] ?? 'shiny';
-  };
-  const onSelectHandler = (selectedItem: any, index: number): void => {
+  const onSelectHandler = async (_selectedItem: string, index: number) => {
     const langKey = languages[index];
     dispatch(changeLanguage(langKey));
-    i18next.changeLanguage(langKey);
+    await i18next.changeLanguage(langKey);
   };
 
   return (
@@ -24,7 +21,7 @@ const LanguageSelection: React.FunctionComponent = () => {
       renderCustomizedRowChild={(selectedItem) => (
         <View style={styles.container}>
           <Text style={styles.text}>{selectedItem}</Text>
-          <Flag code={getFlag(selectedItem)} size={16} />
+          <Flag code={flagKeys[selectedItem] ?? 'shiny'} size={16} />
         </View>
       )}
       data={languages}

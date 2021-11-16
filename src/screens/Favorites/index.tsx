@@ -1,5 +1,5 @@
 import LanguageSelection from 'components/LanguagePicker';
-import React, { ReactElement } from 'react';
+import React from 'react';
 import Notice from 'components/Notice';
 import { useTranslation } from 'react-i18next';
 import { View, FlatList, ListRenderItem } from 'react-native';

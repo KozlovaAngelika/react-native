@@ -34,7 +34,7 @@ const Home: React.FunctionComponent = () => {
     if (error) {
       return t('error');
     }
-    if (data && !data?.length) {
+    if (data?.length === 0) {
       return t('noResults');
     }
     return '';
