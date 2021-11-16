@@ -11,9 +11,9 @@ import styles from './styles';
 const LanguageSelection: React.FunctionComponent = () => {
   const dispatch = useDispatch();
   const getFlag = (flagName: string): string => {
-    return flagKeys.get(flagName) ?? 'shiny';
+    return flagKeys[flagName] ?? 'shiny';
   };
-  const onSelectHandler = (selectedItem: any, index: number) => {
+  const onSelectHandler = (selectedItem: any, index: number): void => {
     const langKey = languages[index];
     dispatch(changeLanguage(langKey));
     i18next.changeLanguage(langKey);

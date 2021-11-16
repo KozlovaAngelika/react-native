@@ -17,7 +17,7 @@ export const ROUTES = {
 
 export const languages = ['en', 'ru'];
 
-export const flagKeys = new Map([
-  ['en', 'GB'],
-  ['ru', 'RU'],
-]);
+export const flagKeys = {
+  en: 'GB',
+  ru: 'RU',
+};
