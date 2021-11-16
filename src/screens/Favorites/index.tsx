@@ -1,4 +1,4 @@
-import LanguageSelection from 'components/LanguageSelection';
+import LanguageSelection from 'components/LanguagePicker';
 import React, { ReactElement } from 'react';
 import Notice from 'components/Notice';
 import { useTranslation } from 'react-i18next';
