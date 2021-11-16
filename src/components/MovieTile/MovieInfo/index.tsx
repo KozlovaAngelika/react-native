@@ -6,7 +6,7 @@ import Loader from 'components/Loader';
 import { COLORS } from 'utils/constants';
 import Content from 'components/Content';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMovieInfo, clearMovieInfo } from 'store/movieInfo/actions';
+import { clearMovieInfo, getMovieInfoStarted } from 'store/movieInfo/actions';
 import selectMovieInfo from 'store/movieInfo/selectors';
 import styles from './styles';
 
@@ -34,7 +34,7 @@ const MovieInfo: React.FC<Props> = ({
 
   useEffect(() => {
     dispatch(clearMovieInfo());
-    dispatch(getMovieInfo(data.id));
+    dispatch(getMovieInfoStarted(data.id));
   }, []);
 
   return (
