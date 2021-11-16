@@ -1,4 +1,4 @@
-import LanguageSelection from 'components/LanguagePicker';
+import LanguagePicker from 'components/LanguagePicker';
 import React from 'react';
 import Notice from 'components/Notice';
 import { useTranslation } from 'react-i18next';
@@ -18,7 +18,7 @@ const Favorites: React.FunctionComponent = () => {
 
   return (
     <View style={styles.container}>
-      <LanguageSelection />
+      <LanguagePicker />
       {!data.length ? (
         <Notice isError={false} message={t('noFavorites')} />
       ) : (

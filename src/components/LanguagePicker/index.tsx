@@ -8,7 +8,7 @@ import i18next from 'i18next';
 import { flagKeys, languages } from 'utils/constants';
 import styles from './styles';
 
-const LanguageSelection: React.FunctionComponent = () => {
+const LanguagePicker: React.FunctionComponent = () => {
   const dispatch = useDispatch();
   const onSelectHandler = async (_selectedItem: string, index: number) => {
     const langKey = languages[index];
@@ -36,4 +36,4 @@ const LanguageSelection: React.FunctionComponent = () => {
   );
 };
 
-export default React.memo(LanguageSelection);
+export default React.memo(LanguagePicker);
