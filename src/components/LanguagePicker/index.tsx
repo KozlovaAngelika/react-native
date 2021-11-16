@@ -13,7 +13,11 @@ const LanguagePicker: React.FunctionComponent = () => {
   const onSelectHandler = async (_selectedItem: string, index: number) => {
     const langKey = languages[index];
     dispatch(changeLanguage(langKey));
-    await i18next.changeLanguage(langKey);
+    try {
+      await i18next.changeLanguage(langKey);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
