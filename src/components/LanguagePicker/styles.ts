@@ -29,13 +29,6 @@ const styles = StyleSheet.create({
     color: COLORS.GREY,
     backgroundColor: COLORS.WHITE,
   },
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    textAlign: 'center',
-  },
 });
 
 export default styles;

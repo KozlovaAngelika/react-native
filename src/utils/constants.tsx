@@ -22,6 +22,11 @@ export const flagKeys = {
   ru: 'RU',
 };
 
+export const flagConfig = {
+  defaultValue: 'shiny',
+  size: 16,
+};
+
 export const toastTypes = {
   success: 'success',
   info: 'info',

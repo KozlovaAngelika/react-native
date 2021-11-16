@@ -1,14 +1,13 @@
 import React from 'react';
-import { Text, View } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
-import Flag from 'react-native-flags';
 import Toast from 'react-native-toast-message';
 import { useDispatch } from 'react-redux';
 import { changeLanguage } from 'store/config/actions';
 import i18next from 'i18next';
-import { flagKeys, languages, toastTypes } from 'utils/constants';
+import { languages, toastTypes } from 'utils/constants';
 import { useTranslation } from 'react-i18next';
 import styles from './styles';
+import LanguagePickerRow from './LanguagePickerRow';
 
 const LanguagePicker: React.FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -34,12 +33,7 @@ const LanguagePicker: React.FunctionComponent = () => {
 
   return (
     <SelectDropdown
-      renderCustomizedRowChild={(selectedItem) => (
-        <View style={styles.container}>
-          <Text style={styles.text}>{selectedItem}</Text>
-          <Flag code={flagKeys[selectedItem] ?? 'shiny'} size={16} />
-        </View>
-      )}
+      renderCustomizedRowChild={LanguagePickerRow}
       data={languages}
       defaultValue="en"
       buttonStyle={styles.btn}
