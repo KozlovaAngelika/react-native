@@ -3,13 +3,17 @@
   "top250": "Top 250",
   "favorites": "Favorites",
   "search": "Search",
-  "error": "Something went wrong... Please, try again.",
-  "errorShortMessage": "No data to display...",
+  "error": "Error",
+  "errorMessage": "Something went wrong... Please, try again.",
+  "errorShortMessage": "Something went wrong...",
   "emptyRequestNotice": "To see a list of films, enter your request in the search bar.",
   "noResults": "No results... Please, try again.",
   "noFavorites": "You haven't added anything to your favorites yet.",
   "addToFavorites": "Add to favorites",
   "removeFromFavorites": "Remove from favorites",
   "rating": "Rating IMDb:",
-  "noData": "no data"
+  "noData": "no data",
+  "langСhanged": "The language has changed",
+  "success": "Success",
+  "warning": "Warning"
 }

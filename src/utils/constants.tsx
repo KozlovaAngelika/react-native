@@ -21,3 +21,9 @@ export const flagKeys = {
   en: 'GB',
   ru: 'RU',
 };
+
+export const toastTypes = {
+  success: 'success',
+  info: 'info',
+  error: 'error',
+};

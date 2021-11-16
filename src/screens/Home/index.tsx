@@ -32,7 +32,7 @@ const Home: React.FunctionComponent = () => {
       return t('emptyRequestNotice');
     }
     if (error) {
-      return t('error');
+      return t('errorMessage');
     }
     if (data?.length === 0) {
       return t('noResults');
