@@ -1,4 +1,4 @@
-import { currentLanguage } from 'store/config/selectors';
+import { selectCurrentLanguage } from 'store/config/selectors';
 
 type MoviesState = AsyncState<Movie[] | null>;
 type TopMovieState = AsyncState<Movie[]>;

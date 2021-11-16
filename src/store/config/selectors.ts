@@ -1,5 +1,5 @@
 import { RootState } from 'store';
 
-export const currentLanguage = (state: RootState): string => {
-  return state.customizationApp.currentLanguage;
+export const selectCurrentLanguage = (state: RootState): string => {
+  return state.appConfig.currentLanguage;
 };

@@ -6,7 +6,7 @@ const initialState = {
   currentLanguage: 'en',
 };
 
-const configAppReducer = (
+const appConfigReducer = (
   state: ConfigAppState = initialState,
   action: ChangeLanguageActions,
 ): ConfigAppState => {
@@ -20,4 +20,4 @@ const configAppReducer = (
       return state;
   }
 };
-export default configAppReducer;
+export default appConfigReducer;
