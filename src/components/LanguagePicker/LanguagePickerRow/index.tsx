@@ -14,4 +14,4 @@ const LanguagePickerRow: React.FunctionComponent = (selectedItem) => (
   </View>
 );
 
-export default LanguagePickerRow;
+export default React.memo(LanguagePickerRow);
