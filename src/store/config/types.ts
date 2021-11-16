@@ -5,4 +5,4 @@ export interface SetCurrentLanguageAction {
   payload: string;
 }
 
-export type ChangeLanguageActions = SetCurrentLanguageAction;
+export type ConfigAppActions = SetCurrentLanguageAction;

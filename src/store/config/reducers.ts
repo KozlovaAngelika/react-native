@@ -1,5 +1,5 @@
 import { ConfigAppState } from 'types/redux';
-import { ChangeLanguageActions } from './types';
+import { ConfigAppActions } from './types';
 import * as types from './actionTypes';
 
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
 
 const appConfigReducer = (
   state: ConfigAppState = initialState,
-  action: ChangeLanguageActions,
+  action: ConfigAppActions,
 ): ConfigAppState => {
   switch (action.type) {
     case types.SET_CURRENT_LANGUAGE:
