@@ -1,5 +1,6 @@
-import * as types from './actionTypes';
+import { MoviesState } from 'types/redux';
 import { SearchMoviesActions } from './types';
+import * as types from './actionTypes';
 
 const initialState = {
   loading: false,
