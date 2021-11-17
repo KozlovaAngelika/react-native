@@ -8,7 +8,7 @@ interface Props {
   selectedItem: string;
 }
 
-const LanguagePickerRow: React.FC<Props> = ({ selectedItem }): ReactElement => {
+const LanguagePickerRow: React.FC<Props> = ({ selectedItem }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{selectedItem}</Text>
