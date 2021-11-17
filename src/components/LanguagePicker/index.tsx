@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
 import Toast from 'react-native-toast-message';
 import { useDispatch } from 'react-redux';
@@ -33,7 +33,9 @@ const LanguagePicker: React.FunctionComponent = () => {
 
   return (
     <SelectDropdown
-      renderCustomizedRowChild={LanguagePickerRow}
+      renderCustomizedRowChild={(selectedItem: string): ReactElement => {
+        return <LanguagePickerRow selectedItem={selectedItem} />;
+      }}
       data={languages}
       defaultValue="en"
       buttonStyle={styles.btn}

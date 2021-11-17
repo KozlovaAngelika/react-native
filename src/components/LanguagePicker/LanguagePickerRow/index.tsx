@@ -4,14 +4,20 @@ import { View, Text } from 'react-native';
 import { flagKeys, flagConfig } from 'utils/constants';
 import styles from './styles';
 
-const LanguagePickerRow: React.FunctionComponent = (selectedItem) => (
-  <View style={styles.container}>
-    <Text style={styles.text}>{selectedItem}</Text>
-    <Flag
-      code={flagKeys[selectedItem] ?? flagConfig.defaultValue}
-      size={flagConfig.size}
-    />
-  </View>
-);
+interface Props {
+  selectedItem: string;
+}
+
+const LanguagePickerRow: React.FC<Props> = ({ selectedItem }): ReactElement => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>{selectedItem}</Text>
+      <Flag
+        code={flagKeys[selectedItem] ?? flagConfig.defaultValue}
+        size={flagConfig.size}
+      />
+    </View>
+  );
+};
 
 export default React.memo(LanguagePickerRow);
