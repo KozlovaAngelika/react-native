@@ -8,11 +8,7 @@ interface Props {
 }
 
 const TabIcon: React.FC<Props> = ({ iconName, focused }) => (
-  <MaterialCommunityIcons
-    name={iconName}
-    size={26}
-    color={focused ? COLORS.BLACK : COLORS.GREY}
-  />
+  <MaterialCommunityIcons name={iconName} size={26} color={focused ? COLORS.BLACK : COLORS.GREY} />
 );
 
 export default React.memo(TabIcon);

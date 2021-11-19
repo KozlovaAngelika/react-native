@@ -6,9 +6,7 @@ export const addMovieToFavorites = (data: Movie): AddMovieToFavorites => ({
   payload: data,
 });
 
-export const removeMovieFromFavorites = (
-  id: string,
-): RemoveMovieFromFavorites => ({
+export const removeMovieFromFavorites = (id: string): RemoveMovieFromFavorites => ({
   type: types.REMOVE_MOVIE_FROM_FAVORITES,
   payload: id,
 });

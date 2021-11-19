@@ -1,5 +1,5 @@
-import { MovieInfoActions } from './types';
 import * as types from './actionTypes';
+import { MovieInfoActions } from './types';
 
 const initialState = {
   loading: false,
@@ -10,10 +10,7 @@ const initialState = {
   },
 };
 
-const movieInfoReducer = (
-  state: MovieInfoState = initialState,
-  action: MovieInfoActions,
-): MovieInfoState => {
+const movieInfoReducer = (state: MovieInfoState = initialState, action: MovieInfoActions): MovieInfoState => {
   switch (action.type) {
     case types.GET_MOVIE_INFO_STARTED:
       return {
@@ -47,4 +44,5 @@ const movieInfoReducer = (
       return state;
   }
 };
+
 export default movieInfoReducer;

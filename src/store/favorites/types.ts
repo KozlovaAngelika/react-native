@@ -1,7 +1,4 @@
-import {
-  ADD_MOVIE_TO_FAVORITES,
-  REMOVE_MOVIE_FROM_FAVORITES,
-} from './actionTypes';
+import { ADD_MOVIE_TO_FAVORITES, REMOVE_MOVIE_FROM_FAVORITES } from './actionTypes';
 
 export interface AddMovieToFavorites {
   type: typeof ADD_MOVIE_TO_FAVORITES;

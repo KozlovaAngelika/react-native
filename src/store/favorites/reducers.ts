@@ -1,14 +1,11 @@
-import { FavoritesActions } from './types';
 import * as types from './actionTypes';
+import { FavoritesActions } from './types';
 
 const initialState = {
   data: [],
 };
 
-const favoritesReducer = (
-  state: FavoritesState = initialState,
-  action: FavoritesActions,
-): FavoritesState => {
+const favoritesReducer = (state: FavoritesState = initialState, action: FavoritesActions): FavoritesState => {
   switch (action.type) {
     case types.ADD_MOVIE_TO_FAVORITES:
       return {
