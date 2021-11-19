@@ -33,9 +33,9 @@ const LanguagePicker: React.FunctionComponent = () => {
 
   return (
     <SelectDropdown
-      renderCustomizedRowChild={(selectedItem: string): ReactElement => {
-        return <LanguagePickerRow selectedItem={selectedItem} />;
-      }}
+      renderCustomizedRowChild={(selectedItem: string): ReactElement => (
+        <LanguagePickerRow selectedItem={selectedItem} />
+      )}
       data={languages}
       defaultValue="en"
       buttonStyle={styles.btn}
