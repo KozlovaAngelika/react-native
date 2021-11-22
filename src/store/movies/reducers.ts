@@ -1,5 +1,5 @@
-import { SearchMoviesActions } from './types';
 import * as types from './actionTypes';
+import { SearchMoviesActions } from './types';
 
 const initialState = {
   loading: false,
@@ -7,10 +7,7 @@ const initialState = {
   data: null,
 };
 
-const moviesReducer = (
-  state: MoviesState = initialState,
-  action: SearchMoviesActions,
-): MoviesState => {
+const moviesReducer = (state: MoviesState = initialState, action: SearchMoviesActions): MoviesState => {
   switch (action.type) {
     case types.SEARCH_MOVIES_STARTED:
       return {
@@ -44,4 +41,5 @@ const moviesReducer = (
       return state;
   }
 };
+
 export default moviesReducer;

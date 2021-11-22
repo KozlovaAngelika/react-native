@@ -1,17 +1,14 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Button, Card, Icon } from 'react-native-elements';
-import defaultImg from 'media/defaultImg.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { isFavoriteMovie } from 'store/favorites/selectors';
-import Loader from 'components/Loader';
-import {
-  addMovieToFavorites,
-  removeMovieFromFavorites,
-} from 'store/favorites/actions';
-import { COLORS } from 'utils/constants';
 import MovieInfo from './MovieInfo';
 import styles from './styles';
+import Loader from 'components/Loader';
+import defaultImg from 'media/defaultImg.png';
+import { addMovieToFavorites, removeMovieFromFavorites } from 'store/favorites/actions';
+import { isFavoriteMovie } from 'store/favorites/selectors';
+import { COLORS } from 'utils/constants';
 
 interface Props {
   data: Movie;
@@ -48,12 +45,7 @@ const MovieTile: React.FC<Props> = ({ data }) => {
           resizeMode="contain"
         />
         <Button
-          icon={
-            <Icon
-              name="star"
-              color={isInFavorites ? COLORS.YELLOW : COLORS.GREY}
-            />
-          }
+          icon={<Icon name="star" color={isInFavorites ? COLORS.YELLOW : COLORS.GREY} />}
           buttonStyle={styles.btn}
           containerStyle={styles.btnContainer}
           onPress={toggleIsFavorite}

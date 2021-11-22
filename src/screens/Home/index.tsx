@@ -1,19 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useCallback, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 import debounce from 'lodash.debounce';
-import { View, FlatList, ListRenderItem } from 'react-native';
+import React, { useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { FlatList, ListRenderItem, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import styles from './styles';
+import Content from 'components/Content';
 import MovieTile from 'components/MovieTile';
 import SearchBar from 'components/SearchBar';
-import {
-  selectError,
-  selectLoadingStatus,
-  selectMovies,
-} from 'store/movies/selectors';
 import { clearSearchResults, searchMovies } from 'store/movies/actions';
-import Content from 'components/Content';
-import styles from './styles';
+import { selectError, selectLoadingStatus, selectMovies } from 'store/movies/selectors';
 
 const Home: React.FunctionComponent = () => {
   const { t } = useTranslation();
@@ -23,9 +19,7 @@ const Home: React.FunctionComponent = () => {
   const error: Error | null = useSelector(selectError);
   const [searchValue, setSearchValue] = useState('');
 
-  const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile data={item} key={item.id} />
-  );
+  const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => <MovieTile data={item} key={item.id} />;
 
   const getMessage = (): string => {
     if (!searchValue.trim()) {
@@ -37,6 +31,7 @@ const Home: React.FunctionComponent = () => {
     if (!data?.length) {
       return t('noResults');
     }
+
     return '';
   };
 
@@ -44,6 +39,7 @@ const Home: React.FunctionComponent = () => {
     debounce((value: string) => {
       if (!value) {
         dispatch(clearSearchResults());
+
         return;
       }
       dispatch(searchMovies(value));

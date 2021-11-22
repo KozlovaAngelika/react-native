@@ -9,6 +9,7 @@ export const COLORS = {
   YELLOW: '#ffd700',
   GREEN: '#2E8B57',
 };
+
 export const ROUTES = {
   HOME: 'Home',
   TOP_MOVIES: 'TopMovies',
