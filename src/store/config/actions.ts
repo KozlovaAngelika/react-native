@@ -1,7 +1,8 @@
-import * as types from './actionTypes';
-import { SetCurrentLanguage } from './types';
+import SET_CURRENT_LANGUAGE from './actionTypes';
 
-export const changeLanguage = (lang: string): SetCurrentLanguage => ({
-  type: types.SET_CURRENT_LANGUAGE,
+const changeLanguage = (lang: string): SetCurrentLanguage => ({
+  type: SET_CURRENT_LANGUAGE,
   payload: lang,
 });
+
+export default changeLanguage;

@@ -6,6 +6,7 @@ import { Action, applyMiddleware, combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistReducer, persistStore } from 'redux-persist';
 import thunk, { ThunkAction } from 'redux-thunk';
+import appConfigReducer from './config/reducers';
 import favoritesReducer from './favorites/reducers';
 import movieInfoReducer from './movieInfo/reducers';
 import moviesReducer from './movies/reducers';

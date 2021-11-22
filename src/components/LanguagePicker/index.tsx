@@ -1,13 +1,13 @@
+import i18next from 'i18next';
 import React, { ReactElement } from 'react';
+import { useTranslation } from 'react-i18next';
 import SelectDropdown from 'react-native-select-dropdown';
 import Toast from 'react-native-toast-message';
 import { useDispatch } from 'react-redux';
-import { changeLanguage } from 'store/config/actions';
-import i18next from 'i18next';
-import { languages, toastTypes } from 'utils/constants';
-import { useTranslation } from 'react-i18next';
-import styles from './styles';
 import LanguagePickerRow from './LanguagePickerRow';
+import styles from './styles';
+import changeLanguage from 'store/config/actions';
+import { languages, toastTypes } from 'utils/constants';
 
 const LanguagePicker: React.FunctionComponent = () => {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import { ConfigAppState } from 'types/redux';
-import { ConfigAppActions } from './types';
 import * as types from './actionTypes';
+import { ConfigAppActions } from './types';
 
 const initialState = {
   currentLanguage: 'en',
@@ -20,4 +20,5 @@ const appConfigReducer = (
       return state;
   }
 };
+
 export default appConfigReducer;
