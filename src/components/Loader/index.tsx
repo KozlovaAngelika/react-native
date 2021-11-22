@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, ActivityIndicator } from 'react-native';
-import { COLORS } from 'utils/constants';
+import { ActivityIndicator, View } from 'react-native';
 import styles from './styles';
+import { COLORS } from 'utils/constants';
 
 const Loader: React.FunctionComponent = () => (
   <View style={styles.container}>

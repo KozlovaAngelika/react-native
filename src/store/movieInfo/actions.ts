@@ -1,21 +1,13 @@
 import { API_KEY, API_URL } from 'react-native-dotenv';
-import { RootThunkAction } from 'store';
 import * as types from './actionTypes';
-import {
-  GetMovieInfo,
-  ClearMovieInfo,
-  GetMovieInfoSuccess,
-  GetMovieInfoFail,
-  MovieInfoActions,
-} from './types';
+import { ClearMovieInfo, GetMovieInfo, GetMovieInfoFail, GetMovieInfoSuccess, MovieInfoActions } from './types';
+import { RootThunkAction } from 'store';
 
 export const getNovieInfoStarted = (): GetMovieInfo => ({
   type: types.GET_MOVIE_INFO_STARTED,
 });
 
-export const getMovieInfoSuccess = (
-  data: GetAdditionalInfoResponse,
-): GetMovieInfoSuccess => ({
+export const getMovieInfoSuccess = (data: GetAdditionalInfoResponse): GetMovieInfoSuccess => ({
   type: types.GET_MOVIE_INFO_SUCCESS,
   payload: data,
 });
@@ -29,18 +21,10 @@ export const clearMovieInfo = (): ClearMovieInfo => ({
   type: types.CLEAR_MOVIE_INFO,
 });
 
-export const getMovieInfo = (id: string): RootThunkAction<MovieInfoActions> => (
-  dispatch,
-  getState,
-  api,
-) => {
-  const state = getState();
-  const lang = state.appConfig.currentLanguage;
+export const getMovieInfo = (id: string): RootThunkAction<MovieInfoActions> => (dispatch, getState, api) => {
   dispatch(getNovieInfoStarted);
   api
-    .get<GetAdditionalInfoResponse>(
-      `${API_URL}/${lang}/API/Title/${API_KEY}/${id}/Ratings`,
-    )
+    .get<GetAdditionalInfoResponse>(`${API_URL}/${lang}/API/Title/${API_KEY}/${id}/Ratings`)
     .then(({ data }) => {
       const { plot, imDbRating, errorMessage } = data;
       if (errorMessage) {

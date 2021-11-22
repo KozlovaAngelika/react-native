@@ -7,10 +7,13 @@
     "airbnb-typescript",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
-    "prettier"
+    "prettier",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
   ],
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "react", "react-native"],
+  "plugins": ["@typescript-eslint", "react", "react-native", "import"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -22,6 +25,7 @@
     "react-native/react-native": true
   },
   "rules": {
+    "prettier/prettier": 0,
     "react/prop-types": "off",
     "import/extensions": "off",
     "eol-last": 0,
@@ -42,13 +46,36 @@
       }
     ],
     "react-hooks/exhaustive-deps": "warn",
-    "max-len": ["error", { "code": 180 }],
+    "max-len": ["error", { "code": 120 }],
     "brace-style": 0,
     "function-paren-newline": "off",
-    "implicit-arrow-linebreak": "off",
+    "implicit-arrow-linebreak": ["error", "beside"],
+    "arrow-body-style": 1,
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": "*", "next": "export" }
+    ],
+    "import/prefer-default-export": "off",
     "@typescript-eslint/strict-boolean-expressions": 0,
     "default-param-last": "off",
-    "@typescript-eslint/default-param-last": "off"
+    "@typescript-eslint/default-param-last": "off",
+    "import/no-unresolved": "off",
+    "import/named": "warn",
+    "import/namespace": "warn",
+    "import/no-named-as-default": "off",
+    "import/export": "warn",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "parent", "sibling", "index"],
+        "newlines-between": "never",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
   },
   "settings": {
     "import/resolver": {

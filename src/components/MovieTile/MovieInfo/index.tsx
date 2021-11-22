@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
-import { Text, View, ScrollView } from 'react-native';
-import { Button, Overlay, Card, Icon } from 'react-native-elements';
 import { useTranslation } from 'react-i18next';
-import Loader from 'components/Loader';
-import { COLORS } from 'utils/constants';
-import Content from 'components/Content';
+import { ScrollView, Text, View } from 'react-native';
+import { Button, Card, Icon, Overlay } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMovieInfo, clearMovieInfo } from 'store/movieInfo/actions';
-import selectMovieInfo from 'store/movieInfo/selectors';
 import styles from './styles';
+import Content from 'components/Content';
+import Loader from 'components/Loader';
+import { clearMovieInfo, getMovieInfo } from 'store/movieInfo/actions';
+import selectMovieInfo from 'store/movieInfo/selectors';
+import { COLORS } from 'utils/constants';
 
 interface Props {
   isVisible: boolean;
@@ -18,17 +18,9 @@ interface Props {
   data: Movie;
 }
 
-const MovieInfo: React.FC<Props> = ({
-  isVisible,
-  onClose,
-  toggleIsFavorite,
-  isInFavorites,
-  data,
-}) => {
+const MovieInfo: React.FC<Props> = ({ isVisible, onClose, toggleIsFavorite, isInFavorites, data }) => {
   const { t } = useTranslation();
-  const { loading, error, data: additionalInfo }: MovieInfoState = useSelector(
-    selectMovieInfo,
-  );
+  const { loading, error, data: additionalInfo }: MovieInfoState = useSelector(selectMovieInfo);
   const dispatch = useDispatch();
   const errorMessage = t('errorShortMessage');
 
@@ -51,18 +43,10 @@ const MovieInfo: React.FC<Props> = ({
           <Card.Title>{data.title}</Card.Title>
           <View style={styles.ratingContainer}>
             <Text style={styles.ratingTitle}>{t('rating')}</Text>
-            <Content
-              isLoading={loading}
-              message={error ? errorMessage : additionalInfo.imDbRating}
-              error={!!error}
-            />
+            <Content isLoading={loading} message={error ? errorMessage : additionalInfo.imDbRating} error={!!error} />
           </View>
           <View style={styles.descriptionContainer}>
-            <Content
-              isLoading={loading}
-              message={error ? errorMessage : additionalInfo.plot}
-              error={!!error}
-            />
+            <Content isLoading={loading} message={error ? errorMessage : additionalInfo.plot} error={!!error} />
           </View>
           <Card.Image
             source={{ uri: data.image }}

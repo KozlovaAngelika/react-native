@@ -1,9 +1,9 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { TextInput, View } from 'react-native';
 import { Icon } from 'react-native-elements';
-import { useTranslation } from 'react-i18next';
-import { COLORS } from 'utils/constants';
 import styles from './styles';
+import { COLORS } from 'utils/constants';
 
 interface Props {
   value: string;
@@ -12,6 +12,7 @@ interface Props {
 
 const SearchBar: React.FC<Props> = ({ value, onChangeValue }) => {
   const { t } = useTranslation();
+
   return (
     <View style={styles.searchPanel}>
       <TextInput

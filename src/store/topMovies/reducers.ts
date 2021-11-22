@@ -1,5 +1,5 @@
-import { GetTopMoviesActions } from './types';
 import * as types from './actionTypes';
+import { GetTopMoviesActions } from './types';
 
 const initialState = {
   loading: false,
@@ -7,10 +7,7 @@ const initialState = {
   data: [],
 };
 
-const topMoviesReducer = (
-  state: TopMovieState = initialState,
-  action: GetTopMoviesActions,
-): TopMovieState => {
+const topMoviesReducer = (state: TopMovieState = initialState, action: GetTopMoviesActions): TopMovieState => {
   switch (action.type) {
     case types.GET_TOP_MOVIES_STARTED:
       return {

@@ -1,13 +1,7 @@
 import { API_KEY } from 'react-native-dotenv';
-import { RootThunkAction } from 'store';
 import * as types from './actionTypes';
-import {
-  SearchMovies,
-  SearchMoviesSuccess,
-  SearchMoviesFail,
-  SearchMoviesActions,
-  ClearSearchResults,
-} from './types';
+import { ClearSearchResults, SearchMovies, SearchMoviesActions, SearchMoviesFail, SearchMoviesSuccess } from './types';
+import { RootThunkAction } from 'store';
 
 export const searchMoviesStarted = (): SearchMovies => ({
   type: types.SEARCH_MOVIES_STARTED,
@@ -27,11 +21,7 @@ export const clearSearchResults = (): ClearSearchResults => ({
   type: types.CLEAR_SEARCH_RESULTS,
 });
 
-export const searchMovies = (
-  value: string,
-): RootThunkAction<SearchMoviesActions> => (dispatch, getState, api) => {
-  const state = getState();
-  const lang = state.appConfig.currentLanguage;
+export const searchMovies = (value: string): RootThunkAction<SearchMoviesActions> => (dispatch, getState, api) => {
   dispatch(searchMoviesStarted());
   api
     .get<SearchMovieResponse>(`/${lang}/API/SearchMovie/${API_KEY}/${value}`)
