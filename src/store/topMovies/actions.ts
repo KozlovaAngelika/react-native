@@ -18,9 +18,12 @@ export const getTopMoviesFail = (error: Error | null): GetTopMoviesFail => ({
 });
 
 export const getTopMovies = (): RootThunkAction<GetTopMoviesActions> => (dispatch, getState, api) => {
+  const state = getState();
+  const lang = state.appConfig.currentLanguage;
+
   dispatch(getTopMoviesStarted());
   api
-    .get<GetTopMoviesResponse>(`/Top250Movies/${API_KEY}`)
+    .get<GetTopMoviesResponse>(`/${lang}/API/Top250Movies/${API_KEY}`)
     .then(({ data }) => {
       const { items, errorMessage } = data;
       if (errorMessage) {

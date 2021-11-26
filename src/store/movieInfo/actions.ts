@@ -22,9 +22,11 @@ export const clearMovieInfo = (): ClearMovieInfo => ({
 });
 
 export const getMovieInfo = (id: string): RootThunkAction<MovieInfoActions> => (dispatch, getState, api) => {
+  const state = getState();
+  const lang = state.appConfig.currentLanguage;
   dispatch(getNovieInfoStarted);
   api
-    .get<GetAdditionalInfoResponse>(`${API_URL}/Title/${API_KEY}/${id}/Ratings`)
+    .get<GetAdditionalInfoResponse>(`${API_URL}/${lang}/API/Title/${API_KEY}/${id}/Ratings`)
     .then(({ data }) => {
       const { plot, imDbRating, errorMessage } = data;
       if (errorMessage) {

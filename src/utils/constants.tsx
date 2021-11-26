@@ -1,5 +1,4 @@
 export const COLORS = {
-  LIGHT_GREY: '#808080',
   GREY: '#808080',
   DARK_GREY: '#2c2c2c',
   BLACK: '#000',
@@ -14,4 +13,22 @@ export const ROUTES = {
   HOME: 'Home',
   TOP_MOVIES: 'TopMovies',
   FAVORITES: 'Favorites',
+};
+
+export const languages = ['en', 'ru'];
+
+export const flagKeys = {
+  en: 'GB',
+  ru: 'RU',
+};
+
+export const flagConfig = {
+  defaultValue: 'shiny',
+  size: 16,
+};
+
+export const toastTypes = {
+  success: 'success',
+  info: 'info',
+  error: 'error',
 };

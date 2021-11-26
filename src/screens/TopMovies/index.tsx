@@ -32,7 +32,7 @@ const TopMovies: React.FunctionComponent = () => {
       return <Loader />;
     }
     if (error) {
-      return <Notice isError message={t('error')} />;
+      return <Notice isError message={t('errorMessage')} />;
     }
     if (data?.length === 0) {
       return <Notice message={t('noResults')} />;

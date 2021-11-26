@@ -6,12 +6,12 @@ const theme = {
       color: COLORS.WHITE,
     },
     buttonStyle: {
-      backgroundColor: COLORS.LIGHT_GREY,
+      backgroundColor: COLORS.GREY,
       borderRadius: 10,
     },
   },
   Icon: {
-    color: COLORS.LIGHT_GREY,
+    color: COLORS.GREY,
     size: 25,
   },
 };

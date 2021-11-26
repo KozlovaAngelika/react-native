@@ -29,6 +29,7 @@
     "react/prop-types": "off",
     "import/extensions": "off",
     "eol-last": 0,
+    "@typescript-eslint/explicit-function-return-type": ["warn"],
     "@typescript-eslint/member-delimiter-style": [
       "error",
       {
@@ -53,7 +54,6 @@
       { "blankLine": "always", "prev": "*", "next": "return" },
       { "blankLine": "always", "prev": "*", "next": "export" }
     ],
-    "import/prefer-default-export": "off",
     "@typescript-eslint/strict-boolean-expressions": 0,
     "default-param-last": "off",
     "@typescript-eslint/default-param-last": "off",

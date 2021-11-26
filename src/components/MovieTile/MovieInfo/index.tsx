@@ -33,7 +33,7 @@ const MovieInfo: React.FC<Props> = ({ isVisible, onClose, toggleIsFavorite, isIn
     <Overlay isVisible={isVisible} fullScreen overlayStyle={styles.overlay}>
       <View style={styles.btnContainer}>
         <Button
-          icon={<Icon name="close" color={COLORS.LIGHT_GREY} />}
+          icon={<Icon name="close" color={COLORS.GREY} />}
           buttonStyle={styles.closeBtn}
           onPress={onClose}
         />
