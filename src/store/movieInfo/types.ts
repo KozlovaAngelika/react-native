@@ -1,9 +1,4 @@
-import {
-  GET_MOVIE_INFO_STARTED,
-  GET_MOVIE_INFO_SUCCESS,
-  GET_MOVIE_INFO_FAIL,
-  CLEAR_MOVIE_INFO,
-} from './actionTypes';
+import { CLEAR_MOVIE_INFO, GET_MOVIE_INFO_FAIL, GET_MOVIE_INFO_STARTED, GET_MOVIE_INFO_SUCCESS } from './actionTypes';
 
 export interface GetMovieInfo {
   type: typeof GET_MOVIE_INFO_STARTED;
@@ -24,8 +19,4 @@ export interface GetMovieInfoFail {
   payload: Error | null;
 }
 
-export type MovieInfoActions =
-  | GetMovieInfo
-  | ClearMovieInfo
-  | GetMovieInfoSuccess
-  | GetMovieInfoFail;
+export type MovieInfoActions = GetMovieInfo | ClearMovieInfo | GetMovieInfoSuccess | GetMovieInfoFail;

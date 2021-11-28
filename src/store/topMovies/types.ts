@@ -1,8 +1,4 @@
-import {
-  GET_TOP_MOVIES_STARTED,
-  GET_TOP_MOVIES_SUCCESS,
-  GET_TOP_MOVIES_FAIL,
-} from './actionTypes';
+import { GET_TOP_MOVIES_FAIL, GET_TOP_MOVIES_STARTED, GET_TOP_MOVIES_SUCCESS } from './actionTypes';
 
 export interface GetTopMovies {
   type: typeof GET_TOP_MOVIES_STARTED;
@@ -18,7 +14,4 @@ export interface GetTopMoviesFail {
   payload: Error | null;
 }
 
-export type GetTopMoviesActions =
-  | GetTopMovies
-  | GetTopMoviesSuccess
-  | GetTopMoviesFail;
+export type GetTopMoviesActions = GetTopMovies | GetTopMoviesSuccess | GetTopMoviesFail;

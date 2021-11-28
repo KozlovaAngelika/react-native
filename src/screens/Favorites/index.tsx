@@ -1,24 +1,22 @@
-import LanguageSelection from 'components/LanguageSelection';
 import React, { ReactElement } from 'react';
-import Notice from 'components/Notice';
 import { useTranslation } from 'react-i18next';
-import { View, FlatList, ListRenderItem } from 'react-native';
+import { FlatList, ListRenderItem, View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { selectMovies } from 'store/favorites/selectors';
-import MovieTile from 'components/MovieTile';
 import styles from './styles';
+import LanguagePicker from 'components/LanguagePicker';
+import MovieTile from 'components/MovieTile';
+import Notice from 'components/Notice';
+import { selectMovies } from 'store/favorites/selectors';
 
 const Favorites: React.FunctionComponent = () => {
   const { t } = useTranslation();
   const data: Movie[] = useSelector(selectMovies);
 
-  const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => (
-    <MovieTile data={item} key={item.id} />
-  );
+  const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => <MovieTile data={item} key={item.id} />;
 
   return (
     <View style={styles.container}>
-      <LanguageSelection />
+      <LanguagePicker />
       {!data.length ? (
         <Notice isError={false} message={t('noFavorites')} />
       ) : (

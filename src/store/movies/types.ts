@@ -1,9 +1,4 @@
-import {
-  SEARCH_MOVIES_STARTED,
-  SEARCH_MOVIES_SUCCESS,
-  SEARCH_MOVIES_FAIL,
-  CLEAR_SEARCH_RESULTS,
-} from './actionTypes';
+import { CLEAR_SEARCH_RESULTS, SEARCH_MOVIES_FAIL, SEARCH_MOVIES_STARTED, SEARCH_MOVIES_SUCCESS } from './actionTypes';
 
 export interface SearchMovies {
   type: typeof SEARCH_MOVIES_STARTED;
@@ -24,8 +19,4 @@ export interface SearchMoviesFail {
   payload: Error | null;
 }
 
-export type SearchMoviesActions =
-  | SearchMovies
-  | SearchMoviesSuccess
-  | SearchMoviesFail
-  | ClearSearchResults;
+export type SearchMoviesActions = SearchMovies | SearchMoviesSuccess | SearchMoviesFail | ClearSearchResults;

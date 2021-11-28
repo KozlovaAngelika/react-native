@@ -1,10 +1,5 @@
 import * as types from './actionTypes';
-import {
-  SearchMovies,
-  SearchMoviesSuccess,
-  SearchMoviesFail,
-  ClearSearchResults,
-} from './types';
+import { SearchMovies, SearchMoviesSuccess, SearchMoviesFail, ClearSearchResults } from './types';
 
 export const searchMoviesStarted = (value: string): SearchMovies => ({
   type: types.SEARCH_MOVIES_STARTED,

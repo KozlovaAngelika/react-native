@@ -1,11 +1,12 @@
-import { persistStore } from 'redux-persist';
-import { createStore, applyMiddleware } from 'redux';
 import { NativeModules } from 'react-native';
+import { API_URL } from 'react-native-dotenv';
+import { createStore, applyMiddleware, Action, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { persistStore } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
 import api from '../utils/api';
-import rootSaga from './rootSaga';
 import rootReducer from './rootReducer';
+import rootSaga from './rootSaga';
 
 if (__DEV__) {
   NativeModules.DevSettings.setIsDebuggingRemotely(true);

@@ -1,19 +1,12 @@
 import * as types from './actionTypes';
-import {
-  GetMovieInfo,
-  ClearMovieInfo,
-  GetMovieInfoSuccess,
-  GetMovieInfoFail,
-} from './types';
+import { GetMovieInfo, ClearMovieInfo, GetMovieInfoSuccess, GetMovieInfoFail } from './types';
 
 export const getMovieInfoStarted = (id: string): GetMovieInfo => ({
   payload: id,
   type: types.GET_MOVIE_INFO_STARTED,
 });
 
-export const getMovieInfoSuccess = (
-  data: GetAdditionalInfoResponse,
-): GetMovieInfoSuccess => ({
+export const getMovieInfoSuccess = (data: GetAdditionalInfoResponse): GetMovieInfoSuccess => ({
   type: types.GET_MOVIE_INFO_SUCCESS,
   payload: data,
 });
