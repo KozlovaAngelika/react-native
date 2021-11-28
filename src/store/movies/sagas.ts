@@ -1,11 +1,11 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
 import { API_KEY } from 'react-native-dotenv';
 import { call, put, select, takeLatest } from 'redux-saga/effects';
-import api from 'utils/api';
 import { searchMoviesFail, searchMoviesSuccess } from './actions';
 import * as types from './actionTypes';
 import { selectCurrentLanguage } from './selectors';
 import { SearchMovies } from './types';
+import api from 'utils/api';
 
 async function getMovies(
   payload: string,

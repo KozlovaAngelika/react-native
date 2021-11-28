@@ -1,11 +1,11 @@
 import { AxiosInstance, AxiosResponse } from 'axios';
 import { API_KEY } from 'react-native-dotenv';
 import { call, put, select, takeEvery } from 'redux-saga/effects';
-import { selectCurrentLanguage } from 'store/movies/selectors';
-import api from 'utils/api';
 import { getTopMoviesFail, getTopMoviesSuccess } from './actions';
 import * as types from './actionTypes';
 import { GetTopMovies } from './types';
+import { selectCurrentLanguage } from 'store/movies/selectors';
+import api from 'utils/api';
 
 async function getTopMovies(
   lang: string,
