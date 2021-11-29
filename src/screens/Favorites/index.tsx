@@ -12,7 +12,7 @@ const Favorites: React.FunctionComponent = () => {
   const { t } = useTranslation();
   const data: Movie[] = useSelector(selectMovies);
 
-  const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => <MovieTile data={item} key={item.id} />;
+  const renderItem: ListRenderItem<Movie> = ({ item }): ReactElement => <MovieTile data={item} key={item.id} />;
 
   return (
     <View style={styles.container}>

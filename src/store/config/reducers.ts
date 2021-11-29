@@ -1,4 +1,3 @@
-import { ConfigAppState } from 'types/redux';
 import SET_CURRENT_LANGUAGE from './actionTypes';
 import { ConfigAppActions } from './types';
 

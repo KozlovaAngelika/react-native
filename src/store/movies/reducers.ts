@@ -1,4 +1,3 @@
-import { MoviesState } from 'types/redux';
 import * as types from './actionTypes';
 import { SearchMoviesActions } from './types';
 

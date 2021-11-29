@@ -1,5 +1,5 @@
 import debounce from 'lodash.debounce';
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, ListRenderItem, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +18,7 @@ const Home: React.FunctionComponent = () => {
   const error: Error | null = useSelector(selectError);
   const [searchValue, setSearchValue] = useState('');
 
-  const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => <MovieTile data={item} key={item.id} />;
+  const renderItem: ListRenderItem<Movie> = ({ item }): ReactElement => <MovieTile data={item} key={item.id} />;
 
   const getMessage = (): string => {
     if (!searchValue.trim()) {

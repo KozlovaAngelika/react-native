@@ -17,14 +17,12 @@ export function* getTopMoviesAsync(action: GetTopMovies) {
     const response: AxiosResponse<GetTopMoviesResponse> = yield call(getTopMovies, lang);
     const { items, errorMessage } = response.data;
     if (errorMessage) {
-      console.log(errorMessage);
       const error = new Error(errorMessage);
       yield put(getTopMoviesFail(error));
     } else {
       yield put(getTopMoviesSuccess(items));
     }
   } catch (err) {
-    console.log(err);
     yield put(getTopMoviesFail(err as Error));
   }
 }

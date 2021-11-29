@@ -25,7 +25,7 @@ const TopMovies: React.FunctionComponent = () => {
   const onRefresh = (): void => {
     dispatch(getTopMoviesStarted());
   };
-  const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => <MovieTile data={item} key={item.id} />;
+  const renderItem: ListRenderItem<Movie> = ({ item }): ReactElement => <MovieTile data={item} key={item.id} />;
 
   const renderContent = (): ReactElement => {
     if (isLoading) {
