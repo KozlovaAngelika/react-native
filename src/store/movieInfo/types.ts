@@ -2,6 +2,7 @@ import { CLEAR_MOVIE_INFO, GET_MOVIE_INFO_FAIL, GET_MOVIE_INFO_STARTED, GET_MOVI
 
 export interface GetMovieInfo {
   type: typeof GET_MOVIE_INFO_STARTED;
+  payload: string;
 }
 
 export interface ClearMovieInfo {

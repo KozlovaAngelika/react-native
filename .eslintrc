@@ -29,7 +29,7 @@
     "react/prop-types": "off",
     "import/extensions": "off",
     "eol-last": 0,
-    "@typescript-eslint/explicit-function-return-type": ["warn"],
+    "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/member-delimiter-style": [
       "error",
       {

@@ -1,9 +1,8 @@
-import { API_KEY, API_URL } from 'react-native-dotenv';
 import * as types from './actionTypes';
-import { ClearMovieInfo, GetMovieInfo, GetMovieInfoFail, GetMovieInfoSuccess, MovieInfoActions } from './types';
-import { RootThunkAction } from 'store';
+import { GetMovieInfo, ClearMovieInfo, GetMovieInfoSuccess, GetMovieInfoFail } from './types';
 
-export const getNovieInfoStarted = (): GetMovieInfo => ({
+export const getMovieInfoStarted = (id: string): GetMovieInfo => ({
+  payload: id,
   type: types.GET_MOVIE_INFO_STARTED,
 });
 
@@ -20,28 +19,3 @@ export const getMovieInfoFail = (error: Error | null): GetMovieInfoFail => ({
 export const clearMovieInfo = (): ClearMovieInfo => ({
   type: types.CLEAR_MOVIE_INFO,
 });
-
-export const getMovieInfo = (id: string): RootThunkAction<MovieInfoActions> => (dispatch, getState, api) => {
-  const state = getState();
-  const lang = state.appConfig.currentLanguage;
-  dispatch(getNovieInfoStarted);
-  api
-    .get<GetAdditionalInfoResponse>(`${API_URL}/${lang}/API/Title/${API_KEY}/${id}/Ratings`)
-    .then(({ data }) => {
-      const { plot, imDbRating, errorMessage } = data;
-      if (errorMessage) {
-        const error = new Error(errorMessage);
-        dispatch(getMovieInfoFail(error));
-      } else {
-        dispatch(
-          getMovieInfoSuccess({
-            plot,
-            imDbRating,
-          }),
-        );
-      }
-    })
-    .catch((err) => {
-      dispatch(getMovieInfoFail(err));
-    });
-};

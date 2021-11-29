@@ -1,6 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import debounce from 'lodash.debounce';
-import React, { useCallback, useState } from 'react';
+import React, { useState, useCallback, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FlatList, ListRenderItem, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +7,7 @@ import styles from './styles';
 import Content from 'components/Content';
 import MovieTile from 'components/MovieTile';
 import SearchBar from 'components/SearchBar';
-import { clearSearchResults, searchMovies } from 'store/movies/actions';
+import { clearSearchResults, searchMoviesStarted } from 'store/movies/actions';
 import { selectError, selectLoadingStatus, selectMovies } from 'store/movies/selectors';
 
 const Home: React.FunctionComponent = () => {
@@ -19,7 +18,7 @@ const Home: React.FunctionComponent = () => {
   const error: Error | null = useSelector(selectError);
   const [searchValue, setSearchValue] = useState('');
 
-  const renderItem: ListRenderItem<Movie> = ({ item }): React.ReactElement => <MovieTile data={item} key={item.id} />;
+  const renderItem: ListRenderItem<Movie> = ({ item }): ReactElement => <MovieTile data={item} key={item.id} />;
 
   const getMessage = (): string => {
     if (!searchValue.trim()) {
@@ -42,7 +41,7 @@ const Home: React.FunctionComponent = () => {
 
         return;
       }
-      dispatch(searchMovies(value));
+      dispatch(searchMoviesStarted(value));
     }, 300),
     [],
   );

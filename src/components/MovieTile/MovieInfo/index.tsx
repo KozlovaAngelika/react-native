@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styles from './styles';
 import Content from 'components/Content';
 import Loader from 'components/Loader';
-import { clearMovieInfo, getMovieInfo } from 'store/movieInfo/actions';
+import { clearMovieInfo, getMovieInfoStarted } from 'store/movieInfo/actions';
 import selectMovieInfo from 'store/movieInfo/selectors';
 import { COLORS } from 'utils/constants';
 
@@ -26,17 +26,13 @@ const MovieInfo: React.FC<Props> = ({ isVisible, onClose, toggleIsFavorite, isIn
 
   useEffect(() => {
     dispatch(clearMovieInfo());
-    dispatch(getMovieInfo(data.id));
+    dispatch(getMovieInfoStarted(data.id));
   }, []);
 
   return (
     <Overlay isVisible={isVisible} fullScreen overlayStyle={styles.overlay}>
       <View style={styles.btnContainer}>
-        <Button
-          icon={<Icon name="close" color={COLORS.GREY} />}
-          buttonStyle={styles.closeBtn}
-          onPress={onClose}
-        />
+        <Button icon={<Icon name="close" color={COLORS.GREY} />} buttonStyle={styles.closeBtn} onPress={onClose} />
       </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Card containerStyle={styles.card}>

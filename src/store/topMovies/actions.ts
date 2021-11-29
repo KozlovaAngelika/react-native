@@ -1,7 +1,5 @@
-import { API_KEY } from 'react-native-dotenv';
 import * as types from './actionTypes';
-import { GetTopMovies, GetTopMoviesActions, GetTopMoviesFail, GetTopMoviesSuccess } from './types';
-import { RootThunkAction } from 'store';
+import { GetTopMovies, GetTopMoviesSuccess, GetTopMoviesFail } from './types';
 
 export const getTopMoviesStarted = (): GetTopMovies => ({
   type: types.GET_TOP_MOVIES_STARTED,
@@ -16,24 +14,3 @@ export const getTopMoviesFail = (error: Error | null): GetTopMoviesFail => ({
   type: types.GET_TOP_MOVIES_FAIL,
   payload: error,
 });
-
-export const getTopMovies = (): RootThunkAction<GetTopMoviesActions> => (dispatch, getState, api) => {
-  const state = getState();
-  const lang = state.appConfig.currentLanguage;
-
-  dispatch(getTopMoviesStarted());
-  api
-    .get<GetTopMoviesResponse>(`/${lang}/API/Top250Movies/${API_KEY}`)
-    .then(({ data }) => {
-      const { items, errorMessage } = data;
-      if (errorMessage) {
-        const error = new Error(errorMessage);
-        dispatch(getTopMoviesFail(error));
-      } else {
-        dispatch(getTopMoviesSuccess(items));
-      }
-    })
-    .catch((err) => {
-      dispatch(getTopMoviesFail(err));
-    });
-};

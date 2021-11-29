@@ -1,10 +1,9 @@
-import { API_KEY } from 'react-native-dotenv';
 import * as types from './actionTypes';
-import { ClearSearchResults, SearchMovies, SearchMoviesActions, SearchMoviesFail, SearchMoviesSuccess } from './types';
-import { RootThunkAction } from 'store';
+import { SearchMovies, SearchMoviesSuccess, SearchMoviesFail, ClearSearchResults } from './types';
 
-export const searchMoviesStarted = (): SearchMovies => ({
+export const searchMoviesStarted = (value: string): SearchMovies => ({
   type: types.SEARCH_MOVIES_STARTED,
+  payload: value,
 });
 
 export const searchMoviesSuccess = (data: Movie[]): SearchMoviesSuccess => ({
@@ -20,23 +19,3 @@ export const searchMoviesFail = (error: Error | null): SearchMoviesFail => ({
 export const clearSearchResults = (): ClearSearchResults => ({
   type: types.CLEAR_SEARCH_RESULTS,
 });
-
-export const searchMovies = (value: string): RootThunkAction<SearchMoviesActions> => (dispatch, getState, api) => {
-  const state = getState();
-  const lang = state.appConfig.currentLanguage;
-  dispatch(searchMoviesStarted());
-  api
-    .get<SearchMovieResponse>(`/${lang}/API/SearchMovie/${API_KEY}/${value}`)
-    .then(({ data }) => {
-      const { errorMessage, results } = data;
-      if (errorMessage) {
-        const error = new Error(errorMessage);
-        dispatch(searchMoviesFail(error));
-      } else {
-        dispatch(searchMoviesSuccess(results));
-      }
-    })
-    .catch((err) => {
-      dispatch(searchMoviesFail(err));
-    });
-};
